@@ -10,10 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_03_080457) do
+ActiveRecord::Schema.define(version: 2019_06_03_085514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "photos", force: :cascade do |t|
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_photos_on_post_id"
+  end
+
+  create_table "points", force: :cascade do |t|
+    t.float "long"
+    t.float "lat"
+    t.string "name"
+    t.string "category"
+    t.text "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_points_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "points_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["points_id"], name: "index_posts_on_points_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "trip_points", force: :cascade do |t|
+    t.bigint "trips_id"
+    t.bigint "points_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["points_id"], name: "index_trip_points_on_points_id"
+    t.index ["trips_id"], name: "index_trip_points_on_trips_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.float "start_long"
+    t.float "start_lat"
+    t.float "end_long"
+    t.float "end_lat"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +73,19 @@ ActiveRecord::Schema.define(version: 2019_06_03_080457) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
+    t.string "country"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "photos", "posts"
+  add_foreign_key "points", "users"
+  add_foreign_key "posts", "points", column: "points_id"
+  add_foreign_key "posts", "users"
+  add_foreign_key "trip_points", "points", column: "points_id"
+  add_foreign_key "trip_points", "trips", column: "trips_id"
+  add_foreign_key "trips", "users"
 end
