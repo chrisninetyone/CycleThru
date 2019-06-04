@@ -13,23 +13,24 @@ const initMapbox = () => {
 
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
-    });
-    const markers = JSON.parse(mapElement.dataset.markers);
-    markers.forEach((marker) => {
-      const element = document.createElement('div');
-      element.className = 'marker';
-      element.style.backgroundImage = `url('${marker.image_url}')`;
-      element.style.backgroundSize = 'contain';
-      element.style.width = '25px';
-      element.style.height = '25px';
-    new mapboxgl.Marker(element)
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v10'
   });
-      fitMapToMarkers(map, markers);
+  const markers = JSON.parse(mapElement.dataset.markers);
+  markers.forEach((marker) => {
+    const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url('${marker.image_url}')`;
+    element.style.backgroundSize = 'contain';
+    element.style.width = '25px';
+    element.style.height = '25px';
+
+    new mapboxgl.Marker(element)
+    .setLngLat([ marker.lng, marker.lat ])
+    .addTo(map);
+  });
+  fitMapToMarkers(map, markers);
   }
 };
 
