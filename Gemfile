@@ -20,7 +20,6 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'omniauth-facebook'
 
-
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

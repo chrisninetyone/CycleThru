@@ -2,7 +2,6 @@
 
   <h1>CycleThru - Home Page</h1>
 
-    <%= if current_user = user %>
     <%= button_to "Sign-up", new_user_session_path %>
 
     <%= form_for(:user, :url => session_path(:user)) do |f| %>
