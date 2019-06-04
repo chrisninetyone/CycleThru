@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   # validates :username, presence: true, uniqueness: true
-  validates :country, presence: true
+  # validates :country, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable, :omniauthable
@@ -28,7 +28,7 @@ class User < ApplicationRecord
     else
       user = User.new(user_params)
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
-      user.save
+      user.save!
     end
 
     return user
