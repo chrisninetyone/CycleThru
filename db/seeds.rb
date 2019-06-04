@@ -8,7 +8,7 @@ puts "<< creating 3 users (seed 1/3) >>"
 user1 = User.create(first_name: "Lance",
                     last_name: "Armstrong",
                     username: "Livestrong",
-                    email: "lstrong@gmail.com",
+                    email: "user1@gmail.com",
                     country: "USA",
                     password: "123456"
                     )
@@ -16,7 +16,7 @@ user1 = User.create(first_name: "Lance",
 user2 = User.create(first_name: "Eddy",
                     last_name: "Merckx",
                     username: "Cannibal",
-                    email: "cannibal@gmail.com",
+                    email: "user2@gmail.com",
                     country: "Belgium",
                     password: "123456"
                     )
@@ -24,7 +24,7 @@ user2 = User.create(first_name: "Eddy",
 user3 = User.create(first_name: "Binard",
                     last_name: "Hinault",
                     username: "Badger",
-                    email: "badger@gmail.com",
+                    email: "user3@gmail.com",
                     country: "France",
                     password: "123456"
                     )

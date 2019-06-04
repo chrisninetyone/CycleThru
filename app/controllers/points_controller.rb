@@ -2,8 +2,20 @@ class PointsController < ApplicationController
   before_action :set_point, only: [:edit, :show, :update]
 
   def index
+
     @point = Point.all
     authorize @point
+
+    @points = Point.where.not(lat: nil, long: nil)
+
+    @markers = @points.map do |point|
+      {
+        lat: point.lat,
+        lng: point.long,
+        # image_url: helpers.asset_url('../assets/images/cycling_marker_1.png')
+      }
+    end
+
   end
 
   def show
