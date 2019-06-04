@@ -23,6 +23,7 @@ class PointsController < ApplicationController
       redirect_to point_path(@point)
     else
     render :new
+    end
   end
 
   def edit
@@ -36,6 +37,7 @@ class PointsController < ApplicationController
       redirect_to point_path(@point)
     else
       render :edit
+    end
   end
 
   private
@@ -48,3 +50,4 @@ class PointsController < ApplicationController
     params.require(:point).permit(:long, :lat, :name, :category)
   end
 end
+

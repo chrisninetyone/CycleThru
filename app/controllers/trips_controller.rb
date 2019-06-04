@@ -23,6 +23,7 @@ class TripsController < ApplicationController
       redirect_to trip_path(@trip)
     else
       render :new
+    end
   end
 
   def edit
