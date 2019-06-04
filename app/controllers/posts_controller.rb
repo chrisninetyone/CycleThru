@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @point = Point.find(params[:id])
+    @point = Point.find(params[:point_id])
     @post.point = @point
     authorize @post
 

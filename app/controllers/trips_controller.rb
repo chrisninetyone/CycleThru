@@ -29,13 +29,6 @@ class TripsController < ApplicationController
     authorize @trip
   end
 
-  def destroy
-    authorize @trip
-    @trip.destroy
-
-    redirect_to trip_path
-  end
-
   def update
     authorize @trip
     @trip.update(trip_params)
@@ -44,6 +37,13 @@ class TripsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    authorize @trip
+    @trip.destroy
+
+    redirect_to trip_path
   end
 
   private

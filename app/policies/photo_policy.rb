@@ -1,4 +1,4 @@
-class TripPolicy < ApplicationPolicy
+class PhotoPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -19,14 +19,6 @@ class TripPolicy < ApplicationPolicy
 
   def create?
     user.present?
-  end
-
-  def edit?
-    user_check
-  end
-
-  def update?
-    user_check
   end
 
   def destroy?
