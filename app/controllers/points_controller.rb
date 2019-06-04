@@ -12,7 +12,7 @@ class PointsController < ApplicationController
       {
         lat: point.lat,
         lng: point.long,
-        # image_url: helpers.asset_url('../assets/images/cycling_marker_1.png')
+        image_url: helpers.asset_url('cycling_marker_2.png')
       }
     end
 
