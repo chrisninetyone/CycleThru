@@ -1,4 +1,58 @@
 class TripsController < ApplicationController
+  before_action :set_trip, only: [:edit, :destroy, :show, :update]
+
+  def index
+    authorize @trip
+    @trip = Trip.all
+  end
+
   def show
+    authorize @trip
+  end
+
+  def new
+    @trip = Trip.new
+    authorize @trip
+  end
+
+  def create
+    @trip = Trip.new(trip_params)
+    authorize @trip
+    @trip.user_id = current_user.id
+    if @trip.save
+      redirect_to trip_path(@trip)
+    else
+      render :new
+  end
+
+  def edit
+    authorize @trip
+  end
+
+  def destroy
+    authorize @trip
+    @trip.destroy
+
+    redirect_to trip_path
+  end
+
+  def update
+    authorize @trip
+    @trip.update(trip_params)
+    if @trip.save
+      redirect_to trip_path(@trip)
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def set_trip
+     @trip = Trip.find(params[:id])
+  end
+
+  def trip_params
+    params.require(:trip).permit(:start_long, :start_lat, :end_long, :end_lat)
   end
 end
