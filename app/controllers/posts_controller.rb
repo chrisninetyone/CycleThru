@@ -26,6 +26,7 @@ class PostsController < ApplicationController
       redirect_to point_path
     else
       render :new
+    end
   end
 
   def edit
@@ -39,6 +40,7 @@ class PostsController < ApplicationController
       redirect_to point_path(@point)
     else
       render :edit
+    end
   end
 
   def destroy
