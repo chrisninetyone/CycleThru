@@ -34,4 +34,20 @@ const initMapbox = () => {
   }
 };
 
+
+const getDirections = (startPoint, endPoint) => {
+  //document.querySelector -- get input values from
+  //make an api call here
+  //get returned
+
+
+  //Be able to click save on a route to make a POST request to our DB
+}
+
+//1. making api call
+
+//2. show that route on the map
+
+//3. if i like the route, save it to the DB and navigate
+
 export { initMapbox };
