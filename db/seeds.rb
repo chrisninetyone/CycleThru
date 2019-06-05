@@ -55,12 +55,19 @@ point3 = Point.create(long: 115.169258,
 puts "point creation complete"
 # Longitude = East / West
 # Latitude = North / South
-puts "creating 3 trips (seed 3/3) >>"
+puts "creating 4 trips (seed 3/3) >>"
 Trip.create(user_id: user1[:id],
             start_long: 115.123600,
             start_lat: -8.648850,
             end_long: 115.123200,
             end_lat: -8.632740
+            )
+
+Trip.create(user_id: user1[:id],
+            start_long: 115.123000,
+            start_lat: -8.648000,
+            end_long: 115.123000,
+            end_lat: -8.632000
             )
 
 Trip.create(user_id: user2[:id],
