@@ -16,11 +16,13 @@ class TripsController < ApplicationController
   end
 
   def create
+    raise
     @trip = Trip.new(trip_params)
     authorize @trip
     @trip.user_id = current_user.id
     if @trip.save
-      redirect_to trip_path(@trip)
+      redirect_to points_path
+      # redirect_to trip_path(@trip)
     else
       render :new
     end
