@@ -27,16 +27,16 @@
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Log in", user_session_path, class: 'btn btn-large btn-dark' %>
-        </li>
         <li>
-          <%= link_to "Sign-up", new_user_registration_path, class: 'btn btn-large btn-dark' %>
-        </li>
-        <li>
-          <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-facebook btn btn-lg btn-block" do %>
+          <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-facebook btn btn-lg btn-block mr-2" do %>
           <i class="fab fa-facebook-f"></i>
         <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Log in", user_session_path, class: 'btn btn-large btn-dark mr-2' %>
+        </li>
+        <li>
+          <%= link_to "Sign-up", new_user_registration_path, class: 'btn btn-large btn-dark mr-2' %>
         </li>
       <% end %>
     </ul>
