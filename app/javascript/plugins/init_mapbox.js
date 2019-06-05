@@ -7,18 +7,6 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
 };
 
-// need an event listener for the click on map
-// on click, 1) drop a pin, 2) render the button
-// TRICK: need to pass the coordinates from client to the next view through params
-
-// const renderCreatePoint = () => {
-//   // query selector on button
-
-//     const button = document.querySelector(".create-new-point")
-//     button.style.display = "show"
-// }
-
-
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -49,42 +37,47 @@ const initMapbox = () => {
 
 
     let condition = true
-    map.on('click', (e) => {
+
+    map.on('dblclick', (e) => {
       console.log(e)
       if (condition){
-      const element = document.createElement('div');
+      // const element = document.createElement('div');
+
+      const popup = new mapboxgl.Popup().setHTML(`<form method="get" action="/trips/new">
+      <button type="submit">Create Point</button>
+      </form>
+      `);
 
       const draggable = new mapboxgl.Marker({
         draggable: true
       })
       .setLngLat([e.lngLat.lng, e.lngLat.lat ])
+      .setPopup(popup)
       .addTo(map);
 
+      document.querySelector("#coordinates").hidden = true;
 
       const onDragEnd = () => {
         const lngLat = draggable.getLngLat();
         console.log(lngLat)
-        document.querySelector("#coordinates").value
+        document.querySelector("#coordinates").value = lngLat;
+
     }
 
 
-   draggable.on('dragend', onDragEnd);
+    draggable.on('dragend', onDragEnd);
+
     condition = false
       }
-
-
-
-
-
     });
 
 
 
-    // map.addControl(new MapboxDirections({
-    //   accessToken: mapboxgl.accessToken,
-    //   unit: 'metric',
-    //   profile: 'mapbox/cycling'
-    // }), 'top-left');
+    map.addControl(new MapboxDirections({
+      accessToken: mapboxgl.accessToken,
+      unit: 'metric',
+      profile: 'mapbox/cycling'
+    }), 'top-left');
 
 
     const option = document.querySelector('.mapbox-directions-profile');
@@ -96,13 +89,6 @@ const initMapbox = () => {
 
   }
 
-
-
-  map.on('click', (e) => {
-    const marker = new mapboxgl.Marker()
-    .setLngLat([e.lngLat])
-    .addTo(map);
-  })
 
 };
 
