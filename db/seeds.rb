@@ -57,10 +57,10 @@ puts "point creation complete"
 # Latitude = North / South
 puts "creating 3 trips (seed 3/3) >>"
 Trip.create(user_id: user1[:id],
-            start_long: 115.123616,
-            start_lat: -8.648899,
-            end_long: 115.123013,
-            end_lat: -8.632941
+            start_long: 115.123600,
+            start_lat: -8.648850,
+            end_long: 115.123200,
+            end_lat: -8.632740
             )
 
 Trip.create(user_id: user2[:id],
