@@ -28,7 +28,16 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Log in", user_session_path, class: 'btn btn-large btn-dark' %>
+        </li>
+        <li>
+          <%= link_to "Sign-up", new_user_registration_path, class: 'btn btn-large btn-dark' %>
+        </li>
+        <li>
+          <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-facebook btn btn-lg btn-block" do %>
+          <i class="fab fa-facebook-f"></i>
+          |Connect with <br> Facebook
+        <% end %>
         </li>
       <% end %>
     </ul>

@@ -1,1 +1,173 @@
+
+.title {
+  padding-bottom: 60px;
+}
+.h1{
+    font-size: 400px;
+}
+
+  body{
+    font-family: 'Magra', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6{
+    font-family: 'Magra', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #141414;
+    margin-bottom: 35px;
+    margin-top: 0;
+  }
+  h1{
+    font-size: 45px;
+  }
+  h2{
+    font-size: 32px;
+  }
+  h3{
+    font-size: 21px;
+  }
+  p{
+    font-size: 16px;
+    font-style: italic;
+    color: #818181;
+  }
+  a{
+    transition: all 0.3s ease-in-out;
+  }
+  section{
+    text-align: center;
+  }
+
+
+.bg-img{
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.bg-img div{
+  z-index: 1;
+  position: relative;
+}
+
+.bg-img:after{
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+}
+
+.section{
+  padding: 100px 0;
+}
+
+.rent-bike {
+    width: 120px;
+    height: 120px;
+  display:block;
+  i {
+    font-size: 100px;
+    color: #03CDAE;
+  }
+}
+
+.loan-bike{
+  width: 120px;
+  height: 120px;
+  display:block;
+  i {
+    font-size: 100px;
+     color: #03CDAE;
+  }
+}
+
+.community{
+  width: 120px;
+  height: 120px;
+  display:block;
+  i {
+    font-size: 100px;
+     color: #03CDAE;
+  }
+}
+
+.header{
+  background-image: url('https://images.unsplash.com/photo-1488401318902-f7feae66db20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=779&q=80');
+  height: 100vh;
+  position: relative;
+  min-height: 659px;
+  object-fit: cover;
+}
+
+.intro-box{
+  height: 100vh;
+  display: table;
+  text-align: center;
+  width: 100%;
+  #algolia-places-listbox-0 {
+    text-align: left;
+    color: black;
+  }
+}
+
+
+.intro{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.header h1{
+  margin: 0;
+  color: #03CDAE;
+}
+
+.header h1, .header p{
+  color: #fff;
+  letter-spacing: 2px;
+}
+.header p{
+  font-size: 25px;
+  padding-top: 0;
+  padding-bottom: 40px;
+}
+.header .home-btn{
+  border-color: #fff;
+  color: #fff;
+}
+.header .home-btn:hover{
+  background-color: #fff;
+  color: #424242;
+}
+
+.expert{
+  background-color: #f8f8f8;
+}
+.expert p{
+  line-height: 200%;
+}
+.expert .bg-img{
+  background-image: url('https://images.unsplash.com/photo-1488401318902-f7feae66db20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=779&q=80');
+  background-position-x: 85%;
+  height: 100%;
+}
+
+.expert .bg-img:after{
+  display: none;
+}
+
+.expert .section{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
+@media (max-width: 767px){
+  .home-card{
+    margin-bottom: 60px;
+  }
+}
 // Specific CSS for your home-page
