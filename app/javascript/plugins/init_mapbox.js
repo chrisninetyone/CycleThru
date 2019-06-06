@@ -7,11 +7,26 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
 };
 
+const createMarkersForMap = (mapElement, map) => {
+  const markers = JSON.parse(mapElement.dataset.markers);
+  markers.forEach((marker) => {
+    const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url('${marker.image_url}')`;
+    element.style.backgroundSize = 'contain';
+    element.style.width = '25px';
+    element.style.height = '25px';
+
+    new mapboxgl.Marker(element)
+    .setLngLat([ marker.lng, marker.lat ])
+    .addTo(map);
+  });
+  fitMapToMarkers(map, markers);
+}
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
   if (mapElement) {
-
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
 
     const map = new mapboxgl.Map({
@@ -19,31 +34,13 @@ const initMapbox = () => {
       style: 'mapbox://styles/mapbox/streets-v10'
     });
 
-    const markers = JSON.parse(mapElement.dataset.markers);
-    markers.forEach((marker) => {
-      const element = document.createElement('div');
-      element.className = 'marker';
-      element.style.backgroundImage = `url('${marker.image_url}')`;
-      element.style.backgroundSize = 'contain';
-      element.style.width = '25px';
-      element.style.height = '25px';
-
-      new mapboxgl.Marker(element)
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
-    });
-
-    fitMapToMarkers(map, markers);
-
-
+    createMarkersForMap(mapElement, map);
 
     let condition = true
 
     map.on('dblclick', (e) => {
       console.log(e)
       if (condition){
-      // const element = document.createElement('div');
-      console.log(e.lngLat.lng)
       const popup = new mapboxgl.Popup().setHTML(
         `<form method="get" action="/points/new" >
           <input type="hidden" id="coordinates" name="long" value="${e.lngLat.lng}" >
@@ -74,7 +71,6 @@ const initMapbox = () => {
     });
 
 
-
     map.addControl(new MapboxDirections({
       accessToken: mapboxgl.accessToken,
       unit: 'metric',
@@ -91,11 +87,23 @@ const initMapbox = () => {
 
     //insert button after the to and from form on map
     document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler">Toggle Directions</button>`);
+    document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="set-route">Set Route</button>`);
 
     //Add an event listener on the button to toggle "hidden" class in _map.scss
     document.querySelector('#toggler').addEventListener('click', () => {
       directions.classList.toggle(".hidden");
     })
+
+    //create a trip:
+
+    //identify the button to set a trip
+    const button = document.querySelector("#set-route")
+
+    //get lat and long of start point:
+    const aInput = document.querySelector('#mapbox-directions-origin-input .mapboxgl-ctrl-geocoder input');
+    const bInput = document.querySelector('#mapbox-directions-destination-input .mapboxgl-ctrl-geocoder input');
+
+    //add event listener to button to trigger trip#create passing
 
   }
 
