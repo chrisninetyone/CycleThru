@@ -10,9 +10,10 @@ const fitMapToMarkers = (map, markers) => {
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
-
   if (mapElement) {
+
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10'
@@ -32,8 +33,45 @@ const initMapbox = () => {
       .addTo(map);
     });
 
-
     fitMapToMarkers(map, markers);
+
+
+    let condition = true
+
+    map.on('dblclick', (e) => {
+      console.log(e)
+      if (condition){
+      // const element = document.createElement('div');
+
+      const popup = new mapboxgl.Popup().setHTML(`<form method="get" action="/trips/new">
+      <button type="submit">Create Point</button>
+      </form>
+      `);
+
+      const draggable = new mapboxgl.Marker({
+        draggable: true
+      })
+      .setLngLat([e.lngLat.lng, e.lngLat.lat ])
+      .setPopup(popup)
+      .addTo(map);
+
+      document.querySelector("#coordinates").hidden = true;
+
+      const onDragEnd = () => {
+        const lngLat = draggable.getLngLat();
+        console.log(lngLat)
+        document.querySelector("#coordinates").value = lngLat;
+
+    }
+
+
+   draggable.on('dragend', onDragEnd);
+
+    condition = false
+      }
+    });
+
+
 
     map.addControl(new MapboxDirections({
       accessToken: mapboxgl.accessToken,
@@ -46,9 +84,12 @@ const initMapbox = () => {
     option.hidden = true;
 
 
-    const directions = document.querySelector('.directions-control-instructions');
+    // const directions = document.querySelector('.directions-control-instructions');
+
 
   }
+
+
 };
 
 
