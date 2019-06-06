@@ -1,4 +1,9 @@
-<%= render 'shared/navbar' %>
+<nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "logo.png" %>
+    <% end %>
+</nav>
+
 <div class="signup-form-main">
   <div class="container">
     <div class="row justify-content-end">
@@ -29,7 +34,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: "btn-outline-secondary" %>
+      <%= f.button :submit, "Sign up", class: "btn-outline-secondary mt-2" %>
     </div>
   <% end %>
         </div>
