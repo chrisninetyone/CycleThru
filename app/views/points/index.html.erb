@@ -4,16 +4,9 @@
   height: 100vh;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-
-></div>
-<pre id='info'></pre>
-
-<!-- params should be dyanmic to create a trip without form  -->
- <%= link_to "Set ya route homes", trips_path(:trip => { start_lat: 0 }), method: :post %>
-
-  <input type="text" id="coordinates" >
-<!-- creating a point of interest -->
-
-<div id="create-new-point">
-  <%= link_to "create new point", new_point_path %>
+>
+  <%= link_to user_path(current_user[:id]) do %>
+    <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+    <%= image_tag avatar_url %>
+  <% end %>
 </div>

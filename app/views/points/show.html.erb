@@ -1,2 +1,7 @@
-<h1>Points#show</h1>
-<p>Find me in app/views/points/show.html.erb</p>
+<%= render 'shared/navbar' %>
+<div class="container">
+  <h1><%= @point.name %></h1>
+  <h3><%= @point.category  %></h3>
+  <p><%= @point.description %></p>
+</div>
+
