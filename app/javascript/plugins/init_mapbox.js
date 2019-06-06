@@ -81,13 +81,21 @@ const initMapbox = () => {
       profile: 'mapbox/cycling'
     }), 'top-left');
 
-
+    //hide the options for driving and walking
     const option = document.querySelector('.mapbox-directions-profile');
     option.hidden = true;
 
-    // const directions = document.querySelector('.mapbox-directions-steps');
-    // directions.hidden = true;
+    //define the directions and directionsHeader to be able to toggle them
+    const directions = document.querySelector('.directions-control-instructions');
+    const directionsHeader = document.querySelector(".mapbox-directions-route-summary");
 
+    //insert button after the to and from form on map
+    document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler">Toggle Directions</button>`);
+
+    //Add an event listener on the button to toggle "hidden" class in _map.scss
+    document.querySelector('#toggler').addEventListener('click', () => {
+      directions.classList.toggle(".hidden");
+    })
 
   }
 
