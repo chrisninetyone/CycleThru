@@ -15,15 +15,17 @@ class PointsController < ApplicationController
         image_url: helpers.asset_url('cycling_marker_2.png')
       }
     end
-
   end
 
   def show
+    @point = Point.find(params[:id])
     authorize @point
   end
 
   def new
     @point = Point.new
+    @lat = params[:lat]
+    @long = params[:long]
     authorize @point
   end
 
@@ -31,8 +33,10 @@ class PointsController < ApplicationController
     @point = Point.new(point_params)
     authorize @point
     @point.user_id = current_user.id
+    @point.lat = params[:lat]
+    @point.long = params[:long]
     if @point.save
-      redirect_to point_path(@point)
+      redirect_to points_path
     else
     render :new
     end
@@ -59,7 +63,7 @@ class PointsController < ApplicationController
   end
 
   def point_params
-    params.require(:point).permit(:long, :lat, :name, :category)
+    params.require(:point).permit(:long, :lat, :name, :category, :description)
   end
 end
 
