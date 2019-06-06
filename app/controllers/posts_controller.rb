@@ -12,18 +12,26 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @point = Point.find(params[:point_id])
     authorize @post
   end
 
   def create
+
     @post = Post.new(post_params)
     @point = Point.find(params[:point_id])
-    @post.point = @point
+    @post.user = current_user
+    @post.point_id = @point.id
     authorize @post
-
+    params[:photos].each do |image|
+      photo = Photo.new
+      photo.image = image
+      @post.photos << photo
+      photo.save
+    end
     @post.user_id = current_user.id
     if @post.save
-      redirect_to point_path
+      redirect_to point_path(@point)
     else
       render :new
     end
@@ -57,6 +65,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :photos =>[])
   end
 end

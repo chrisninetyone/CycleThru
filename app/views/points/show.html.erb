@@ -5,3 +5,10 @@
   <p><%= @point.description %></p>
 </div>
 
+<% @point.posts.each do |post| %>
+  <p><%= post.title %></p>
+  <% post.photos.each do |photo| %>
+    <%= cl_image_tag photo.image.url(:thumnail), width: 250, height: 250 %>
+  <% end %>
+
+<% end %>
