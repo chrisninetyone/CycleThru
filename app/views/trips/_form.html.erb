@@ -1,0 +1,7 @@
+  <%= simple_form_for [@trip] do |f| %>
+    <%= f.input :start_long %>
+    <%= f.input :start_lat %>
+    <%= f.input :end_long %>
+    <%= f.input :end_lat %>
+    <%= f.submit "Update", class: "btn btn-primary" %>
+  <% end %>
