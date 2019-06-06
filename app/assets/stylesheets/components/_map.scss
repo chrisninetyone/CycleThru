@@ -12,4 +12,13 @@
   display: none;
 }
 
-
+#map {
+ a {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 2;
+    margin-top: 10px;
+    margin-right: 10px;
+ }
+}
