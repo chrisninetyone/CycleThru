@@ -7,6 +7,6 @@
 >
   <%= link_to user_path(current_user[:id]) do %>
     <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-    <%= image_tag avatar_url %>
+    <%= image_tag avatar_url, class: "rounded-circle" %>
   <% end %>
 </div>
