@@ -65,7 +65,7 @@ const initMapbox = () => {
     }
 
 
-    draggable.on('dragend', onDragEnd);
+   draggable.on('dragend', onDragEnd);
 
     condition = false
       }
