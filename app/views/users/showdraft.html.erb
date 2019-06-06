@@ -1,0 +1,47 @@
+ <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
+
+  <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-large btn-dark' %>
+  <%= link_to "Explore", points_path, class: 'btn btn-large btn-dark' %>
+  <%= link_to "All_", points_path, class: 'btn btn-large btn-dark' %>
+  <!-- Points begin code -->
+  <div>
+    <% points = Point.all %>
+    <% points.each do |point| %>
+      <div>
+        <h1><%= "#{point.name}" %></h1>
+        <p><%= "#{point.category}" %></p>
+        <p><%= "#{point.description}" %></p>
+        <p><%= "#{point.long}" %></p>
+        <p><%= "#{point.lat}" %></p>
+      </div>
+    <% end %>
+  </div>
+  <!-- Points end code -->
+
+  <!-- Your trips begin code-->
+  <div>
+    <div>
+      <strong>Your trips</strong>
+    </div>
+      <% trips = Trip.where(user_id: current_user[:id]) %>
+      <% i = 1 %>
+      <% trips.each do |trip| %>
+        <%= "Trip #{i}" %>
+        <div>
+          <!-- show trip data on user page -->
+          <%= "Start: #{trip.start_long}, #{trip.start_lat}" %>
+          <%= "End: #{trip.end_long}, #{trip.end_lat}" %>
+          <!-- edit your trip -->
+          <% if policy(trip).edit? %>
+            <%= link_to 'Edit', edit_trip_path(trip[:user_id]), class: "btn btn-outline-success"  %>
+          <% end %>
+          <!-- destroy your trip -->
+          <% if policy(trip).destroy? %>
+            <%= link_to 'Delete', trip_path(trip), class: "btn btn-outline-success", method: :delete, data: { confirm: "Are you sure you want to delete this bicycle?"}  %>
+          <% end %>
+
+        </div>
+        <% i += 1 %>
+      <% end %>
+    </div>
+  </div>
