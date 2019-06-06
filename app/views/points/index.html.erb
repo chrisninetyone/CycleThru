@@ -4,7 +4,15 @@
   height: 100vh;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+>
+    <%= link_to user_path(current_user[:id]) do %>
+  <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+  <%= image_tag avatar_url %>
+  <% end %>
+
+
+
+</div>
 <pre id='info'></pre>
 
 <!-- params should be dyanmic to create a trip without form  -->
