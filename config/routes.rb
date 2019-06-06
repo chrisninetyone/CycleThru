@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   # get 'profile', to: 'pages#profile', as: :profile
-   get 'about', to: 'pages#about'
+  # get 'about', to: 'pages#about', as :about
   resources :users, only: [:show]
   resources :trips, only: [:show, :new, :create, :update, :edit, :delete]
   resources :points, only: [:index, :show, :new, :create, :edit, :update] do
