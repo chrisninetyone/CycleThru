@@ -1,4 +1,23 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <h1><%= "#{current_user.first_name} #{current_user.last_name}" %></h1>
 
- <%= link_to edit_user_registration_path  %>
+  <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-large btn-dark' %>
+  <%= link_to "Explore", points_path, class: 'btn btn-large btn-dark' %>
+  <div>
+    <div>
+      <strong>Your trips</strong>
+    </div>
+      <% trips = Trip.where(user_id: current_user[:id]) %>
+      <% i = 1 %>
+      <% trips.each do |trip| %>
+        <%= "Trip #{i}" %>
+        <div>
+          <%= "Start: #{trip.start_long}, #{trip.start_lat}" %>
+          <%= "End: #{trip.end_long}, #{trip.end_lat}" %>
+        </div>
+        <% i += 1 %>
+      <% end %>
+    </div>
+  </div>
+
+</div>

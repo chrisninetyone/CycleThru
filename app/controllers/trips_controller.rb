@@ -2,8 +2,8 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:edit, :destroy, :show, :update]
 
   def index
+    @trips = Trip.all
     authorize @trip
-    @trip = Trip.all
   end
 
   def show

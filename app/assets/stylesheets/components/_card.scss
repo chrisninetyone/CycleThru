@@ -1,0 +1,37 @@
+.signin-card {
+    background: #ffffff !important;
+    border-radius: 4px !important;
+    padding: 32px !important;
+    padding-bottom: 24px !important;
+    width: 441px !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12) !important;
+    opacity: 1;
+    margin-top: 80px;
+    opacity: 0.9;
+    z-index: 2
+}
+
+.signup-form-page{
+    .form-group{
+      margin-bottom: 2px
+    }
+    label {
+      margin-bottom: 5px;
+    }
+}
+
+.login-card {
+    background: #ffffff !important;
+    border-radius: 4px !important;
+    padding: 32px !important;
+    padding-bottom: 24px !important;
+    width: 441px !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12) !important;
+    opacity: 1;
+    justify-content: right;
+    margin-top: 90px;
+    margin-right: 40px;
+    opacity: 0.9;
+    z-index: 2;
+}
+

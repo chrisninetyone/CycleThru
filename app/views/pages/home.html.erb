@@ -1,25 +1,17 @@
-<div class="container">
-
-  <h1>CycleThru - Home Page</h1>
-
-    <% if !user_signed_in? %>
-      <%= link_to "Sign-up", new_user_session_path, class: 'btn btn-large btn-dark' %>
-    <% end %>
-    <%= link_to "Explore", points_path, class: 'btn btn-large btn-dark' %>
-
-    <%= form_for(:user, :url => session_path(:user)) do |f| %>
-      <%= f.text_field :email %>
-      <%= f.password_field :password %>
-      <%#= f.check_box :remember_me %>
-      <%#= f.label :remember_me %>
-      <%#= f.submit 'Sign in' %>
-      <%#= link_to "Forgot your password?", new_password_path(:user) %>
-    <% end %>
-</div>
-
-<% unless current_user %>
-  <i class="fab fa-facebook"></i> <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-<% else %>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-<% end %>
+<header class="bg-img header">
+  <div class="container">
+    <div class="row">
+      <div class="intro-box">
+        <div class="intro">
+          <h1 class="mt-2">Cycle Thru</h1>
+          <div class="search-form">
+              <div class="p-3 rounded">
+                <%= link_to "Let's ride...", points_path, class: "btn btn-large btn-outline-secondary"  %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 

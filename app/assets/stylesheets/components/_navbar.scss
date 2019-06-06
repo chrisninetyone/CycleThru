@@ -1,6 +1,25 @@
+.navbar {
+  text-align: left;
+  justify-content: left;
+  background-color: transparent;
+  color: white;
+  position: sticky;
+  top: 0;
+  padding: 0px;
+  z-index: 2;
+    .navbar-brand {
+      color: #AC7A3E;
+      padding-left: 10px;
+    }
+}
+
+.navbar-toggler {
+  background-color: transparent;
+}
+
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: transparent;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,3 +29,4 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+

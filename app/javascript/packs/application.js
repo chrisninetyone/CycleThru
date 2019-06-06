@@ -3,5 +3,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 
 import { initMapbox } from '../plugins/init_mapbox';
+// import { init_scroll } from '../plugins/init_scroll';
 
 initMapbox();
+// initScroll();
