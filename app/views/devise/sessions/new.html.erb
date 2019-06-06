@@ -1,3 +1,4 @@
+<%= render 'shared/navbar' %>
 <div class="login-form-main">
   <div class="container">
     <div class="row justify-content-end">
@@ -15,9 +16,12 @@
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
       <div class="form-actions">
-        <%= f.button :submit, "Log in" %>
+        <%= f.button :submit, "Log in", class: "btn-outline-secondary" %>
       </div>
+          <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-facebook btn btn-lg btn-block mr-2" do %>
+          <i class="fab fa-facebook-f"></i>
           <% end %>
+        <% end %>
         </div>
       </div>
     </div>
