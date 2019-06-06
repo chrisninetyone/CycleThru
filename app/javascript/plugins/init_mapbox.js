@@ -36,17 +36,21 @@ const initMapbox = () => {
     fitMapToMarkers(map, markers);
 
 
+
     let condition = true
 
     map.on('dblclick', (e) => {
       console.log(e)
       if (condition){
       // const element = document.createElement('div');
-
-      const popup = new mapboxgl.Popup().setHTML(`<form method="get" action="/trips/new">
-      <button type="submit">Create Point</button>
-      </form>
-      `);
+      console.log(e.lngLat.lng)
+      const popup = new mapboxgl.Popup().setHTML(
+        `<form method="get" action="/points/new" >
+          <input type="hidden" id="coordinates" name="long" value="${e.lngLat.lng}" >
+          <input type="hidden" id="coordinates" name="lat" value="${e.lngLat.lat}" >
+          <button type="submit">Create Point</button>
+        </form>
+        `);
 
       const draggable = new mapboxgl.Marker({
         draggable: true
@@ -59,9 +63,7 @@ const initMapbox = () => {
 
       const onDragEnd = () => {
         const lngLat = draggable.getLngLat();
-        console.log(lngLat)
         document.querySelector("#coordinates").value = lngLat;
-
     }
 
 
@@ -83,8 +85,8 @@ const initMapbox = () => {
     const option = document.querySelector('.mapbox-directions-profile');
     option.hidden = true;
 
-
-    // const directions = document.querySelector('.directions-control-instructions');
+    // const directions = document.querySelector('.mapbox-directions-steps');
+    // directions.hidden = true;
 
 
   }
