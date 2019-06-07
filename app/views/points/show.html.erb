@@ -1,14 +1,19 @@
 <%= render 'shared/navbar' %>
 <div class="container">
+  <%= cl_image_tag @point.photo %>
   <h1><%= @point.name %></h1>
   <h3><%= @point.category  %></h3>
   <p><%= @point.description %></p>
-</div>
-
-<% @point.posts.each do |post| %>
-  <p><%= post.title %></p>
+  <%= link_to "New post", new_point_post_path(@point)  %>
+  <% @point.posts.each do |post| %>
+  <h5><%= post.title %></h5>
+  <p><%= post.content %></p>
   <% post.photos.each do |photo| %>
-    <%= cl_image_tag photo.image.url(:thumnail), width: 250, height: 250 %>
+    <%= cl_image_tag photo.image.url(:thumbnail), width: 250, height: 250 %>
   <% end %>
-
 <% end %>
+
+</div>
+<div>
+
+</div>
