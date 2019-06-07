@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_07_042419) do
+ActiveRecord::Schema.define(version: 2019_06_07_012820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,11 +39,11 @@ ActiveRecord::Schema.define(version: 2019_06_07_042419) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.bigint "point_id"
+    t.bigint "points_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["point_id"], name: "index_posts_on_point_id"
+    t.index ["points_id"], name: "index_posts_on_points_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -83,13 +83,14 @@ ActiveRecord::Schema.define(version: 2019_06_07_042419) do
     t.string "facebook_picture_url"
     t.string "token"
     t.datetime "token_expiry"
+    t.string "bio"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "photos", "posts"
   add_foreign_key "points", "users"
-  add_foreign_key "posts", "points"
+  add_foreign_key "posts", "points", column: "points_id"
   add_foreign_key "posts", "users"
   add_foreign_key "trip_points", "points", column: "points_id"
   add_foreign_key "trip_points", "trips", column: "trips_id"

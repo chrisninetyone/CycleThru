@@ -12,10 +12,9 @@
 
 .profile-card {
   position: absolute;
-  bottom: 40px;
-  left: 50px;
+  bottom: 20px;
+  left: 20px;
   color: white;
-  width: 100%;
   display: flex;
     h3, p {
     margin: 10px;
@@ -42,13 +41,21 @@
 }
 
 .stats-card {
-  width: 100px;
-  border: 1px solid;
-  border-radius: 10px;
+  width: 120px;
+  border-radius: 5px;
   display: flex;
   padding: 10px;
   i {
     text-align: center;
+  }
+}
+
+.stats-block {
+  border-radius: 5px;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.10), 0 1px 1px rgba(0,0,0,0.22);
+  p {
+    text-align: center;
+    text-decoration: bold;
   }
 }
 
@@ -63,4 +70,9 @@
 
 .journey-section {
   margin-top: 30px;
+}
+
+.user-profile-avatar {
+  width: 70px;
+  height: 70px;
 }

@@ -98,7 +98,11 @@ const initMapbox = () => {
 
     //Add an event listener on the button to toggle "hidden" class in _map.scss
     document.querySelector('#toggler').addEventListener('click', () => {
-      directions.classList.toggle(".hidden");
+      if (directions.hidden === false) {
+        directions.hidden = true
+      } else {
+        directions.hidden = false
+      }
     })
 
     //create a trip:
