@@ -17,9 +17,16 @@ const createMarkersForMap = (mapElement, map) => {
     element.style.width = '25px';
     element.style.height = '25px';
 
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+
     new mapboxgl.Marker(element)
     .setLngLat([ marker.lng, marker.lat ])
-    .addTo(map);
+    .addTo(map)
+    .setPopup(popup);
+
+
+
+
   });
   fitMapToMarkers(map, markers);
 }
