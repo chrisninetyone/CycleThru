@@ -1,5 +1,8 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:edit, :destroy, :show, :update]
+  protect_from_forgery
+  skip_before_action :authenticate_user!, only: [:create]
+  acts_as_token_authentication_handler_for User, only: [ :create]
 
   def index
     @trips = Trip.all
@@ -16,7 +19,6 @@ class TripsController < ApplicationController
   end
 
   def create
-    raise
     @trip = Trip.new(trip_params)
     authorize @trip
     @trip.user_id = current_user.id
@@ -52,7 +54,7 @@ class TripsController < ApplicationController
   private
 
   def set_trip
-     @trip = Trip.find(params[:id])
+    @trip = Trip.find(params[:id])
   end
 
   def trip_params

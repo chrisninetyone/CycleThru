@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_072826) do
     t.datetime "token_expiry"
     t.string "bio"
     t.string "authentication_token", limit: 30
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.string "avatar"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
