@@ -5,21 +5,24 @@ Point.destroy_all
 User.destroy_all
 
 puts "<< creating 3 users (seed 1/3) >>"
-user1 = User.create(first_name: "Lance",
+user1 = User.create(remote_avatar_url: "https://images.unsplash.com/photo-1482636488340-23968688f565?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+                    first_name: "Lance",
                     last_name: "Armstrong",
                     email: "user1@gmail.com",
                     country: "USA",
                     password: "123456"
                     )
 
-user2 = User.create(first_name: "Eddy",
+user2 = User.create(remote_avatar_url: "https://images.unsplash.com/photo-1470299067034-07c696e9ef07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+                    first_name: "Eddy",
                     last_name: "Merckx",
                     email: "user2@gmail.com",
                     country: "Belgium",
                     password: "123456"
                     )
 
-user3 = User.create(first_name: "Binard",
+user3 = User.create(remote_avatar_url: "https://images.unsplash.com/photo-1533561052604-c3beb6d55b8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+                    first_name: "Binard",
                     last_name: "Hinault",
                     email: "user3@gmail.com",
                     country: "France",

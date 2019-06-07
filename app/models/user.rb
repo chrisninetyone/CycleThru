@@ -1,10 +1,10 @@
 class User < ApplicationRecord
   has_many :trips
   has_many :points
-
+  mount_uploader :avatar, AvatarUploader
   validates :first_name, presence: true
   validates :last_name, presence: true
-  # validates :email, presence: true
+  validates :avatar, presence: true
   # validates :country, presence: true
 
   # Include default devise modules. Others available are:
