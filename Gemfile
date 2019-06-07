@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'geocoder'
+gem 'faker'
 
 gem 'pundit'
 gem 'cloudinary', '~> 1.9.1'

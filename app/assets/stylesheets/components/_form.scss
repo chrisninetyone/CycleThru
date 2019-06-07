@@ -20,3 +20,11 @@
   position: relative;
   margin-top: -50px;
 }
+
+
+
+@media (max-width: 767px){
+   .login-form-main {
+    justify-content: center;
+  }
+}

@@ -39,11 +39,11 @@ ActiveRecord::Schema.define(version: 2019_06_07_072826) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.bigint "points_id"
+    t.bigint "point_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["points_id"], name: "index_posts_on_points_id"
+    t.index ["point_id"], name: "index_posts_on_point_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_072826) do
 
   add_foreign_key "photos", "posts"
   add_foreign_key "points", "users"
-  add_foreign_key "posts", "points", column: "points_id"
+  add_foreign_key "posts", "points"
   add_foreign_key "posts", "users"
   add_foreign_key "trip_points", "points", column: "points_id"
   add_foreign_key "trip_points", "trips", column: "trips_id"

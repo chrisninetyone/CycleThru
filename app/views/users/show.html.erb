@@ -3,7 +3,10 @@
     <div class="profile-card">
       <div class="profile-avatar">
         <div>
-       <% avatar_url = @user.facebook_picture_url || "#{current_user.avatar}" %>
+
+
+       <% avatar_url = @user.facebook_picture_url || "#{@user.avatar}" %>
+
           <%= image_tag avatar_url, class: "rounded-circle user-profile-avatar" %>
         </div>
       </div>
