@@ -1,9 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo.png" %>
-    <% end %>
-</nav>
-
+<%= render 'shared/navbar' %>
 <header class="bg-img header">
   <div class="container">
     <div class="row">
@@ -20,5 +15,5 @@
     </div>
   </div>
 </header>
- <%= render 'shared/footer' %>
+<%= render 'shared/footer' %>
 
