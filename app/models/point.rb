@@ -2,7 +2,7 @@ class Point < ApplicationRecord
   belongs_to :user
   has_many :posts
 
-  mount_uploader :photo, PhotoUploader
+  # mount_uploader :photo, PhotoUploader
 
   validates :lat, presence: true
   validates :long, presence: true

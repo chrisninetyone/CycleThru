@@ -1,99 +1,89 @@
+require 'faker'
+
 Photo.destroy_all
 Post.destroy_all
 Trip.destroy_all
 Point.destroy_all
 User.destroy_all
 
-puts "<< creating 3 users (seed 1/3) >>"
-user1 = User.create(first_name: "Lance",
-                    last_name: "Armstrong",
-                    email: "user1@gmail.com",
-                    country: "USA",
-                    password: "123456"
-                    )
+category_array = ["Food", "Camping", "Bike Stop", "Photo"]
 
-user2 = User.create(first_name: "Eddy",
-                    last_name: "Merckx",
-                    email: "user2@gmail.com",
-                    country: "Belgium",
-                    password: "123456"
-                    )
-
-user3 = User.create(first_name: "Binard",
-                    last_name: "Hinault",
-                    email: "user3@gmail.com",
-                    country: "France",
-                    password: "123456"
-                    )
+puts 'Creating 50 users..'
+10.times do
+  p Faker::Name.first_name
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    country: Faker::Address.country,
+    password: Faker::Internet.password
+    )
+  user.save
 puts "user creation complete"
 
-puts "creating 3 user points (seed 2/3) >>"
-point1 = Point.create(long: 115.123013,
-                      lat: -8.632941,
-                      name: "Stopping Piont",
-                      category: "scenic",
-                      description: "great stop off point",
-                      user_id: user1[:id]
-                      )
+puts "creating 5 fake trips"
+3.times do
+  start_long = Faker::Address.longitude
+  start_lat = Faker::Address.latitude
+  end_array = [-2.0, -1.0, 1.0, 2.0]
+  trip = Trip.new(
+    user_id: user.id,
+    start_long: start_long,
+    start_lat: start_lat,
+    end_long: start_long + end_array.sample,
+    end_lat: start_lat + end_array.sample
+    )
+  trip.save
+puts "trip creation complete"
 
-point2 = Point.create(long: 115.194835,
-                      lat: -8.626617,
-                      name: "Shaman Stop",
-                      category: "Holistic",
-                      description: "Visit this shaman, changed my life",
-                      user_id: user1[:id]
-                      )
+  end
+end
 
-point3 = Point.create(long: 115.169258,
-                      lat: -8.672442,
-                      name: "Food Cart",
-                      category: "Restaurant",
-                      description: "You won't find this food in a restaurant",
-                      user_id: user2[:id]
-                      )
+Trip.all.each do |trip|
+
+puts 'creating 5 user points'
+3.times do
+  point = Point.new(
+    long: rand(trip.start_long..trip.end_long),
+    lat: rand(trip.start_lat..trip.end_lat),
+    name: Faker::Address.community,
+    category: category_array.sample,
+    description: Faker::GreekPhilosophers.quote,
+    user_id: User.all.sample.id,
+    )
+  point.save
 
 puts "point creation complete"
-# Longitude = East / West
-# Latitude = North / South
-puts "creating 4 trips (seed 3/3) >>"
-Trip.create(user_id: user1[:id],
-            start_long: 115.123600,
-            start_lat: -8.648850,
-            end_long: 115.123200,
-            end_lat: -8.632740
-            )
 
-Trip.create(user_id: user1[:id],
-            start_long: 115.123000,
-            start_lat: -8.648000,
-            end_long: 115.123000,
-            end_lat: -8.632000
-            )
+puts 'creating 5 posts per point'
+3.times do
+  post = Post.new(
+    user_id: User.all.sample.id,
+    point_id: point.id,
+    title: "Scenic",
+    content: "Great picture opportunity. Highly recommended.",
+    )
+  post.save
+  puts "post creation complete"
 
-Trip.create(user_id: user2[:id],
-            start_long: 115.150135,
-            start_lat: -8.647664,
-            end_long: 115.146852,
-            end_lat: -8.660551
-            )
-
-Trip.create(user_id: user3[:id],
-            start_long: 115.178991,
-            start_lat: -8.670532,
-            end_long: 115.196064,
-            end_lat: -8.637097
-            )
-puts "trip creation complete"
-puts "all seed files loaded"
-
-# puts "creating post 4/5 >>"
-# post1 = Post.create(user_id: user1[:id],
-#             points_id: point1[:id],
-#             title: "Scenic",
-#             content: "Great picture opportunity. Highly recommended."
-#             )
+# photo_1 = Rails.root + "/app/assets/images/seed/photo_1.jpg"
+# photo_2 = Rails.root + "/app/assets/images/seed/photo_2.jpg"
+# photo_3 = Rails.root + "/app/assets/images/seed/photo_3.jpg"
+# photo_array = [photo_1, photo_2, photo_3]
+  puts 'creating photos'
+  3.times do
+    photo = Photo.new(
+      post_id: post.id,
+      remote_image_url: "https://images.unsplash.com/photo-1500110417562-de4124b49dac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
+      )
+photo.save
+      end
+    end
+  end
+end
 
 # puts "creating photo 5/5 >>"
 # photo1 = Photo.create(posts_id: post1[:id],
 #              image: "scenic_1.png")
 
+puts "all seed files loaded"
