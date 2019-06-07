@@ -1,10 +1,10 @@
-<div class="banner">
+<div class="banner" >
   <div class="container">
     <div class="profile-card">
       <div class="profile-avatar">
         <div>
-       <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "rounded-circle" %>
+       <% avatar_url = @user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url, class: "rounded-circle user-profile-avatar" %>
         </div>
       </div>
       <div>
@@ -15,41 +15,89 @@
     <div class="about-section">
       <div class="about-title">
         <div class="d-flex">
+          <% if current_user == @user %>
           <%= link_to "", edit_user_registration_path, class: "fas fa-edit mr-1" %>
-          <h6>About <%= "#{@user.first_name}: #{current_user.bio}" %></h6>
+          <% end %>
+          <% if current_user == @user %>
+          <h6><%= "My Profile" %></h6>
+          <% else %>
+          <h6>About <%= "#{@user.first_name}" %></h6>
+          <% end %>
         </div>
         <div class="stats-section">
           <div class="row">
-            <div class="stats-card ml-2">
-              <i class="fas fa-road"></i>
-              <p>Total kilo</p>
+             <div class="stats-block">
+                <p><strong>Total kilo</strong></p>
+                  <p>789km</p>
+                <div class="stats-card ml-2">
+                <i class="fas fa-road"></i>
+             </div>
             </div>
-            <div class="stats-card">
-              <i class="fas fa-stopwatch"></i>
-              <p>Hours ridden</p>
+            <div class="stats-block">
+                <p><strong>Hours ridden</strong></p>
+                <p>50hrs</p>
+              <div class="stats-card">
+                <i class="fas fa-stopwatch"></i>
+              </div>
             </div>
-            <div class="stats-card">
-              <i class="fas fa-road"></i>
-              <p>Longest ride</p>
+            <div class="stats-block">
+                <p><strong>Longest ride</strong></p>
+                <p>90km</p>
+              <div class="stats-card">
+                <i class="fas fa-road"></i>
+              </div>
             </div>
           </div>
           <div class="rider-bio">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, dolorum quisquam ad a similique quo accusamus blanditiis sapiente sed, perferendis nisi ullam beatae id quod doloribus quae voluptate? Sit, sint?</p>
+            <p><%= @user.bio %></p>
           </div>
           <div class="journey-section">
             <h6><%= @user.first_name %>'s Journey</h6>
           </div>
-          <div class="journey-menu">
-            <div class="drop-menu card">
-              <h6>Routes</h6>
+            <div class="accordion" id="accordionExample">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Routes
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Posts
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Points
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="drop-menu card">
-              <h6>Posts</h6>
-            </div>
-            <div class="drop-menu card">
-              <h6>Points</h6>
-            </div>
-          </div>
         </div>
       </div>
     </div>
