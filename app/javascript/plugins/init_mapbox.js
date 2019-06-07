@@ -86,10 +86,12 @@ const initMapbox = () => {
     const directionsHeader = document.querySelector(".mapbox-directions-route-summary");
 
     //insert button after the to and from form on map
-    document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler">Toggle Directions</button>`);
-    document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="set-route">Set Route</button>`);
+    document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler" class="btn btn-sm btn-dark m-2">Toggle Directions</button>`);
+    document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="set-route" class="btn btn-sm btn-dark m-2">Set Route</button>`);
 
-    //Add an event listener on the button to toggle "hidden" class in _map.scss
+    //Hide directions and add an event listener on the button to toggle "hidden" class in _map.scss
+    directions.hidden = true;
+
     document.querySelector('#toggler').addEventListener('click', () => {
       if (directions.hidden === false) {
         directions.hidden = true

@@ -2,7 +2,6 @@ class PointsController < ApplicationController
   before_action :set_point, only: [:edit, :show, :update]
 
   def index
-
     @point = Point.all
     authorize @point
 
