@@ -16,12 +16,7 @@
       <div class="about-title">
         <div class="d-flex">
           <%= link_to "", edit_user_registration_path, class: "fas fa-edit mr-1" %>
-          <!-- IF statement to not show colon if bio blank -->
-          <% if @user.bio.length < 1 %>
-            <h6>About <%= "#{@user.first_name}" %></h6>
-          <% else %>
-            <h6>About <%= "#{@user.first_name}: #{current_user.bio}" %></h6>
-          <% end %>
+          <h6>About <%= "#{@user.first_name}: #{current_user.bio}" %></h6>
         </div>
         <div class="stats-section">
           <div class="row">
