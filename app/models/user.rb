@@ -33,4 +33,11 @@ class User < ApplicationRecord
 
     return user
   end
+
+  # after_update :direct_to_user
+
+  # def direct_to_user
+  #   user = (User.find(self.id).id)
+  #   redirect_to user_path(user)
+  # end
 end
