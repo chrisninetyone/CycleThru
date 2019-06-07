@@ -19,6 +19,7 @@ puts 'Creating 50 users..'
     password: Faker::Internet.password
     )
   user.save
+
 puts "user creation complete"
 
 puts "creating 5 fake trips"

@@ -6,8 +6,7 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 >
   <%= link_to user_path(current_user[:id]) do %>
-    <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-    <%= image_tag avatar_url, class: "rounded-circle" %>
+    <% avatar_url = current_user.facebook_picture_url || "#{current_user.avatar}" %>
+    <%= image_tag avatar_url, class: "rounded-circle user-profile-avatar" %>
   <% end %>
 </div>
-

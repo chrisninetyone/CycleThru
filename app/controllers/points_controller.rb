@@ -2,7 +2,6 @@ class PointsController < ApplicationController
   before_action :set_point, only: [:edit, :show, :update]
 
   def index
-
     @point = Point.all
     authorize @point
 
@@ -12,7 +11,8 @@ class PointsController < ApplicationController
       {
         lat: point.lat,
         lng: point.long,
-        image_url: helpers.asset_url('cycling_marker_2.png')
+        image_url: helpers.asset_url('cycling_marker_2.png'),
+        infoWindow: render_to_string(partial: "map_points", locals: { point: point })
       }
     end
   end
@@ -63,7 +63,7 @@ class PointsController < ApplicationController
   end
 
   def point_params
-    params.require(:point).permit(:long, :lat, :name, :category, :description)
+    params.require(:point).permit(:long, :lat, :name, :category, :description, :photo)
   end
 end
 
