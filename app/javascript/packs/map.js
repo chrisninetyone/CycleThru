@@ -5,33 +5,45 @@ const mapElement = document.getElementById('map');
 
   // STEP ONE: Find start and end point from the inputs
   //get lat and long of start point:
-  const startInput = document.querySelector('#mapbox-directions-origin-input .mapboxgl-ctrl-geocoder input').value;
-  const endInput = document.querySelector('#mapbox-directions-destination-input .mapboxgl-ctrl-geocoder input').value;
 
   // STEP THREE
   // geocode argument via ajax using mapbox geocoding
   // Example:
-  const geocodeStringToCoordinates = (addressString) => {
-    const accessToken = mapElement.dataset.mapboxApiKey
-    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${addressString}.json?access_token=${accessToken}`)
-      .then(response => response.json())
-      .then((data) => {
-        const coordinates = data["features"][0]["geometry"]["coordinates"]
-        const lng = coordinates[0]
-        const lat = coordinates[1]
-        console.log(coordinates)
-      })
-  }
+
+
+  // const geocodeStringToCoordinates = (addressString) => {
+  //   const accessToken = mapElement.dataset.mapboxApiKey
+
+  //   fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${addressString}.json?access_token=${accessToken}`)
+  //     .then(response => response.json())
+  //     .then((data) => {
+  //       data = data["features"][0]["geometry"]["coordinates"]
+  //     })
+  // }
+
+
   // STEP TWO
   // if either of those inputs is not a float AKA not coordinates
   // geocode that string into coordinates using mapbox geocoding endpoint
   // Example:
+const accessToken = mapElement.dataset.mapboxApiKey
+
+
+createTripButton.addEventListener('click', () => {
+  const startInput = document.querySelector('#mapbox-directions-origin-input .mapboxgl-ctrl-geocoder input').value;
+  const endInput = document.querySelector('#mapbox-directions-destination-input .mapboxgl-ctrl-geocoder input').value;
+
+
+
   if (isNaN(parseInt(startInput))) {
-    const coordinates = geocodeStringToCoordinates(startInput);
-    // console.log(coordinates)
-    const startLong = coordinates[0]
-    const startLat = coordinates[1]
-    console.log(startLong, startLat)
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${startInput}.json?access_token=${accessToken}`)
+      .then(response => response.json())
+      .then((data) => {
+        const coordinates = data["features"][0]["geometry"]["coordinates"]
+        const startLong = coordinates[0]
+        const startLat = coordinates[1]
+        console.log(startLong, startLat)
+        })
   } else {
     const coordinatesArr = startInput.split(",");
     const startLong = coordinatesArr[0];
@@ -40,28 +52,30 @@ const mapElement = document.getElementById('map');
   }
 
   if (isNaN(parseInt(endInput))) {
-    const coordinates = geocodeStringToCoordinates(endInput);
-    const endLong = coordinates[0]
-    const endLat = coordinates[1]
-    console.log(endLong, endLat)
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${endInput}.json?access_token=${accessToken}`)
+      .then(response => response.json())
+      .then((data) => {
+        const coordinates = data["features"][0]["geometry"]["coordinates"]
+        const endLong = coordinates[0]
+        const endLat = coordinates[1]
+        console.log(endLong, endLat)
+        })
   } else {
     const coordinatesArr = endInput.split(",");
     const endLong = coordinatesArr[0];
     const endLat  = coordinatesArr[1];
     console.log(endLong, endLat)
   }
-// const form = `<form method="post" action="/trips">
+// const form = `<form id="set-route" method="post" action="/trips">
 //           <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 //           <input type="hidden" id="coordinates" name="trip[start_long]" value="${startLong}" >
 //           <input type="hidden" id="coordinates" name="trip[start_lat]" value="${startLat}" >
 //           <input type="hidden" id="coordinates" name="trip[end_long]" value="${endLong}" >
 //           <input type="hidden" id="coordinates" name="trip[end_lat]" value="${endLat}" >
-//           <button type="submit">Create Trip</button>
-//         </form>
-//         `;
-// document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', form);
+//         </form>`
+// document.insertAdjacentHTML('afterend', form);
 
-
+})
 
 
 

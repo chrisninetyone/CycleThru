@@ -19,6 +19,7 @@ class TripsController < ApplicationController
   end
 
   def create
+    raise
     @trip = Trip.new(trip_params)
     authorize @trip
     @trip.user_id = current_user.id
