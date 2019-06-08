@@ -18,7 +18,7 @@ class PointsController < ApplicationController
   end
 
   def show
-    @point = Point.find(params[:id])
+    @posts = Post.where(:point_id == params[:id])
     authorize @point
   end
 
