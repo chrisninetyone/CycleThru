@@ -6,7 +6,7 @@
   <p><%= @point.description %></p>
   <p>User id of creator: <%= @point.user_id %></p>
   <%= link_to "New post", new_point_post_path(@point)  %>
-  <% @point.posts.each do |post| %>
+  <% @posts.each do |post| %>
   <h5><%= post.title %></h5>
   <p><%= post.content %></p>
   <% post.photos.each do |photo| %>
