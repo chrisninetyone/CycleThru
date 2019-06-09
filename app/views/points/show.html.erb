@@ -4,6 +4,7 @@
   <h1><%= @point.name %></h1>
   <h3><%= @point.category  %></h3>
   <p><%= @point.description %></p>
+  <p>User id of creator: <%= @point.user_id %></p>
   <%= link_to "New post", new_point_post_path(@point)  %>
   <% @point.posts.each do |post| %>
   <h5><%= post.title %></h5>
