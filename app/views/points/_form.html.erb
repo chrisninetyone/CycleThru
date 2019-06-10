@@ -1,7 +1,7 @@
 <div class="container">
   <%= simple_form_for [@point] do |f| %>
     <%= f.input :name %>
-    <%= f.input :category, collection: ["Bike Spot", "Camp Spot", "Food Spot", "Photo Spot"] %>
+    <%= f.input :category, collection: ["Bike Spot", "Camp", "Food ", "Photo","Holistic"] %>
     <%= f.input :description %>
     <%= f.input :lat, as: :hidden %>
     <%= f.input :long, as: :hidden %>
