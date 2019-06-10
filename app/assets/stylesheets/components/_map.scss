@@ -12,6 +12,15 @@
   display: none;
 }
 
+.mapbox-directions-route-summary {
+  h1 {
+    color: white;
+  }
+  span {
+    color: white;
+  }
+}
+
 #map {
  a {
     position: absolute;

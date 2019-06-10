@@ -7,6 +7,7 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
 };
 
+
 const createMarkersForMap = (mapElement, map) => {
   const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
@@ -14,8 +15,10 @@ const createMarkersForMap = (mapElement, map) => {
     element.className = 'marker';
     element.style.backgroundImage = `url('${marker.image_url}')`;
     element.style.backgroundSize = 'contain';
-    element.style.width = '27px';
-    element.style.height = '27px';
+
+    element.style.width = '25px';
+    element.style.height = '25px';
+    element.style.cursor = "pointer"
 
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
@@ -23,13 +26,11 @@ const createMarkersForMap = (mapElement, map) => {
     .setLngLat([ marker.lng, marker.lat ])
     .addTo(map)
     .setPopup(popup);
-
-
-
-
   });
   fitMapToMarkers(map, markers);
 }
+
+
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -40,6 +41,13 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/swolfson/cjwpspnit8u8v1cpbotrhatm3'
     });
+
+    map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    }));
 
     createMarkersForMap(mapElement, map);
 
