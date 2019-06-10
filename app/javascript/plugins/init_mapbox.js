@@ -78,7 +78,6 @@ const initMapbox = () => {
         document.querySelector("#coordinates").value = lngLat;
     }
 
-
    draggable.on('dragend', onDragEnd);
 
     condition = false
