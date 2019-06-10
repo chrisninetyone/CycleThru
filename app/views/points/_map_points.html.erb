@@ -1,8 +1,11 @@
-<h4><%= point.name %></h4>
-<% if point.photo %>
-  <%= cl_image_tag point.photo, height: 300 %>
-<% end %>
-<p><%= point.category %></p>
-<p><%= point.description %></p>
-<%= link_to "See more", point_path(point) %>
-<%= link_to "#{point.user.first_name} #{point.user.last_name}", user_path(point.user_id)%>
+<div>
+  <h4><%= point.name %></h4>
+  <% if point.photo %>
+    <%= cl_image_tag point.photo, height: 300 %>
+  <% end %>
+  <p><%= point.category %></p>
+  <p><%= point.description %></p>
+  <p><%= link_to "See more", point_path(point) %></p>
+  <p><%= link_to "#{point.user.first_name} #{point.user.last_name}", user_path(point.user_id)%></p>
+</div>
+
