@@ -1,0 +1,28 @@
+<div>
+<%= simple_form_for(user, url: new_user_registration_path) do |f| %>
+    <%= f.error_notification %>
+      <%= f.input :avatar %>
+      <%= f.input :avatar_cache, as: :hidden %>
+      <%= f.input :first_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "first_name" } %>
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "last_name" } %>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+
+      <%= f.button :submit, "Sign up", class: "btn-outline-secondary mt-2" %>
+    </div>
+  <% end %>

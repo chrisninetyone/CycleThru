@@ -1,0 +1,14 @@
+<div>
+  <%= simple_form_for(:user, url: new_user_session_path) do |f| %>
+  <%= f.input :email,
+              required: false,
+              autofocus: true,
+              input_html: { autocomplete: "email" } %>
+  <%= f.input :password,
+              required: false,
+              input_html: { autocomplete: "current-password" } %>
+  <%= f.input :remember_me, as: :boolean if Devise.mappings[:user].rememberable? %>
+
+  <%= f.button :submit, "Log in", class: "btn-outline-secondary" %>
+  <% end %>
+</div>
