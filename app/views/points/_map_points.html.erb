@@ -1,13 +1,13 @@
 <div>
   <div class="popup-banner">
-    <h4><%= point.name %></h4>
   </div>
   <% if point.photo %>
-    <%= cl_image_tag point.photo, height: 300 %>
+    <h4><%= point.name %></h4>
+    <%= cl_image_tag point.photo, height: 100, width: 180 %>
   <% end %>
   <p><%= point.category %></p>
   <p><%= point.description %></p>
-  <p><%= link_to "#{point.user.first_name} #{point.user.last_name}", user_path(point.user_id), class: "popup-links"%></p>
+  <p><i class="far fa-user"></i> <%= link_to "#{point.user.first_name} #{point.user.last_name}", user_path(point.user_id), class: "popup-links "%></p>
 
 </div>
 

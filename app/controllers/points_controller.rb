@@ -9,13 +9,13 @@ class PointsController < ApplicationController
     @points = Point.where.not(lat: nil, long: nil)
 
     @markers = @points.map do |point|
-      if point.category == "Bike Spot"
+      if point.category == "Bike Stop"
         marker_image = helpers.asset_url('tools.png')
-      elsif point.category == "Camp Spot"
+      elsif point.category == "Camping"
         marker_image = helpers.asset_url('tent.png')
-      elsif point.category == "Food Spot"
+      elsif point.category == "Food"
         marker_image = helpers.asset_url('cutlery.png')
-      else point.category == "Photo Spot"
+      else point.category == "Photo"
         marker_image = helpers.asset_url('camera.png')
       end
       {
