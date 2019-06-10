@@ -38,7 +38,7 @@ const initMapbox = () => {
 
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/swolfson/cjwpspnit8u8v1cpbotrhatm3'
     });
 
     createMarkersForMap(mapElement, map);
