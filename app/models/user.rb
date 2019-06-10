@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   acts_as_token_authenticatable
-  
+
   has_many :trips
   has_many :points
+  has_many :posts, through: :points
   mount_uploader :avatar, AvatarUploader
 
   validates :first_name, presence: true
