@@ -2,7 +2,8 @@ class PointsController < ApplicationController
   before_action :set_point, only: [:edit, :show, :update]
 
   def index
-    @point = Point.all
+    @all_points = Point.all
+    @point = Point.new
     authorize @point
 
     @points = Point.where.not(lat: nil, long: nil)
@@ -34,8 +35,8 @@ class PointsController < ApplicationController
     @point = Point.new(point_params)
     authorize @point
     @point.user_id = current_user.id
-    @point.lat = params[:lat]
-    @point.long = params[:long]
+    # @point.lat = params[:lat]
+    # @point.long = params[:long]
     if @point.save
       redirect_to points_path
     else
@@ -67,4 +68,3 @@ class PointsController < ApplicationController
     params.require(:point).permit(:long, :lat, :name, :category, :description, :photo)
   end
 end
-
