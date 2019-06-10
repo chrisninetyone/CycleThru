@@ -33,6 +33,7 @@ class PointsController < ApplicationController
 
   def create
     @point = Point.new(point_params)
+    raise
     authorize @point
     @point.user_id = current_user.id
     # @point.lat = params[:lat]

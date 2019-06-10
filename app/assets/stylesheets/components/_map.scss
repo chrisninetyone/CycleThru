@@ -21,6 +21,14 @@
     margin-top: 10px;
     margin-right: 10px;
  }
+ form {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  z-index: 2;
+  margin-bottom: 10px;
+  margin-left: 10px;
+ }
 }
 
 .mapboxgl-popup {
