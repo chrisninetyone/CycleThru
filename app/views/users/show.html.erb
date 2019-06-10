@@ -92,11 +92,13 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                   <div class="card-body">
-                    <% @user.posts.each do |p| %>
-                    <%= p.title %>
-                    <br>
-                    <%= p.content %>
-                    <% end %>
+                      <% @user.posts.each do |p| %>
+                    <div class="dropdown-card">
+                      <p><%= p.title %></p>
+                      <br>
+                      <p><%= p.content %></p>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -113,13 +115,15 @@
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                   <div class="card-body">
-                    <% @user.points.each do |point| %>
-                   <%=  point.name %>
-                   <br>
-                   <%= point.category %>
-                   <br>
-                   <%= point.description %>
-                   <% end %>
+                      <% @user.points.each do |point| %>
+                    <div class="dropdown-card my-3">
+                     <p><%=  point.name %></p>
+                     <br>
+                     <p><%= point.category %></p>
+                     <br>
+                     <p><%= point.description %></p>
+                    </div>
+                     <% end %>
                   </div>
                 </div>
               </div>
