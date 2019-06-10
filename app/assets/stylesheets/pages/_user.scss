@@ -85,3 +85,20 @@
   cursor: pointer;
   text-align: center;
 }
+
+.popup-links {
+  color: black;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.popup-window {
+  p {
+    margin-bottom: 5px;
+  }
+  h4 {
+    padding-bottom: 8px;
+  }
+}
