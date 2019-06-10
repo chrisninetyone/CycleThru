@@ -15,6 +15,7 @@ const createMarkersForMap = (mapElement, map) => {
     element.className = 'marker';
     element.style.backgroundImage = `url('${marker.image_url}')`;
     element.style.backgroundSize = 'contain';
+
     element.style.width = '25px';
     element.style.height = '25px';
     element.style.cursor = "pointer"
@@ -38,7 +39,7 @@ const initMapbox = () => {
 
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/swolfson/cjwpspnit8u8v1cpbotrhatm3'
     });
 
     map.addControl(new mapboxgl.GeolocateControl({
