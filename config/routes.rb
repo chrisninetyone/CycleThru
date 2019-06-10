@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+
+
   # get 'profile', to: 'pages#profile', as: :profile
   # get 'about', to: 'pages#about', as :about
   resources :users, only: [:show]
