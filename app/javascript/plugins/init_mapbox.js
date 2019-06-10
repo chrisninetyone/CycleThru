@@ -7,6 +7,7 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
 };
 
+
 const createMarkersForMap = (mapElement, map) => {
   const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
@@ -16,6 +17,7 @@ const createMarkersForMap = (mapElement, map) => {
     element.style.backgroundSize = 'contain';
     element.style.width = '25px';
     element.style.height = '25px';
+    element.style.cursor = "pointer"
 
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
@@ -23,13 +25,11 @@ const createMarkersForMap = (mapElement, map) => {
     .setLngLat([ marker.lng, marker.lat ])
     .addTo(map)
     .setPopup(popup);
-
-
-
-
   });
   fitMapToMarkers(map, markers);
 }
+
+
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
