@@ -11,6 +11,18 @@
   <% end %>
 </div>
 
+
+<form id="set-route" method="post" action="/trips">
+  <input name="authenticity_token" id="auth" value="<%= form_authenticity_token %>" type="hidden">
+  <input type="hidden" id="start_long" name="trip[start_long]" >
+  <input type="hidden" id="start_lat" name="trip[start_lat]" >
+  <input type="hidden" id="end_long" name="trip[end_long]" >
+  <input type="hidden" id="end_lat" name="trip[end_lat]">
+  <input type="hidden" id="distance" name="trip[distance]">
+  <input type="hidden" id="duration" name="trip[duration]">
+  <button type="submit" id="set-route-submit">createtrip</button>
+</form>
+
 <div class="modal fade" id="pointModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -26,3 +38,4 @@
     </div>
   </div>
 </div>
+

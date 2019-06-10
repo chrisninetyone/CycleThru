@@ -22,6 +22,11 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     authorize @trip
     @trip.user_id = current_user.id
+    @trip.start_long = params["trip"][:start_long]
+    @trip.start_lat = params["trip"][:start_lat]
+    @trip.end_long = params["trip"][:end_long]
+    @trip.end_long = params["trip"][:end_long]
+    raise
     if @trip.save
       redirect_to points_path
       # redirect_to trip_path(@trip)
