@@ -40,3 +40,22 @@
   }
 }
 
+.popup-links {
+  position: relative !important;
+  right: 0px !important;
+}
+
+.mapboxgl-popup-close-button {
+    position: absolute;
+    right: 7px !important;
+    top: 7px !important;
+    border: 0;
+    border-radius: 0 3px 0 0;
+    cursor: pointer;
+    background-color: transparent;
+    }
+
+.popup-banner {
+  background-color: white;
+  border-radius: 10px;
+}
