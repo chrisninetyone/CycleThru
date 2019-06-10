@@ -26,12 +26,17 @@ class PostsController < ApplicationController
     else
       save_photos
     end
-
     @post.user_id = current_user.id
+
     if @post.save
-      redirect_to point_path(@point)
+      respond_to do |format|
+        format.html { redirect_to point_path(@point) }
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'points/show' }
+      end
     end
   end
 
