@@ -12,9 +12,11 @@ class PointsController < ApplicationController
       if point.category == "Bike Spot"
         marker_image = helpers.asset_url('tools.png')
       elsif point.category == "Camp Spot"
-        marker_image = helpers.asset_url('cycling_marker_2.png')
-      else
-        marker_image = helpers.asset_url('cycling_marker_2.png')
+        marker_image = helpers.asset_url('tent.png')
+      elsif point.category == "Food Spot"
+        marker_image = helpers.asset_url('cutlery.png')
+      else point.category == "Photo Spot"
+        marker_image = helpers.asset_url('camera.png')
       end
       {
         lat: point.lat,
@@ -40,7 +42,6 @@ class PointsController < ApplicationController
 
   def create
     @point = Point.new(point_params)
-    raise
     authorize @point
     @point.user_id = current_user.id
     # @point.lat = params[:lat]
