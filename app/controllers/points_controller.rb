@@ -19,6 +19,7 @@ class PointsController < ApplicationController
 
   def show
     @posts = Post.where(:point_id == params[:id])
+    @post = Post.new
     authorize @point
   end
 
