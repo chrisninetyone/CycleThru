@@ -1,9 +1,3 @@
-<nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "", points_path, class: "navbar-brand fal fa-arrow-alt-circle-left mr-1" %>
-  <%#= link_to points_path, class: "navbar-brand fal fa-arrow-alt-circle-left" do %>
-    <%#= image_tag "logo.png" %>
-  <%# end %>
-</nav>
 <div class="banner" >
   <div class="container">
     <div class="profile-card">
@@ -68,28 +62,27 @@
             <h6><%= @user.first_name %>'s Journey</h6>
             <% end %>
           </div>
-            <div class="accordion" id="accordionExample">
+            <div class="accordion mb-5" id="accordionExample">
               <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseOne" id="headingOne">
+                  <h6 class="mb-0">
+                    <!-- <button class="btn btn-link" type="button"  aria-expanded="true" aria-controls="collapseOne"> -->
                       Routes
-                    </button>
-                  </h5>
+                    <!-- </button> -->
+                  </h6>
                 </div>
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                   <div class="card-body">
-
                   </div>
                 </div>
               </div>
               <div class="card">
-                <div class="card-header" id="headingTwo">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseTwo" id="headingTwo">
+                  <h6 class="mb-0">
+                    <!-- <button class="btn btn-link collapsed" type="button"  aria-expanded="false" aria-controls="collapseTwo"> -->
                       Posts
-                    </button>
-                  </h5>
+                    <!-- </button> -->
+                  </h6>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                   <div class="card-body">
@@ -97,12 +90,12 @@
                 </div>
               </div>
               <div class="card">
-                <div class="card-header" id="headingThree">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseThree" id="headingThree">
+                  <h6 class="mb-0">
+                    <!-- <button class="btn btn-link collapsed" type="button"  aria-expanded="false" aria-controls="collapseThree"> -->
                       Points
-                    </button>
-                  </h5>
+                    <!-- </button> -->
+                  </h6>
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                   <div class="card-body">
