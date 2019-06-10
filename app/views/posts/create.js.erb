@@ -1,0 +1,14 @@
+function addPost(postHTML) {
+  const posts = document.getElementById('post-container');
+  posts.insertAdjacentHTML('afterbegin', postHTML);
+}
+
+<% if @post.errors.any? %>
+  document.querySelector("#new_post").reset()
+<% else %>
+  addPost('<%= j render "posts/post_card", post: @post %>');
+  document.querySelector("#new_post").reset()
+  var body = document.querySelector("body")
+  body.insertAdjacentHTML('afterbegin', "<%= j render 'shared/flashes', notice: 'Post was created' %>");
+
+<% end %>

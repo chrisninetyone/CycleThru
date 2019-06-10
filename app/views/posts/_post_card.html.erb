@@ -1,0 +1,8 @@
+
+<div class="border border-secondary mt-1 mb-1">
+  <h5><%= post.title %></h5>
+  <p><%= post.content %></p>
+  <% post.photos.each do |photo| %>
+    <%= cl_image_tag photo.image.url(:thumbnail), width: 250, height: 250 %>
+  <% end %>
+</div>

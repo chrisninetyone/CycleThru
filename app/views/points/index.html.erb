@@ -9,4 +9,34 @@
     <% avatar_url = current_user.facebook_picture_url || "#{current_user.avatar}" %>
     <%= image_tag avatar_url, class: "rounded-circle user-profile-avatar" %>
   <% end %>
+
+  <form id="set-route" method="post" action="/trips">
+    <input name="authenticity_token" id="auth" value="<%= form_authenticity_token %>" type="hidden">
+    <input type="hidden" id="start_long" name="trip[start_long]" >
+    <input type="hidden" id="start_lat" name="trip[start_lat]" >
+    <input type="hidden" id="end_long" name="trip[end_long]" >
+    <input type="hidden" id="end_lat" name="trip[end_lat]">
+    <input type="hidden" id="distance" name="trip[distance]">
+    <input type="hidden" id="duration" name="trip[duration]">
+    <button type="submit" class="btn btn-dark" id="set-route-submit">create trip</button>
+  </form>
 </div>
+
+
+
+<div class="modal fade" id="pointModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create your new point!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>
+

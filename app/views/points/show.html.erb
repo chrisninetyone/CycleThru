@@ -5,16 +5,33 @@
   <h3><%= @point.category  %></h3>
   <p><%= @point.description %></p>
   <p>User id of creator: <%= @point.user_id %></p>
-  <%= link_to "New post", new_point_post_path(@point)  %>
-  <% @posts.each do |post| %>
-  <h5><%= post.title %></h5>
-  <p><%= post.content %></p>
-  <% post.photos.each do |photo| %>
-    <%= cl_image_tag photo.image.url(:thumbnail), width: 250, height: 250 %>
-  <% end %>
-<% end %>
+  <p>Created by: <%= link_to "#{@point.user.first_name} #{@point.user.last_name}", user_path(@point.user_id)%></p>
+
+  <div class="border border-secondary mt-1 mb-1">
+    <p>Share your comments and photos</p>
+    <%= simple_form_for([@point, @post], remote: true) do |f| %>
+    <%= f.simple_fields_for :photo, Photo.new do |photo_form| %>
+      <%= photo_form.file_field :photo, multiple: true, name: "photos[]" %>
+      <% end %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.submit %>
+    <% end %>
+  </div>
+
+  <!-- previous code was @posts.each -->
+  <div id="post-container">
+    <% @point.posts.each do |post| %>
+    <div class="border border-secondary mt-1 mb-1">
+      <h5><%= post.title %></h5>
+      <p><%= post.content %></p>
+      <p>Created by: <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_path(post.user_id)%></p>
+      <% post.photos.each do |photo| %>
+        <%= cl_image_tag photo.image.url(:thumbnail), width: 200, height: 200 %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
 
 </div>
-<div>
 
-</div>
