@@ -38,7 +38,7 @@ class TripsController < ApplicationController
       redirect_to points_path
       # redirect_to trip_path(@trip)
     else
-      render :new
+      redirect_to points_path
     end
   end
 
