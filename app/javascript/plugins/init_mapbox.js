@@ -100,7 +100,7 @@ const initMapbox = () => {
 
 
     //Hide directions and add an event listener on the button to toggle "hidden" class in _map.scss
-    directions.hidden = true;
+    // directions.hidden = true;
 
     document.querySelector('#toggler').addEventListener('click', () => {
       if (directions.hidden === false) {
@@ -110,19 +110,7 @@ const initMapbox = () => {
       }
     })
 
-    //create a trip:
-
-    //identify the button to set a trip
-    const button = document.querySelector("#set-route")
-
-    //get lat and long of start point:
-    const aInput = document.querySelector('#mapbox-directions-origin-input .mapboxgl-ctrl-geocoder input');
-    const bInput = document.querySelector('#mapbox-directions-destination-input .mapboxgl-ctrl-geocoder input');
-
-    //add event listener to button to trigger trip#create passing
-
   }
-
 
 };
 

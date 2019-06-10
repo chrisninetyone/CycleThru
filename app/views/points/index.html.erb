@@ -10,7 +10,7 @@
     <%= image_tag avatar_url, class: "rounded-circle user-profile-avatar" %>
   <% end %>
 </div>
-<button id="set-route-button" class="btn btn-sm btn-dark m-2">Set Route</button>
+
 
 <form id="set-route" method="post" action="/trips">
   <input name="authenticity_token" id="auth" value="<%= form_authenticity_token %>" type="hidden">
@@ -18,6 +18,8 @@
   <input type="hidden" id="start_lat" name="trip[start_lat]" >
   <input type="hidden" id="end_long" name="trip[end_long]" >
   <input type="hidden" id="end_lat" name="trip[end_lat]">
+  <input type="hidden" id="distance" name="trip[distance]">
+  <input type="hidden" id="duration" name="trip[duration]">
   <button type="submit" id="set-route-submit">createtrip</button>
 </form>
 

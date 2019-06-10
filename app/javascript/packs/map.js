@@ -1,11 +1,5 @@
 //identify the button to set a trip
-const createTripButton = document.querySelector("#set-route-button");
-const mapElement = document.getElementById('map');
 
-const createTripSubmit = document.querySelector("#set-route-submit");
-
-  // STEP ONE: Find start and end point from the inputs
-  //get lat and long of start point:
 
   // STEP THREE
   // geocode argument via ajax using mapbox geocoding
@@ -23,17 +17,16 @@ const createTripSubmit = document.querySelector("#set-route-submit");
   // }
 
 
-  // STEP TWO
-  // if either of those inputs is not a float AKA not coordinates
-  // geocode that string into coordinates using mapbox geocoding endpoint
-  // Example:
+const mapElement = document.getElementById('map');
+
+const createTripSubmit = document.querySelector("#set-route-submit");
+
 const accessToken = mapElement.dataset.mapboxApiKey
-// document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button type="submit" id="set-route" form="set-route" class="btn btn-sm btn-dark m-2">Set Route</button>`);
+// document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button type="submit" id="set-route" form="set-route" class="btn btn-sm btn-dark m-2">set-route-buttonte</button>`);
 
 const inputs = document.querySelector('.mapbox-directions-component-keyline');
 
-inputs.addEventListener('change', (event) => {
-
+inputs.addEventListener('change', () => {
   const startInput = document.querySelector('#mapbox-directions-origin-input .mapboxgl-ctrl-geocoder input').value;
   const endInput = document.querySelector('#mapbox-directions-destination-input .mapboxgl-ctrl-geocoder input').value;
 
@@ -42,10 +35,13 @@ inputs.addEventListener('change', (event) => {
   const startLat = document.querySelector('#start_lat')
   const endLong = document.querySelector('#end_long')
   const endLat = document.querySelector('#end_lat')
-  const authToken = document.querySelector('#auth')
 
-  document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<form id="set-route" method="post" action="/trips">`)
-  const start_coords = document.querySelector('#start_coordinates')
+  // const authToken = document.querySelector('#auth')
+
+
+
+  // document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<form id="set-route" method="post" action="/trips">`)
+  // const start_coords = document.querySelector('#start_coordinates')
   if (isNaN(parseInt(startInput))) {
     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${startInput}.json?access_token=${accessToken}`)
       .then(response => response.json())
@@ -56,7 +52,7 @@ inputs.addEventListener('change', (event) => {
         console.log(startLong, startLat)
         })
   } else {
-    const coordinatesArr = startInput.split(",");
+    const coordinatesArr = document.querySelector('#mapbox-directions-origin-input .mapboxgl-ctrl-geocoder input').value.split(",");
     startLong.value = coordinatesArr[0];
     startLat.value  = coordinatesArr[1];
     console.log(startLong, startLat)
@@ -72,15 +68,26 @@ inputs.addEventListener('change', (event) => {
         console.log(endLong, endLat)
         })
   } else {
-    const coordinatesArr = endInput.split(",");
+    const coordinatesArr = document.querySelector('#mapbox-directions-destination-input .mapboxgl-ctrl-geocoder input').value.split(",");
     endLong.value = coordinatesArr[0];
     endLat.value  = coordinatesArr[1];
     console.log(endLong, endLat)
   }
 
-  // auth.value = "<%= form_authenticity_token %>"
-    // document.querySelector('#set-route').submit()
 
+})
+
+createTripSubmit.addEventListener('click', () => {
+  const duration = document.querySelector('#duration')
+  const distance = document.querySelector('#distance')
+
+  if (document.querySelector('.mapbox-directions-route-summary h1')) {
+    distance.value = document.querySelector('.mapbox-directions-route-summary h1').textContent
+  }
+
+  if (document.querySelector('.mapbox-directions-route-summary span')) {
+    duration.value = document.querySelector('.mapbox-directions-route-summary span').textContent
+  }
 })
 
 
