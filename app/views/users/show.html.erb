@@ -32,6 +32,7 @@
           <% else %>
           <h6>About <%= "#{@user.first_name}" %></h6>
           <% end %>
+          <%= link_to "Back to map", points_path  %>
         </div>
         <div class="stats-section">
           <div class="row">
@@ -61,7 +62,11 @@
             <p><%= @user.bio %></p>
           </div>
           <div class="journey-section">
+            <% if current_user == @user %>
+            <h6>My Journey</h6>
+            <% else %>
             <h6><%= @user.first_name %>'s Journey</h6>
+            <% end %>
           </div>
             <div class="accordion" id="accordionExample">
               <div class="card">
