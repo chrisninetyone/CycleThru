@@ -32,6 +32,7 @@
           <% else %>
           <h6>About <%= "#{@user.first_name}" %></h6>
           <% end %>
+          <%= link_to "Back to map", points_path, class: "top-row"  %>
         </div>
         <div class="stats-section">
           <div class="row">
