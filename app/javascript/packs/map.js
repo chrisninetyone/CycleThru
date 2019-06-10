@@ -1,28 +1,7 @@
-//identify the button to set a trip
-
-
-  // STEP THREE
-  // geocode argument via ajax using mapbox geocoding
-  // Example:
-
-
-  // const geocodeStringToCoordinates = (addressString) => {
-  //   const accessToken = mapElement.dataset.mapboxApiKey
-
-  //   fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${addressString}.json?access_token=${accessToken}`)
-  //     .then(response => response.json())
-  //     .then((data) => {
-  //       data = data["features"][0]["geometry"]["coordinates"]
-  //     })
-  // }
-
-
 const mapElement = document.getElementById('map');
 
-const createTripSubmit = document.querySelector("#set-route-submit");
 
 const accessToken = mapElement.dataset.mapboxApiKey
-// document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button type="submit" id="set-route" form="set-route" class="btn btn-sm btn-dark m-2">set-route-buttonte</button>`);
 
 const inputs = document.querySelector('.mapbox-directions-component-keyline');
 
@@ -30,18 +9,11 @@ inputs.addEventListener('change', () => {
   const startInput = document.querySelector('#mapbox-directions-origin-input .mapboxgl-ctrl-geocoder input').value;
   const endInput = document.querySelector('#mapbox-directions-destination-input .mapboxgl-ctrl-geocoder input').value;
 
-  // select form inputs to create trip
   const startLong = document.querySelector('#start_long')
   const startLat = document.querySelector('#start_lat')
   const endLong = document.querySelector('#end_long')
   const endLat = document.querySelector('#end_lat')
 
-  // const authToken = document.querySelector('#auth')
-
-
-
-  // document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<form id="set-route" method="post" action="/trips">`)
-  // const start_coords = document.querySelector('#start_coordinates')
   if (isNaN(parseInt(startInput))) {
     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${startInput}.json?access_token=${accessToken}`)
       .then(response => response.json())
@@ -73,9 +45,10 @@ inputs.addEventListener('change', () => {
     endLat.value  = coordinatesArr[1];
     console.log(endLong, endLat)
   }
-
-
 })
+
+
+const createTripSubmit = document.querySelector("#set-route-submit");
 
 createTripSubmit.addEventListener('click', () => {
   const duration = document.querySelector('#duration')
@@ -92,30 +65,10 @@ createTripSubmit.addEventListener('click', () => {
 
 
 
-// const form = `<form id="set-route" method="post" action="/trips">
-//           <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-//           <input type="hidden" id="start_coordinates" name="trip[start_long]" value="${startLong}" >
-//           <input type="hidden" id="coordinates" name="trip[start_lat]" value="${startLat}" >
-//           <input type="hidden" id="coordinates" name="trip[end_long]" value="${endLong}" >
-//           <input type="hidden" id="coordinates" name="trip[end_lat]" value="${endLat}" >
-//               <button type="submit">Create Trip</button>
-//         </form>`
-// document.insertAdjacentHTML('afterend', form);
 
 
 
 
-  // STEP FOUR
-  // Add event listener to Create Trip button to trigger trips#create action
-  // send start and end coordinates back to trips controller
-  // convert string to float and post to DB
-  // })
-
-
-
-
-
-// form.submit();
 // const params = { "authenticity_token": "<%= form_authenticity_token %>", "trip": { "start_long": "1.5", "start_lat": "1.6", "end_long": "5.7", "end_lat": "8.4" } };
 // const url = "/trips";
 
