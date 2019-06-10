@@ -26,7 +26,14 @@ class TripsController < ApplicationController
     @trip.start_lat = params["trip"][:start_lat]
     @trip.end_long = params["trip"][:end_long]
     @trip.end_long = params["trip"][:end_long]
-    raise
+
+    distance = params["trip"]["distance"]
+    distance.slice! "km"
+    @trip.distance = distance.to_f
+
+    duration = params["trip"]["duration"]
+    duration.slice! "min"
+    @trip.duration = duration.to_f
     if @trip.save
       redirect_to points_path
       # redirect_to trip_path(@trip)
