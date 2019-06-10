@@ -1,0 +1,12 @@
+<div class="container">
+  <%= simple_form_for [@point] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :category, collection: ["Bike Spot", "Camp Spot", "Food Spot", "Photo Spot"] %>
+    <%= f.input :description %>
+    <%= f.input :lat, as: :hidden %>
+    <%= f.input :long, as: :hidden %>
+    <%= f.input :photo %>
+    <%#= f.input :photo_cache, as: :hidden %>
+    <%= f.submit "Create Point", class: "btn btn-dark text-align-center" %>
+  <% end %>
+</div>

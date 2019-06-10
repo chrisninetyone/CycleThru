@@ -5,3 +5,4 @@
 <p><%= point.category %></p>
 <p><%= point.description %></p>
 <%= link_to "See more", point_path(point) %>
+<%= link_to "#{point.user.first_name} #{point.user.last_name}", user_path(point.user_id)%>

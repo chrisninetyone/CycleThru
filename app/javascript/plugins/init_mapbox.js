@@ -49,11 +49,7 @@ const initMapbox = () => {
       console.log(e)
       if (condition){
       const popup = new mapboxgl.Popup().setHTML(
-        `<form method="get" action="/points/new" >
-          <input type="hidden" id="coordinates" name="long" value="${e.lngLat.lng}" >
-          <input type="hidden" id="coordinates" name="lat" value="${e.lngLat.lat}" >
-          <button type="submit">Create Point</button>
-        </form>
+        `<button type="button" data-toggle="modal" data-target="#pointModal">Create Point</button>
         `);
 
       const draggable = new mapboxgl.Marker({
@@ -62,6 +58,10 @@ const initMapbox = () => {
       .setLngLat([e.lngLat.lng, e.lngLat.lat ])
       .setPopup(popup)
       .addTo(map);
+      const lat = document.querySelector("#point_lat");
+      const long = document.querySelector("#point_long");
+      lat.value = e.lngLat.lat;
+      long.value = e.lngLat.lng;
 
       document.querySelector("#coordinates").hidden = true;
 
