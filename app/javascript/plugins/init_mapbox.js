@@ -94,7 +94,7 @@ const initMapbox = () => {
 
     //insert button after the to and from form on map
     document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler" class="btn btn-sm btn-dark m-2">Toggle Directions</button>`);
-    document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button type="submit" id="set-route" form="set-route" class="btn btn-sm btn-dark m-2">Set Route</button>`);
+
 
 
 
