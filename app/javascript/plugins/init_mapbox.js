@@ -97,25 +97,28 @@ const initMapbox = (currentLocation) => {
       lat.value = e.lngLat.lat;
       long.value = e.lngLat.lng;
 
-      document.querySelector("#coordinates").hidden = true;
 
       const onDragEnd = () => {
         const lngLat = draggable.getLngLat();
-        document.querySelector("#coordinates").value = lngLat;
-    }
-
-   draggable.on('dragend', onDragEnd);
-
-    condition = false
+        const lat = document.querySelector("#point_lat");
+        const long = document.querySelector("#point_long");
+        lat.value = lngLat.lat;
+        long.value = lngLat.lng;
+      }
+      draggable.on('dragend', onDragEnd);
+      condition = false
       }
     });
 
 
-    map.addControl(new MapboxDirections({
-      accessToken: mapboxgl.accessToken,
-      unit: 'metric',
-      profile: 'mapbox/cycling'
-    }), 'top-left');
+      const mapboxDirections = new MapboxDirections({
+        accessToken: mapboxgl.accessToken,
+        unit: 'metric',
+        profile: 'mapbox/cycling',
+        interactive: false
+      })
+
+    map.addControl(mapboxDirections, 'top-left');
 
     //hide the options for driving and walking
     const option = document.querySelector('.mapbox-directions-profile');
