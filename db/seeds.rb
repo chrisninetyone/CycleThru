@@ -7,6 +7,8 @@ Point.destroy_all
 User.destroy_all
 
 category_array = ["Food", "Camping", "Bike Stop", "Photo", "Holistic"]
+distance_array = [5.0..100.0]
+duration_array = [5.0..10.0]
 
 puts 'Creating 50 users..'
 10.times do
