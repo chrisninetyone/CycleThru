@@ -17,7 +17,7 @@ class PointsController < ApplicationController
         marker_image = helpers.asset_url('cutlery.png')
       elsif point.category == "Photo"
         marker_image = helpers.asset_url('camera.png')
-      else point.category == "Holistic"
+      elsif point.category == "Holistic"
         marker_image = helpers.asset_url('holistic.png')
       end
       {
