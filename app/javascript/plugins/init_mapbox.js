@@ -32,7 +32,7 @@ const createMarkersForMap = (mapElement, map) => {
 
 
 
-const initMapbox = () => {
+const initMapbox = (currentLocation) => {
   const mapElement = document.getElementById('map');
   if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -45,7 +45,8 @@ const initMapbox = () => {
       zoom: 15
     }
 
-    mapParams.center = JSON.parse(mapElement.dataset.currentLocation)
+    mapParams.center = currentLocation
+    // console.log("later", mapParams.center)
     const map = new mapboxgl.Map(mapParams);
 
     //add current position marker
@@ -59,6 +60,8 @@ const initMapbox = () => {
 
     map.addControl(geolocate);
 
+
+
     geolocate.on('geolocate', (e) => {
       const long = e.coords.longitude;
       const lat = e.coords.latitude
@@ -68,7 +71,12 @@ const initMapbox = () => {
 
     createMarkersForMap(mapElement, map);
 
+    const userLocation = new mapboxgl.Marker();
+
+
+
     let condition = true
+
 
     map.on('dblclick', (e) => {
       console.log(e)
@@ -123,9 +131,9 @@ const initMapbox = () => {
 
 
 
+
     //Hide directions and add an event listener on the button to toggle "hidden" class in _map.scss
     // directions.hidden = true;
-
     document.querySelector('#toggler').addEventListener('click', () => {
       if (directions.hidden === false) {
         directions.hidden = true
