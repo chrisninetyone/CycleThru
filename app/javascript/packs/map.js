@@ -5,6 +5,7 @@ const accessToken = mapElement.dataset.mapboxApiKey
 
 const inputs = document.querySelector('.mapbox-directions-component-keyline');
 
+
 inputs.addEventListener('change', () => {
   const startInput = document.querySelector('#mapbox-directions-origin-input .mapboxgl-ctrl-geocoder input').value;
   const endInput = document.querySelector('#mapbox-directions-destination-input .mapboxgl-ctrl-geocoder input').value;

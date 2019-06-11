@@ -28,7 +28,6 @@ class PointsController < ApplicationController
       }
     end
 
-    @current_location = request.location.longitude.nil? || request.location.latitude.nil? ? [115.1304015, -8.6539913] : [request.location.longitude, request.location.latitude]
   end
 
   def show

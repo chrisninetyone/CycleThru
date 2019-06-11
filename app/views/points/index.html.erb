@@ -4,7 +4,6 @@
   height: 100vh;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  data-current-location="<%= @current_location %>"
 >
   <%= link_to user_path(current_user[:id]) do %>
     <% avatar_url = current_user.facebook_picture_url || "#{current_user.avatar}" %>
@@ -21,6 +20,7 @@
     <input type="hidden" id="duration" name="trip[duration]">
     <button type="submit" class="btn btn-dark" id="set-route-submit">Save Trip</button>
   </form>
+  <button>Drop a pin</button>
 </div>
 
 
