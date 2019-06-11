@@ -49,7 +49,8 @@
   justify-content: center;
   font-size: 35px;
   i {
-    justify-content: center;
+    justify-content: center;;
+    color: black;
   }
 }
 
@@ -57,10 +58,12 @@
   width: 33%;
   border-radius: 5px;
    box-shadow: 0 2px 5px rgba(0,0,0,0.10), 0 1px 1px rgba(0,0,0,0.22);
+   background-color: #03CDAE;
   p {
     text-align: center;
     text-decoration: bold;
     margin-bottom: 0px;
+    color: black;
   }
 }
 
@@ -97,6 +100,7 @@
 .panel-heading {
   cursor: pointer;
   text-align: center;
+  background-color: #03CDAE;
 }
 
 .popup-links {
@@ -136,4 +140,12 @@
   .row {
     width: 100%;
   }
+}
+
+.page-body {
+  background-color: #D9DFDB;
+}
+
+body {
+   background-color: #D9DFDB;
 }
