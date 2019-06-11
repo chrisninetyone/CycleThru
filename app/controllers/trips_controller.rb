@@ -32,7 +32,7 @@ class TripsController < ApplicationController
     @trip.distance = distance.to_f
 
     duration = params["trip"]["duration"]
-    duration.slice! "min"
+    # duration.slice! "min"
     @trip.duration = duration.to_f
     if @trip.save
       redirect_to points_path
