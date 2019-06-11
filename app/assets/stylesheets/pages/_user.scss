@@ -37,11 +37,12 @@
 .stats-section {
   .row {
     justify-content: space-between;
+    margin: 0px;
   }
 }
 
 .stats-card {
-  width: 120px;
+  // width: 120px;
   border-radius: 5px;
   display: flex;
   padding: 10px;
@@ -53,6 +54,7 @@
 }
 
 .stats-block {
+  width: 33%;
   border-radius: 5px;
    box-shadow: 0 2px 5px rgba(0,0,0,0.10), 0 1px 1px rgba(0,0,0,0.22);
   p {
@@ -126,4 +128,12 @@
 .globe-link {
   font-size: 30px;
   color: black;
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .row {
+    width: 100%;
+  }
 }
