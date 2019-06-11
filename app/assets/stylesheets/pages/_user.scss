@@ -45,8 +45,10 @@
   border-radius: 5px;
   display: flex;
   padding: 10px;
+  justify-content: center;
+  font-size: 35px;
   i {
-    text-align: center;
+    justify-content: center;
   }
 }
 
@@ -56,11 +58,15 @@
   p {
     text-align: center;
     text-decoration: bold;
+    margin-bottom: 0px;
   }
 }
 
 .rider-bio {
   margin-top: 20px;
+  h6 {
+    margin-bottom: 18px;
+  }
 }
 
 .drop-menu {
@@ -73,6 +79,7 @@
   text-align: center;
   h6 {
     font-size: 20px;
+    margin-bottom: 18px;
   }
 }
 

@@ -28,18 +28,18 @@
         <div class="stats-section">
           <div class="row">
              <div class="stats-block">
-                <p><strong>Total kilo</strong></p>
+                <p class="mb-3"><strong>Life Distance</strong></p>
                   <% total_distance = 0.0 %>
                   <% @user.trips.each do |trip| %>
                     <% total_distance += trip.distance %>
                   <% end %>
                    <p><%= (total_distance).round %> km</p>
                 <div class="stats-card ml-2">
-                <i class="fas fa-road"></i>
+                <i class="fas fa-calculator"></i>
              </div>
             </div>
             <div class="stats-block">
-                <p><strong>Hours ridden</strong></p>
+                <p class="mb-3"><strong>Hours Ridden</strong></p>
                 <% total_duration = 0.0 %>
                   <% @user.trips.each do |trip| %>
                     <% total_duration += trip.duration %>
@@ -51,7 +51,7 @@
               </div>
             </div>
             <div class="stats-block">
-                <p><strong>Longest ride</strong></p>
+                <p class="mb-3"><strong>Longest ride</strong></p>
                 <p><%= @user.trips.max.distance %> km</p>
               <div class="stats-card">
                 <i class="fas fa-road"></i>
@@ -97,11 +97,13 @@
                   <div class="card-body">
                       <% @user.points.each do |point| %>
                     <div class="dropdown-card my-3">
-                       <%= cl_image_tag point.photo, height: 130, width: 130, class: "card-image" %>
+                      <%= link_to point_path(point) do  %>
+                       <%= cl_image_tag point.photo, height: 100, width: 130, class: "card-image" %>
+                       <% end %>
                        <div>
                          <p><strong><%=  point.name %></strong></p>
                          <p><%= point.category %></p>
-                         <p><%= point.description %></p>
+                         <p><%= point.description.truncate(40)%></p>
                        </div>
                     </div>
                      <% end %>
