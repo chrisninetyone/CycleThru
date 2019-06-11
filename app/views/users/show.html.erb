@@ -50,6 +50,7 @@
             </div>
           </div>
           <div class="rider-bio">
+            <h6>User bio</h6>
             <p><%= @user.bio %></p>
           </div>
           <div class="journey-section">
@@ -85,7 +86,6 @@
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                   <div class="card-body">
-                    <%=  %>
                       <% @user.points.each do |point| %>
                     <div class="dropdown-card my-3">
                        <%= cl_image_tag point.photo, height: 130, width: 130, class: "card-image" %>
@@ -116,6 +116,7 @@
                       <br>
                       <p><%= p.content %></p>
                       <p><%= link_to "#{p.point.name}", point_path(p.point_id) %></p>
+                      <p><%#= link_to "See point",  %></p>
                     </div>
                       <% end %>
                   </div>
