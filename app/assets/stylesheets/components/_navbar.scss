@@ -2,13 +2,13 @@
   text-align: left;
   justify-content: left;
   background-color: transparent;
-  color: white;
+  color: #D9DFDB;
   position: sticky;
   top: 0;
   padding: 0px;
   z-index: 2;
     .navbar-brand {
-      color: #AC7A3E;
+      color: #D9DFDB;
       padding-left: 10px;
     }
 }
@@ -24,10 +24,6 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
 }
 
 .navbar-toggler.collapse {

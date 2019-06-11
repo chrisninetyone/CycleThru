@@ -1,6 +1,6 @@
 .btn-facebook.btn.btn-lg.btn-block {
   color: white;
-  background-color: DodgerBlue;
+  background-color: D9DFDB;
   font-size: 1em;
   height: 37px;
   width: 40px;
@@ -8,5 +8,13 @@
   &:hover {
     color: white;
     background-color: RoyalBlue;
+  }
+}
+.btn-dark{
+color: #D9DFDB;
+    border-color: #D9DFDB;
+    &:hover {
+    color: white;
+    background-color: #03CDAE;
   }
 }

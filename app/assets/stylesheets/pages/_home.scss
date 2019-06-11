@@ -6,12 +6,7 @@
     font-size: 400px;
 }
 
-  body{
-    font-family: 'Magra', sans-serif;
-  }
-
   h1, h2, h3, h4, h5, h6{
-    font-family: 'Magra', sans-serif;
     text-transform: uppercase;
     font-weight: 900;
     color: #141414;
@@ -126,7 +121,7 @@
 }
 
 .header h1, .header p{
-  color: #fff;
+  color: #D9DFDB;
   letter-spacing: 2px;
 }
 .header p{
@@ -135,12 +130,12 @@
   padding-bottom: 40px;
 }
 .header .home-btn{
-  border-color: #fff;
-  color: #fff;
+  border-color: #424242;;
+  color: #fff
 }
 .header .home-btn:hover{
-  background-color: #fff;
-  color: #424242;
+  background-color: #424242;
+  color: #fff;
 }
 
 .expert{
@@ -164,6 +159,10 @@
   padding-right: 30px;
 }
 
+.logo{
+  width: 200px;
+  padding: 20px;
+}
 
 @media (max-width: 767px){
    .footer {
@@ -193,4 +192,18 @@
   top: 0;
   margin-top: -50px;
   }
+}
+
+.btn-outline-secondary {
+    color: #D9DFDB;
+    border-color: #D9DFDB;
+    &:hover {
+    color: white;
+    background-color: #03CDAE;
+  }
+}
+.alert-info {
+    color: #ffffff;
+    background-color: #74e9b569;
+    border-color: rgba(0, 0, 0, 0.075);
 }

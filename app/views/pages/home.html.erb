@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo.png" %>
   <% end %>
   <% if user_signed_in? %>
   <div class="dropdown">
@@ -35,12 +34,14 @@
       <% end %>
     </ul>
   </div>
+
 </nav>
 <header class="bg-img header">
   <div class="container">
     <div class="row">
       <div class="intro-box">
         <div class="intro">
+          <%= image_tag "logogreen.png", class: "logo"%>
           <h1 class="mt-2">Cycle Thru</h1>
           <div class="search-form">
               <div class="p-3 rounded">
