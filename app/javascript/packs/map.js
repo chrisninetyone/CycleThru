@@ -70,6 +70,7 @@ createTripSubmit.addEventListener('click', () => {
 
 
 
+
 // const params = { "authenticity_token": "<%= form_authenticity_token %>", "trip": { "start_long": "1.5", "start_lat": "1.6", "end_long": "5.7", "end_lat": "8.4" } };
 // const url = "/trips";
 
