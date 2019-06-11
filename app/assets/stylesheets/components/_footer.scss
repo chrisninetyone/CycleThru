@@ -43,3 +43,25 @@
   color: #03CDAE;
 }
 
+#html {
+  position: relative;
+  min-height: 100%;
+}
+
+#map-footer {
+  position: absolute;
+  bottom: 0;
+  /* Set the fixed height of the footer here */
+  height: 56px;
+  width: 100%;
+  background-color: #FFFFFF;
+  display: flex;
+  opacity: .85;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 3;
+}
+
+.mapboxgl-ctrl-attrib.mapboxgl-compact::after {
+    display: none;
+}
