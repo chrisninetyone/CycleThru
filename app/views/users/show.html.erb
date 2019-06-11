@@ -14,7 +14,7 @@
     </div>
     <div class="about-section">
       <div class="about-title">
-        <div class="d-flex">
+        <div class="d-flex top-panel">
           <% if current_user == @user %>
           <%= link_to "", edit_user_registration_path, class: "far fa-edit" %>
           <% end %>
@@ -23,7 +23,7 @@
           <% else %>
           <h6>About <%= "#{@user.first_name}" %></h6>
           <% end %>
-          <%= link_to "Back to map", points_path  %>
+          <%= link_to "", points_path, class: "fas fa-globe-europe"  %>
         </div>
         <div class="stats-section">
           <div class="row">
@@ -59,6 +59,7 @@
             </div>
           </div>
           <div class="rider-bio">
+            <h6>User bio</h6>
             <p><%= @user.bio %></p>
           </div>
           <div class="journey-section">
@@ -71,11 +72,8 @@
             <div class="accordion mb-5" id="accordionExample">
               <div class="card">
                 <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseOne" id="headingOne">
-
                   <h5 class="mb-0">
-
                     <!-- <button class="btn btn-link" type="button"  aria-expanded="true" aria-controls="collapseOne"> -->
-
                       Routes
                     <!-- </button> -->
                   </h6>
@@ -84,17 +82,36 @@
                   <div class="card-body">
                     <%# raise %>
                     <%= @user.trips %>
-
                   </div>
                 </div>
               </div>
               <div class="card">
-                <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseTwo" id="headingTwo">
-
+                <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseThree" id="headingThree">
                   <h5 class="mb-0">
-
+                    <!-- <button class="btn btn-link collapsed" type="button"  aria-expanded="false" aria-controls="collapseThree"> -->
+                      Points
+                    <!-- </button> -->
+                  </h6>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="card-body">
+                      <% @user.points.each do |point| %>
+                    <div class="dropdown-card my-3">
+                       <%= cl_image_tag point.photo, height: 130, width: 130, class: "card-image" %>
+                       <div>
+                         <p><strong><%=  point.name %></strong></p>
+                         <p><%= point.category %></p>
+                         <p><%= point.description %></p>
+                       </div>
+                    </div>
+                     <% end %>
+                  </div>
+                </div>
+              </div>
+               <div class="card">
+                <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseTwo" id="headingTwo">
+                  <h5 class="mb-0">
                     <!-- <button class="btn btn-link collapsed" type="button"  aria-expanded="false" aria-controls="collapseTwo"> -->
-
                       Posts
                     <!-- </button> -->
                   </h6>
@@ -108,35 +125,9 @@
                       <br>
                       <p><%= p.content %></p>
                       <p><%= link_to "#{p.point.name}", point_path(p.point_id) %></p>
-
+                      <p><%#= link_to "See point",  %></p>
                     </div>
                       <% end %>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseThree" id="headingThree">
-
-                  <h5 class="mb-0">
-
-                    <!-- <button class="btn btn-link collapsed" type="button"  aria-expanded="false" aria-controls="collapseThree"> -->
-
-                      Points
-                    <!-- </button> -->
-                  </h6>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                  <div class="card-body">
-                      <% @user.points.each do |point| %>
-                    <div class="dropdown-card my-3">
-                     <p><strong><%=  point.name %></strong></p>
-                     <br>
-                     <p><%= point.category %></p>
-                     <br>
-                     <p><%= point.description %></p>
-
-                    </div>
-                     <% end %>
                   </div>
                 </div>
               </div>
