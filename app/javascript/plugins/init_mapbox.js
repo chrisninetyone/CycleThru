@@ -42,10 +42,12 @@ const initMapbox = () => {
     const mapParams = {
       container: 'map',
       style: 'mapbox://styles/swolfson/cjwpspnit8u8v1cpbotrhatm3',
+      center: JSON.parse(mapElement.dataset.currentLocation),
       zoom: 15
     }
 
-    mapParams.center = JSON.parse(mapElement.dataset.currentLocation)
+    // mapParams.center = JSON.parse(mapElement.dataset.currentLocation)
+    // console.log("newest", mapElement.dataset.currentLocation)
     const map = new mapboxgl.Map(mapParams);
 
     //add current position marker
