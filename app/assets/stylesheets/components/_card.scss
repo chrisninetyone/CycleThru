@@ -38,8 +38,14 @@
 .dropdown-card {
   border: 1px solid;
   border-radius: 10px;
+  max-height: 150px;
+  display: flex;
   p {
     margin-left: 10px;
+    margin-bottom: 0px;
   }
 }
 
+.card-image {
+  border-radius: 8px;
+}

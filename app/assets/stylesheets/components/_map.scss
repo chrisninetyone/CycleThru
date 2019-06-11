@@ -86,3 +86,16 @@ body {
   background-color: white;
   border-radius: 10px;
 }
+
+.point-image {
+    height: 100px;
+    // width: 100px;
+    overflow: hidden;
+}
+
+.point-image a {
+  width: 50px;
+  // width: 100%;
+  height: 20px;
+  position: relative !important;
+}
