@@ -79,3 +79,14 @@
   background-color: white;
   border-radius: 10px;
 }
+
+#dragElement{
+
+  background-image: url('https://placekitten.com/g/60/60/');
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+
+}
