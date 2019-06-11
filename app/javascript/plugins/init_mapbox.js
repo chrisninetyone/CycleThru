@@ -37,7 +37,6 @@ const initMapbox = (currentLocation) => {
   if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
 
-    console.log(mapElement.dataset.currentLocation);
 
     const mapParams = {
       container: 'map',
