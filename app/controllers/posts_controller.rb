@@ -48,17 +48,20 @@ class PostsController < ApplicationController
     authorize @post
     @post.update(post_params)
     if @post.save
-      redirect_to point_path(@point)
+      redirect_to point_path(@post.point)
     else
       render :edit
     end
   end
 
   def destroy
+    @point = @post.point
     authorize @post
+    respond_to do |format|
+      format.html { redirect_to point_path(@point) }
+      format.js
+    end
     @post.destroy
-
-    redirect_to point_path(@point)
   end
 
   private
