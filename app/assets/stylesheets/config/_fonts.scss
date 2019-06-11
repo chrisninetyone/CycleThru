@@ -1,8 +1,8 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
 // Define fonts for body and headers
-$body-font:'Roboto Slab', serif;
+$body-font: 'Nunito', sans-serif;
 $headers-font:'Roboto Slab', serif;
 
  h1, h2, h3, h4, h5, h6{
@@ -10,7 +10,7 @@ $headers-font:'Roboto Slab', serif;
   }
 
 body{
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Nunito', sans-serif;
   }
 
 

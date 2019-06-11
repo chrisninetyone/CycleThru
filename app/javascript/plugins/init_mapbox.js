@@ -78,7 +78,7 @@ const initMapbox = (currentLocation) => {
     let condition = true
 
 
-    map.on('dblclick', (e) => {
+    map.on('click', (e) => {
       console.log(e)
       if (condition){
       const popup = new mapboxgl.Popup().setHTML(
