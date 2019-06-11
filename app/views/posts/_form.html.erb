@@ -1,0 +1,8 @@
+<%= simple_form_for([@point, @post]) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+    <%= f.simple_fields_for :photo, Photo.new do |photo_form| %>
+      <%= photo_form.file_field :photo, multiple: true, name: "photos[]" %>
+      <% end %>
+  <%= f.submit %>
+<% end %>

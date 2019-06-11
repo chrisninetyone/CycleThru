@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   # get 'profile', to: 'pages#profile', as: :profile
   # get 'about', to: 'pages#about', as :about
   resources :users, only: [:show]
-  resources :trips, only: [:show, :new, :create, :update, :edit, :delete]
+  resources :trips, only: [:show, :new, :create, :update, :edit, :destroy]
   resources :points, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :posts, only: [:new, :create, :update, :edit, :delete]
+    resources :posts, only: [:new, :create]
   end
+
+  resources :posts, only: [:destroy, :edit, :update]
 end

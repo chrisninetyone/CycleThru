@@ -28,9 +28,14 @@
       <% post.photos.each do |photo| %>
         <%= cl_image_tag photo.image.url(:thumbnail), width: 200, height: 200 %>
       <% end %>
-    </div>
+      <% if policy(post).destroy? %>
+        <%= link_to 'Delete', post_path(post), class: "btn btn-outline-success", method: :delete, data: { confirm: "Are you sure you want to delete this post?"}  %>
+      <% end %>
+      <% if policy(post).edit? %>
+        <%= link_to 'Edit', edit_post_path(post), class: "btn btn-outline-success" %>
+      <% end %>
     <% end %>
+    </div>
   </div>
-
 </div>
 
