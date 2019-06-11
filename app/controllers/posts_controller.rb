@@ -57,9 +57,11 @@ class PostsController < ApplicationController
   def destroy
     @point = @post.point
     authorize @post
+    respond_to do |format|
+      format.html { redirect_to point_path(@point) }
+      format.js
+    end
     @post.destroy
-
-    redirect_to point_path(@point)
   end
 
   private
