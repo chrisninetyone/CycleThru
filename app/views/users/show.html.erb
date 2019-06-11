@@ -29,21 +29,30 @@
           <div class="row">
              <div class="stats-block">
                 <p><strong>Total kilo</strong></p>
-                  <p>789km</p>
+                  <% total_distance = 0.0 %>
+                  <% @user.trips.each do |trip| %>
+                    <% total_distance += trip.distance %>
+                  <% end %>
+                   <p><%= (total_distance).round %> km</p>
                 <div class="stats-card ml-2">
                 <i class="fas fa-road"></i>
              </div>
             </div>
             <div class="stats-block">
                 <p><strong>Hours ridden</strong></p>
-                <p>50hrs</p>
+                <% total_duration = 0.0 %>
+                  <% @user.trips.each do |trip| %>
+                    <% total_duration += trip.duration %>
+
+                  <% end %>
+                  <p><%= (total_duration).round %> hr</p>
               <div class="stats-card">
                 <i class="fas fa-stopwatch"></i>
               </div>
             </div>
             <div class="stats-block">
                 <p><strong>Longest ride</strong></p>
-                <p>90km</p>
+                <p><%= @user.trips.max.distance %> km</p>
               <div class="stats-card">
                 <i class="fas fa-road"></i>
               </div>

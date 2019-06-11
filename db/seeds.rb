@@ -32,7 +32,9 @@ puts "creating 5 fake trips"
     start_long: start_long,
     start_lat: start_lat,
     end_long: start_long + end_array.sample,
-    end_lat: start_lat + end_array.sample
+    end_lat: start_lat + end_array.sample,
+    duration: rand(5.0..10.0),
+    distance: rand(5.0..100.0)
     )
   trip.save
 puts "trip creation complete"
