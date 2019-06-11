@@ -27,6 +27,8 @@ class PointsController < ApplicationController
         infoWindow: render_to_string(partial: "map_points", locals: { point: point })
       }
     end
+
+    @current_location = request.location.longitude.nil? || request.location.latitude.nil? ? [115.1304015, -8.6539913] : [request.location.longitude, request.location.latitude]
   end
 
   def show

@@ -27,7 +27,7 @@ const createMarkersForMap = (mapElement, map) => {
     .addTo(map)
     .setPopup(popup);
   });
-  fitMapToMarkers(map, markers);
+  // fitMapToMarkers(map, markers);
 }
 
 
@@ -37,17 +37,34 @@ const initMapbox = () => {
   if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
 
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/swolfson/cjwpspnit8u8v1cpbotrhatm3'
-    });
+    console.log(mapElement.dataset.currentLocation);
 
-    map.addControl(new mapboxgl.GeolocateControl({
+    const mapParams = {
+      container: 'map',
+      style: 'mapbox://styles/swolfson/cjwpspnit8u8v1cpbotrhatm3',
+      zoom: 15
+    }
+
+    mapParams.center = JSON.parse(mapElement.dataset.currentLocation)
+    const map = new mapboxgl.Map(mapParams);
+
+    //add current position marker
+
+    const geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
       },
       trackUserLocation: true
-    }));
+    });
+
+    map.addControl(geolocate);
+
+    geolocate.on('geolocate', (e) => {
+      const long = e.coords.longitude;
+      const lat = e.coords.latitude
+      const position = [long, lat];
+      console.log('test', position);
+    });
 
     createMarkersForMap(mapElement, map);
 
