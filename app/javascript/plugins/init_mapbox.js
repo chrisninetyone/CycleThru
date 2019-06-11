@@ -42,7 +42,6 @@ const initMapbox = (currentLocation) => {
     const mapParams = {
       container: 'map',
       style: 'mapbox://styles/swolfson/cjwpspnit8u8v1cpbotrhatm3',
-      center: JSON.parse(mapElement.dataset.currentLocation),
       zoom: 15
     }
 
