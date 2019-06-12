@@ -81,34 +81,41 @@ const initMapbox = (currentLocation) => {
 
     saveButton.addEventListener('click', (e) => {
 
-      if (condition){
-      const popup = new mapboxgl.Popup().setHTML(
-        `<button type="button" data-toggle="modal" data-target="#pointModal">Create Point</button>
-        `);
+      // if (draggable) {
+      //   draggable.remove()
+      // } else {
+        if (condition){
+        const popup = new mapboxgl.Popup().setHTML(
+          `<button type="button" data-toggle="modal" data-target="#pointModal">Create Point</button>
+          `);
 
-      const draggable = new mapboxgl.Marker({
-        draggable: true
-      })
-      .setLngLat(currentLocation)
-      .setPopup(popup)
-      .addTo(map);
-      // const lat = document.querySelector("#point_lat");
-      // const long = document.querySelector("#point_long");
-      // lat.value = e.lngLat.lat;
-      // long.value = e.lngLat.lng;
-
-
-      const onDragEnd = () => {
-        const lngLat = draggable.getLngLat();
+        const draggable = new mapboxgl.Marker({
+          draggable: true
+        })
+        .setLngLat(currentLocation)
+        .setPopup(popup)
+        .addTo(map);
         const lat = document.querySelector("#point_lat");
         const long = document.querySelector("#point_long");
-        lat.value = lngLat.lat;
-        long.value = lngLat.lng;
-        console.log(lngLat)
-      }
-      draggable.on('dragend', onDragEnd);
-      condition = false
-      }
+        long.value = currentLocation[0];
+        lat.value = currentLocation[1];
+
+
+
+        const onDragEnd = () => {
+          const lngLat = draggable.getLngLat();
+          const lat = document.querySelector("#point_lat");
+          const long = document.querySelector("#point_long");
+          lat.value = lngLat.lat;
+          long.value = lngLat.lng;
+          console.log(lngLat)
+        }
+        draggable.on('dragend', onDragEnd);
+        condition = false
+        }
+
+      // }
+
     });
 
 
