@@ -30,6 +30,24 @@ const createMarkersForMap = (mapElement, map) => {
   // fitMapToMarkers(map, markers);
 }
 
+window.addMarker = function(marker) {
+  const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url('${marker.image_url}')`;
+    element.style.backgroundSize = 'contain';
+
+    element.style.width = '25px';
+    element.style.height = '25px';
+    element.style.cursor = "pointer"
+
+    // const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+    console.log(marker.lng)
+    new mapboxgl.Marker(element)
+    .setLngLat([ marker.lng, marker.lat ])
+    .addTo(map)
+    // .setPopup(popup);
+}
+
 
 const initMapbox = (currentLocation) => {
   const mapElement = document.getElementById('map');
@@ -46,7 +64,7 @@ const initMapbox = (currentLocation) => {
 
     mapParams.center = currentLocation
 
-    const map = new mapboxgl.Map(mapParams);
+    window.map = new mapboxgl.Map(mapParams);
 
     //add current position marker
 
@@ -74,17 +92,18 @@ const initMapbox = (currentLocation) => {
 
 
 
-    let condition = true
+    window.condition = true
 
 
     map.on('click', (e) => {
       console.log(e)
       if (condition){
+        console.log('KJDKJD')
       const popup = new mapboxgl.Popup().setHTML(
         `<button type="button" class="point-button" data-toggle="modal" data-target="#pointModal">Create Point!</button>
         `);
 
-      const draggable = new mapboxgl.Marker({
+      window.draggable = new mapboxgl.Marker({
         draggable: true
       })
       .setLngLat([e.lngLat.lng, e.lngLat.lat ])

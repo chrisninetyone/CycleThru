@@ -9,17 +9,7 @@ class PointsController < ApplicationController
     @points = Point.where.not(lat: nil, long: nil)
 
     @markers = @points.map do |point|
-      if point.category == "Bike Stop"
-        marker_image = helpers.asset_url('tools.png')
-      elsif point.category == "Camping"
-        marker_image = helpers.asset_url('tent.png')
-      elsif point.category == "Food"
-        marker_image = helpers.asset_url('cutlery.png')
-      elsif point.category == "Photo"
-        marker_image = helpers.asset_url('camera.png')
-      elsif point.category == "Wellness"
-        marker_image = helpers.asset_url('holistic.png')
-      end
+      marker_image = categories(point)
       {
         lat: point.lat,
         lng: point.long,
@@ -47,12 +37,23 @@ class PointsController < ApplicationController
     @point = Point.new(point_params)
     authorize @point
     @point.user_id = current_user.id
-    # @point.lat = params[:lat]
-    # @point.long = params[:long]
     if @point.save
-      redirect_to points_path
+      @marker = {
+          lat: @point.lat,
+          lng: @point.long,
+          image_url: categories(@point)
+          # infoWindow: render_to_string(partial: "map_points", locals: { point: @point })
+        }
+      respond_to do |format|
+        format.html { redirect_to points_path }
+        format.js
+      end
     else
-    render :new
+      # respond_to do |format|
+      #   format.html { render 'points/index' }
+      #   format.js
+      # end
+      render :new
     end
   end
 
@@ -71,6 +72,21 @@ class PointsController < ApplicationController
   end
 
   private
+
+  def categories(point)
+    if point.category == "Bike Stop"
+      marker_image = helpers.asset_url('tools.png')
+    elsif point.category == "Camping"
+      marker_image = helpers.asset_url('tent.png')
+    elsif point.category == "Food"
+      marker_image = helpers.asset_url('cutlery.png')
+    elsif point.category == "Photo"
+      marker_image = helpers.asset_url('camera.png')
+    elsif point.category == "Wellness"
+      marker_image = helpers.asset_url('holistic.png')
+    end
+    marker_image
+  end
 
   def set_point
     @point = Point.find(params[:id])
