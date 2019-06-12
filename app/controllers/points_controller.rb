@@ -75,7 +75,7 @@ class PointsController < ApplicationController
   private
 
   def categories(point)
-    if point.category == "Bike Stop"
+    if point.category == "Bike Spot"
       marker_image = helpers.asset_url('tools.png')
     elsif point.category == "Camp"
       marker_image = helpers.asset_url('tent.png')
