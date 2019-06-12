@@ -1,5 +1,5 @@
 <div class="banner" >
-  <div class="container">
+  <div class="container page-body">
     <div class="profile-card">
       <div class="profile-avatar">
         <div>
@@ -52,7 +52,7 @@
             </div>
             <div class="stats-block">
                 <p class="mb-3"><strong>Longest ride</strong></p>
-                <p><%= @user.trips.max.distance %> km</p>
+                <p><%= @user.trips.max.distance.round %> km</p>
               <div class="stats-card">
                 <i class="fas fa-road"></i>
               </div>
