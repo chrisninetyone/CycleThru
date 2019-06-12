@@ -31,7 +31,6 @@ const createMarkersForMap = (mapElement, map) => {
 }
 
 
-
 const initMapbox = (currentLocation) => {
   const mapElement = document.getElementById('map');
   if (mapElement) {
@@ -82,7 +81,7 @@ const initMapbox = (currentLocation) => {
       console.log(e)
       if (condition){
       const popup = new mapboxgl.Popup().setHTML(
-        `<button type="button" data-toggle="modal" data-target="#pointModal">Create Point</button>
+        `<button type="button" class="point-button" data-toggle="modal" data-target="#pointModal">Create Point!</button>
         `);
 
       const draggable = new mapboxgl.Marker({
