@@ -1,11 +1,11 @@
 import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
 
-const fitMapToMarkers = (map, markers) => {
-  const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
-};
+// const fitMapToMarkers = (map, markers) => {
+//   const bounds = new mapboxgl.LngLatBounds();
+//   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+//   map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+// };
 
 
 const createMarkersForMap = (mapElement, map) => {
@@ -51,7 +51,6 @@ window.addMarker = function(marker) {
 
 
 const initMapbox = (currentLocation) => {
-  console.log('initmap', currentLocation)
   const mapElement = document.getElementById('map');
   if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -80,61 +79,36 @@ const initMapbox = (currentLocation) => {
     map.addControl(geolocate);
 
 
-
-    geolocate.on('geolocate', (e) => {
-      const long = e.coords.longitude;
-      const lat = e.coords.latitude
-      const position = [long, lat];
-      console.log('test', position);
-    });
-
     createMarkersForMap(mapElement, map);
 
-    // const userLocation = new mapboxgl.Marker();
 
 
     const mapboxDirections = new MapboxDirections({
       accessToken: mapboxgl.accessToken,
       unit: 'metric',
       profile: 'mapbox/cycling',
-      interactive: true
+      interactive: false
     })
 
     window.condition = true
 
     const pinButton = document.querySelector('#pin-drop');
-    let condition = true
+    let interactiveStatus = true;
 
 
     pinButton.addEventListener('click', (e) => {
+      interactiveStatus = !interactiveStatus
 
-      console.log(mapboxDirections.interactive);
-
+      let allWaypoints = mapboxDirections.getWaypoints()
+      console.log(allWaypoints);
+      mapboxDirections.interactive(interactiveStatus)
+      mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
 
       if (document.querySelector('.mapboxgl-marker svg')) {
         document.querySelector('.mapboxgl-marker svg').remove()
       } else {
 
-
-    map.on('click', (e) => {
-      console.log(e)
-      if (condition){
-        console.log('KJDKJD')
-      const popup = new mapboxgl.Popup().setHTML(
-        `<button type="button" class="point-button" data-toggle="modal" data-target="#pointModal">Create Point!</button>
-        `);
-
-      window.draggable = new mapboxgl.Marker({
-        draggable: true
-      })
-      .setLngLat([e.lngLat.lng, e.lngLat.lat ])
-      .setPopup(popup)
-      .addTo(map);
-      const lat = document.querySelector("#point_lat");
-      const long = document.querySelector("#point_long");
-      lat.value = e.lngLat.lat;
-      long.value = e.lngLat.lng;
-
+        let condition = true;
 
         if (condition){
         const popup = new mapboxgl.Popup().setHTML(
@@ -165,8 +139,18 @@ const initMapbox = (currentLocation) => {
         draggable.on('dragend', onDragEnd);
         condition = false
         }
-
       }
+
+      const addTripButton = document.querySelector('#add-stop');
+      addTripButton.addEventListener('click', () => {
+        console.log('ya clicked me')
+        mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
+      })
+
+      const interactiveToggle = document.querySelector('#choose-on-map');
+        interactiveToggle.addEventListener('click', () => {
+          console.log('boom')
+        })
 
     });
 
@@ -180,7 +164,6 @@ const initMapbox = (currentLocation) => {
 
     //define the directions and directionsHeader to be able to toggle them
     const directions = document.querySelector('.directions-control-instructions');
-    const directionsHeader = document.querySelector(".mapbox-directions-route-summary");
 
     //insert button after the to and from form on map
 
@@ -198,19 +181,6 @@ const initMapbox = (currentLocation) => {
       }
     })
 
-    document.querySelector('#choose-on-map').addEventListener('click', () => {
-      if (document.querySelector('.mapboxgl-marker svg')) {
-        console.log('pin')
-        console.log(mapboxDirections.interactive)
-        document.querySelector('.mapboxgl-marker svg').remove();
-        mapboxDirections.interactive = false;
-        console.log(mapboxDirections.interactive)
-      } else {
-        console.log('no pin')
-        mapboxDirections.interactive = true;
-        console.log(mapboxDirections.interactive)
-      }
-    })
 
 
 
