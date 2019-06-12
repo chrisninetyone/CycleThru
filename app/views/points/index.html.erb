@@ -27,8 +27,7 @@
     <!-- <%#= link_to "", points_path, class: "fas fa-map-marker-alt fa-2x" %> -->
 
     <%= link_to user_path(current_user[:id]) do %>
-      <% avatar_url = current_user.facebook_picture_url || "#{current_user.avatar}" %>
-      <%= image_tag avatar_url, class: "rounded-circle user-profile-avatar" %>
+    <i class="far fa-user"></i>
     <% end %>
   </footer>
 </div>
