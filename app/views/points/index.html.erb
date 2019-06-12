@@ -9,6 +9,8 @@
   </div>
 
   <footer id="map-footer">
+    <button id="toggle-active"><i class="far fa-hand-pointer"></i></button>
+
     <form id="set-route" method="post" action="/trips" data-remote="true">
       <input name="authenticity_token" id="auth" value="<%= form_authenticity_token %>" type="hidden">
       <input type="hidden" id="start_long" name="trip[start_long]" >

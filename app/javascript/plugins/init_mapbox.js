@@ -1,11 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
 
-// const fitMapToMarkers = (map, markers) => {
-//   const bounds = new mapboxgl.LngLatBounds();
-//   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-//   map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
-// };
+
 
 
 const createMarkersForMap = (mapElement, map) => {
@@ -67,8 +63,6 @@ const initMapbox = (currentLocation) => {
 
     window.map = new mapboxgl.Map(mapParams);
 
-    //add current position marker
-
     const geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
@@ -83,7 +77,7 @@ const initMapbox = (currentLocation) => {
 
 
 
-    const mapboxDirections = new MapboxDirections({
+    window.mapboxDirections = new MapboxDirections({
       accessToken: mapboxgl.accessToken,
       unit: 'metric',
       profile: 'mapbox/cycling',
@@ -147,10 +141,6 @@ const initMapbox = (currentLocation) => {
         mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
       })
 
-      const interactiveToggle = document.querySelector('#choose-on-map');
-        interactiveToggle.addEventListener('click', () => {
-          console.log('boom')
-        })
 
     });
 
@@ -168,8 +158,21 @@ const initMapbox = (currentLocation) => {
     //insert button after the to and from form on map
 
     document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler" class="btn btn-sm btn-dark m-2"><i class="fas fa-directions"></i> Show/Hide</button>`);
-    document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="choose-on-map" class="btn btn-sm btn-dark m-2"><i class="fas fa-map-pin"></i> Set on Map</button>`);
 
+
+    const activeToggleButton = document.querySelector('#toggle-active');
+      activeToggleButton.addEventListener('click', () => {
+        console.log(interactiveStatus)
+
+        if (mapboxDirections.interactive(false)) {
+          mapboxDirections.interactive(true);
+          map.on('click', () => {
+            mapboxDirections.interactive(false)
+          })
+        } else if (mapboxDirections.interactive(true)) {
+          mapboxDirections.interactive(false)
+        }
+      })
 
     //Hide directions and add an event listener on the button to toggle "hidden" class in _map.scss
     // directions.hidden = true;
