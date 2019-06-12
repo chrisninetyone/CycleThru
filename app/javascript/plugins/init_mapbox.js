@@ -5,7 +5,7 @@ import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 
 
 const createMarkersForMap = (mapElement, map) => {
-  console.log(mapElement.dataset.markers)
+
   const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
     const element = document.createElement('div');
@@ -24,7 +24,6 @@ const createMarkersForMap = (mapElement, map) => {
     .addTo(map)
     .setPopup(popup);
   });
-  // fitMapToMarkers(map, markers);
 }
 
 window.addMarker = function(marker) {
