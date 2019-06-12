@@ -1,7 +1,7 @@
 
 .banner {
   position: relative;
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1530143584546-02191bc84eb5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1506422720-5d7dde64b262?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
   background-size: cover;
   height: 40vh;
   text-align: center;
@@ -49,7 +49,8 @@
   justify-content: center;
   font-size: 35px;
   i {
-    justify-content: center;
+    justify-content: center;;
+    color: black;
   }
 }
 
@@ -57,10 +58,12 @@
   width: 33%;
   border-radius: 5px;
    box-shadow: 0 2px 5px rgba(0,0,0,0.10), 0 1px 1px rgba(0,0,0,0.22);
+   background-color: #03CDAE;
   p {
     text-align: center;
     text-decoration: bold;
     margin-bottom: 0px;
+    color: black;
   }
 }
 
@@ -97,6 +100,7 @@
 .panel-heading {
   cursor: pointer;
   text-align: center;
+  background-color: #03CDAE;
 }
 
 .popup-links {
@@ -118,12 +122,15 @@
 
 .top-panel {
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 30px;
   h6 {
     font-size: 20px;
   }
-
 }
+
+.edit-icon {
+  font-size: 25px;
+  }
 
 .globe-link {
   font-size: 30px;
@@ -136,4 +143,12 @@
   .row {
     width: 100%;
   }
+}
+
+.page-body {
+  background-color: #D9DFDB;
+}
+
+body {
+   background-color: #D9DFDB;
 }

@@ -1,5 +1,5 @@
 <div class="banner" >
-  <div class="container">
+  <div class="container page-body">
     <div class="profile-card">
       <div class="profile-avatar">
         <div>
@@ -15,15 +15,15 @@
     <div class="about-section">
       <div class="about-title">
         <div class="d-flex top-panel">
-          <% if current_user == @user %>
-          <%= link_to "", edit_user_registration_path, class: "far fa-edit" %>
-          <% end %>
+          <%= link_to "", points_path, class: "fas fa-globe-europe"  %>
           <% if current_user == @user %>
           <h6><%= "My Profile" %></h6>
           <% else %>
           <h6>About <%= "#{@user.first_name}" %></h6>
           <% end %>
-          <%= link_to "", points_path, class: "fas fa-globe-europe"  %>
+          <% if current_user == @user %>
+          <%= link_to "", edit_user_registration_path, class: "edit-icon far fa-edit" %>
+          <% end %>
         </div>
         <div class="stats-section">
           <div class="row">
