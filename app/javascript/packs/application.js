@@ -33,16 +33,7 @@ if (navigator.geolocation) {
   initMapbox([115.1304015, -8.6539913]);
   otherInitMap();
 }
-// initMapbox([115.1304015, -8.6539913]);
-// initScroll();
-
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('/service-worker.js', { scope: './' })
-    .then(function(reg) {
-      console.log('[Companion]', 'Service worker registered!');
-      console.log(reg);
-    });
-}
 
 
 // initScroll();
+

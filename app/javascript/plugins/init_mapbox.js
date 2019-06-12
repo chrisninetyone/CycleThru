@@ -24,7 +24,6 @@ const createMarkersForMap = (mapElement, map) => {
     .addTo(map)
     .setPopup(popup);
   });
-  // fitMapToMarkers(map, markers);
 }
 
 window.addMarker = function(marker) {
@@ -179,6 +178,7 @@ const initMapbox = (currentLocation) => {
       }
     })
 
+
     document.querySelector('body').on('click', '#add-stop', (e) => {
   // alert('add waypoint');
   // let allWaypoints = mapboxDirections.getWaypoints()
@@ -190,6 +190,11 @@ const initMapbox = (currentLocation) => {
       console.log(e.target, coordinate)
   // mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
     })
+
+$("#set-route-submit").click(function(){
+  alert("Trip saved!");
+});
+
 
   }
 };
