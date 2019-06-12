@@ -72,18 +72,30 @@ const initMapbox = (currentLocation) => {
 
     createMarkersForMap(mapElement, map);
 
-    const userLocation = new mapboxgl.Marker();
+    // const userLocation = new mapboxgl.Marker();
 
 
+    const mapboxDirections = new MapboxDirections({
+      accessToken: mapboxgl.accessToken,
+      unit: 'metric',
+      profile: 'mapbox/cycling',
+      interactive: true
+    })
 
-    const saveButton = document.querySelector('#pin-drop');
+    const pinButton = document.querySelector('#pin-drop');
     let condition = true
 
-    saveButton.addEventListener('click', (e) => {
+    pinButton.addEventListener('click', (e) => {
 
-      // if (draggable) {
-      //   draggable.remove()
-      // } else {
+      console.log(mapboxDirections.interactive);
+
+
+      if (document.querySelector('.mapboxgl-marker svg')) {
+        document.querySelector('.mapboxgl-marker svg').remove()
+      } else {
+
+
+
         if (condition){
         const popup = new mapboxgl.Popup().setHTML(
           `<button type="button" data-toggle="modal" data-target="#pointModal">Create Point</button>
@@ -114,17 +126,11 @@ const initMapbox = (currentLocation) => {
         condition = false
         }
 
-      // }
+      }
 
     });
 
 
-      const mapboxDirections = new MapboxDirections({
-        accessToken: mapboxgl.accessToken,
-        unit: 'metric',
-        profile: 'mapbox/cycling',
-        interactive: false
-      })
 
     map.addControl(mapboxDirections, 'top-left');
 
@@ -138,7 +144,7 @@ const initMapbox = (currentLocation) => {
 
     //insert button after the to and from form on map
     document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler" class="btn btn-sm btn-dark m-2"><i class="fas fa-directions"></i> Show/Hide</button>`);
-
+    document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="choose-on-map" class="btn btn-sm btn-dark m-2"><i class="fas fa-map-pin"></i> Set on Map</button>`);
 
 
 
@@ -152,6 +158,22 @@ const initMapbox = (currentLocation) => {
         directions.hidden = false
       }
     })
+
+    document.querySelector('#choose-on-map').addEventListener('click', () => {
+      if (document.querySelector('.mapboxgl-marker svg')) {
+        console.log('pin')
+        console.log(mapboxDirections.interactive)
+        document.querySelector('.mapboxgl-marker svg').remove();
+        mapboxDirections.interactive = false;
+        console.log(mapboxDirections.interactive)
+      } else {
+        console.log('no pin')
+        mapboxDirections.interactive = true;
+        console.log(mapboxDirections.interactive)
+      }
+    })
+
+
 
   }
 };

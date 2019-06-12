@@ -63,6 +63,8 @@ const otherInitMap = () => {
     if (document.querySelector('.mapbox-directions-route-summary span')) {
       duration.value = document.querySelector('.mapbox-directions-route-summary span').textContent
     }
+
+    // createTripSubmit.insertAdjacentHTML('afterbegin', `<%= j render 'shared/flashes', notice: 'Post was created' %>`);
   })
 }
 
