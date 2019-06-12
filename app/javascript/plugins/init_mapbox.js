@@ -33,6 +33,7 @@ const createMarkersForMap = (mapElement, map) => {
 
 
 const initMapbox = (currentLocation) => {
+  console.log('initmap', currentLocation)
   const mapElement = document.getElementById('map');
   if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -75,11 +76,11 @@ const initMapbox = (currentLocation) => {
 
 
 
+    const saveButton = document.querySelector('#pin-drop');
     let condition = true
 
+    saveButton.addEventListener('click', (e) => {
 
-    map.on('click', (e) => {
-      console.log(e)
       if (condition){
       const popup = new mapboxgl.Popup().setHTML(
         `<button type="button" data-toggle="modal" data-target="#pointModal">Create Point</button>
@@ -88,13 +89,13 @@ const initMapbox = (currentLocation) => {
       const draggable = new mapboxgl.Marker({
         draggable: true
       })
-      .setLngLat([e.lngLat.lng, e.lngLat.lat ])
+      .setLngLat(currentLocation)
       .setPopup(popup)
       .addTo(map);
-      const lat = document.querySelector("#point_lat");
-      const long = document.querySelector("#point_long");
-      lat.value = e.lngLat.lat;
-      long.value = e.lngLat.lng;
+      // const lat = document.querySelector("#point_lat");
+      // const long = document.querySelector("#point_long");
+      // lat.value = e.lngLat.lat;
+      // long.value = e.lngLat.lng;
 
 
       const onDragEnd = () => {
@@ -103,6 +104,7 @@ const initMapbox = (currentLocation) => {
         const long = document.querySelector("#point_long");
         lat.value = lngLat.lat;
         long.value = lngLat.lng;
+        console.log(lngLat)
       }
       draggable.on('dragend', onDragEnd);
       condition = false
@@ -128,8 +130,7 @@ const initMapbox = (currentLocation) => {
     const directionsHeader = document.querySelector(".mapbox-directions-route-summary");
 
     //insert button after the to and from form on map
-    document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler" class="btn btn-sm btn-dark m-2">Toggle Directions</button>`);
-
+    document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler" class="btn btn-sm btn-dark m-2"><i class="fas fa-directions"></i> Show/Hide</button>`);
 
 
 
@@ -146,7 +147,6 @@ const initMapbox = (currentLocation) => {
     })
 
   }
-
 };
 
 
