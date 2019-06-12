@@ -1,0 +1,26 @@
+.scroll-body {
+  background-color: #8e44ad;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-card {
+  background-color: #DADFDB;
+  min-width: 100%;
+  min-height: 200px;
+  display: flex;
+  overflow-x: auto;
+  opacity: .9;
+}
+
+.scroll-card::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-card--content {
+  background-color: #e74c3c;
+  min-width: 200px;
+  margin: 5px;
+}
