@@ -3,8 +3,8 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 
 import { initMapbox } from '../plugins/init_mapbox';
-import { initScroll } from '../plugins/init_scroll';
 import { otherInitMap } from '../plugins/map'
+// import { initScroll } from '../plugins/init_scroll';
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
@@ -28,4 +28,4 @@ if (navigator.serviceWorker) {
     });
 }
 
-initScroll();
+// initScroll();
