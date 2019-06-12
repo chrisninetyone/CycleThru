@@ -11,6 +11,8 @@
   <footer id="map-footer">
     <button id="toggle-active"><i class="far fa-hand-pointer"></i></button>
 
+    <button class="fas fa-map-marker-alt fa-2x" id="pin-drop"></button>
+
     <form id="set-route" method="post" action="/trips" data-remote="true">
       <input name="authenticity_token" id="auth" value="<%= form_authenticity_token %>" type="hidden">
       <input type="hidden" id="start_long" name="trip[start_long]" >
@@ -23,12 +25,10 @@
       </button>
     </form>
 
-    <button class="fas fa-map-marker-alt fa-2x" id="pin-drop"></button>
     <!-- <%#= link_to "", points_path, class: "fas fa-map-marker-alt fa-2x" %> -->
 
     <%= link_to user_path(current_user[:id]) do %>
-      <% avatar_url = current_user.facebook_picture_url || "#{current_user.avatar}" %>
-      <%= image_tag avatar_url, class: "rounded-circle user-profile-avatar" %>
+    <i class="far fa-user"></i>
     <% end %>
   </footer>
 </div>
