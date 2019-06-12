@@ -9,6 +9,7 @@ import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 
 
 const createMarkersForMap = (mapElement, map) => {
+  console.log(mapElement.dataset.markers)
   const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
     const element = document.createElement('div');
@@ -30,6 +31,23 @@ const createMarkersForMap = (mapElement, map) => {
   // fitMapToMarkers(map, markers);
 }
 
+window.addMarker = function(marker) {
+  const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url('${marker.image_url}')`;
+    element.style.backgroundSize = 'contain';
+
+    element.style.width = '25px';
+    element.style.height = '25px';
+    element.style.cursor = "pointer"
+
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+    console.log(marker.lng)
+    new mapboxgl.Marker(element)
+    .setLngLat([ marker.lng, marker.lat ])
+    .addTo(map)
+    .setPopup(popup);
+}
 
 
 const initMapbox = (currentLocation) => {
@@ -47,7 +65,7 @@ const initMapbox = (currentLocation) => {
 
     mapParams.center = currentLocation
 
-    const map = new mapboxgl.Map(mapParams);
+    window.map = new mapboxgl.Map(mapParams);
 
     //add current position marker
 
@@ -71,8 +89,12 @@ const initMapbox = (currentLocation) => {
       profile: 'mapbox/cycling',
       interactive: false
     })
+
+    window.condition = true
+
     const pinButton = document.querySelector('#pin-drop');
     let interactiveStatus = true;
+
 
     pinButton.addEventListener('click', (e) => {
       interactiveStatus = !interactiveStatus
@@ -85,7 +107,9 @@ const initMapbox = (currentLocation) => {
       if (document.querySelector('.mapboxgl-marker svg')) {
         document.querySelector('.mapboxgl-marker svg').remove()
       } else {
+
         let condition = true;
+
         if (condition){
         const popup = new mapboxgl.Popup().setHTML(
           `<button type="button" data-toggle="modal" data-target="#pointModal">Create Point</button>
@@ -142,10 +166,9 @@ const initMapbox = (currentLocation) => {
     const directions = document.querySelector('.directions-control-instructions');
 
     //insert button after the to and from form on map
+
     document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler" class="btn btn-sm btn-dark m-2"><i class="fas fa-directions"></i> Show/Hide</button>`);
     document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="choose-on-map" class="btn btn-sm btn-dark m-2"><i class="fas fa-map-pin"></i> Set on Map</button>`);
-
-
 
 
     //Hide directions and add an event listener on the button to toggle "hidden" class in _map.scss

@@ -67,8 +67,9 @@ body {
   background: #fff;
   border-radius: 23px !important;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  padding: 10px 10px 15px;
   pointer-events: auto;
+  width: 128px;
+  padding: 10px !important;
   h4 {
     margin-bottom: 0px !important;
   }
@@ -82,7 +83,7 @@ body {
 .mapboxgl-popup-close-button {
     position: absolute;
     right: 7px !important;
-    top: 7px !important;
+    top: 0px !important;
     border: 0;
     border-radius: 0 3px 0 0;
     cursor: pointer;

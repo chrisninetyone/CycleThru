@@ -1,0 +1,35 @@
+function addPointMarker(pointHTML) {
+  // add new point to the markers array and show on map
+}
+
+// select the form
+form = document.querySelector('#new_point')
+// select the body of the popup
+modalBody = document.querySelector('.modal-body')
+pointButton = document.querySelector('.point-button')
+
+console.log(<%= %>);
+
+<% if @point.errors.any? %>
+// in case there are errors in form
+  document.querySelector("#new_point").reset()
+  console.log("no save");
+<% else %>
+// in case it saves correctly
+  console.log("save");
+  // modalBody.modal("toggle");
+  pointButton.click();
+  draggable.remove();
+  delete window.draggable;
+  condition = true;
+
+  console.log(<%= raw @marker.to_json %>)
+  addMarker(<%= raw @marker.to_json %>);
+
+  // var content = "<div id='map-marker' style='display: none;' data-marker='<%= @marker.to_json %>'</div>"
+  // document.querySelector('body').insertAdjacentHTML('beforebegin', content);
+  // console.log(document.querySelector('#map-marker').dataset.marker)
+  // // marker_json = JSON.parse(document.querySelector('#map-marker').dataset.marker)
+
+
+<% end %>
