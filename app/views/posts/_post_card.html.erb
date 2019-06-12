@@ -1,10 +1,27 @@
 
-<div class="border border-secondary mt-1 mb-1" id="post-card-<%=post.id%>">
-  <h5><%= post.title %></h5>
+<div class="border mt-1 mb-1 card-show" id="post-card-<%=post.id%>">
+  <h5 class="mt-2"><%= post.title %></h5>
   <p><%= post.content %></p>
-  <% post.photos.each do |photo| %>
-    <%= cl_image_tag photo.image.url(:thumbnail), width: 250, height: 250 %>
+
+  <% if post.photos.length < 1 || post.photos.nil? %>
+  <% elsif post.photos.length == 1 %>
+    <section class="scroll-card" style="justify-content: center;">
+      <% post.photos.each do |photo| %>
+      <div class="scroll-card--content">
+        <%= cl_image_tag photo.image, width: 200, height: 200, crop: :fill %>
+      </div>
+    <% end %>
+    </section>
+  <% else %>
+    <section class="scroll-card">
+      <% post.photos.each do |photo| %>
+      <div class="scroll-card--content">
+        <%= cl_image_tag photo.image, width: 200, height: 200, crop: :fill %>
+      </div>
+    <% end %>
+    </section>
   <% end %>
+
    <% if policy(post).destroy? %>
     <%= link_to 'Delete', post_path(post), remote: true, class: "btn btn-outline-success", method: :delete, data: { confirm: "Are you sure you want to delete this post?"} %>
     <% end %>
