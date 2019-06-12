@@ -8,6 +8,8 @@ form = document.querySelector('#new_point')
 modalBody = document.querySelector('.modal-body')
 pointButton = document.querySelector('.point-button')
 
+console.log(<%= %>);
+
 <% if @point.errors.any? %>
 // in case there are errors in form
   document.querySelector("#new_point").reset()
@@ -15,15 +17,19 @@ pointButton = document.querySelector('.point-button')
 <% else %>
 // in case it saves correctly
   console.log("save");
-  addPointMarker(' j render "points/index", point: @point');
   // modalBody.modal("toggle");
   pointButton.click();
   draggable.remove();
   delete window.draggable;
   condition = true;
-  var marker = '<%= raw @marker.to_json %>'
-  marker_json = JSON.parse(marker)
-  console.log(marker)
-  addMarker(marker_json);
+
+  console.log(<%= raw @marker.to_json %>)
+  addMarker(<%= raw @marker.to_json %>);
+
+  // var content = "<div id='map-marker' style='display: none;' data-marker='<%= @marker.to_json %>'</div>"
+  // document.querySelector('body').insertAdjacentHTML('beforebegin', content);
+  // console.log(document.querySelector('#map-marker').dataset.marker)
+  // // marker_json = JSON.parse(document.querySelector('#map-marker').dataset.marker)
+
 
 <% end %>

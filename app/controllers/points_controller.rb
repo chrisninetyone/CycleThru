@@ -41,9 +41,10 @@ class PointsController < ApplicationController
       @marker = {
           lat: @point.lat,
           lng: @point.long,
-          image_url: categories(@point)
-          # infoWindow: render_to_string(partial: "map_points", locals: { point: @point })
+          image_url: categories(@point),
+          infoWindow: render_to_string(partial: "map_points", locals: { point: @point })
         }
+
       respond_to do |format|
         format.html { redirect_to points_path }
         format.js
@@ -76,7 +77,7 @@ class PointsController < ApplicationController
   def categories(point)
     if point.category == "Bike Stop"
       marker_image = helpers.asset_url('tools.png')
-    elsif point.category == "Camping"
+    elsif point.category == "Camp"
       marker_image = helpers.asset_url('tent.png')
     elsif point.category == "Food"
       marker_image = helpers.asset_url('cutlery.png')

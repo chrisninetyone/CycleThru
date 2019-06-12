@@ -9,6 +9,7 @@ const fitMapToMarkers = (map, markers) => {
 
 
 const createMarkersForMap = (mapElement, map) => {
+  console.log(mapElement.dataset.markers)
   const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
     const element = document.createElement('div');
@@ -40,12 +41,12 @@ window.addMarker = function(marker) {
     element.style.height = '25px';
     element.style.cursor = "pointer"
 
-    // const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
     console.log(marker.lng)
     new mapboxgl.Marker(element)
     .setLngLat([ marker.lng, marker.lat ])
     .addTo(map)
-    // .setPopup(popup);
+    .setPopup(popup);
 }
 
 
@@ -147,10 +148,6 @@ const initMapbox = (currentLocation) => {
 
     //insert button after the to and from form on map
     document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler" class="btn btn-sm btn-dark m-2">Toggle Directions</button>`);
-
-
-
-
 
 
     //Hide directions and add an event listener on the button to toggle "hidden" class in _map.scss
