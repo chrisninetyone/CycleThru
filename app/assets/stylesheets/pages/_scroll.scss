@@ -1,0 +1,31 @@
+.scroll-card {
+  // background-color: rgba(0, 0, 0, 0.0);
+  // background-color: #DADFDB;
+  min-width: 100%;
+  min-height: 200px;
+  display: flex;
+  overflow-x: auto;
+  opacity: .9;
+}
+
+.scroll-card::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-card--content {
+  background-color: #e74c3c;
+  min-width: 200px;
+  margin: 5px;
+}
+
+.sticky-header {
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  background-color: #DADFDB;
+  top: 48px;
+  z-index: 1;
+
+}
+
+
