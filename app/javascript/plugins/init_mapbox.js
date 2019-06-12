@@ -166,6 +166,9 @@ const initMapbox = (currentLocation) => {
 
         if (mapboxDirections.interactive(false)) {
           mapboxDirections.interactive(true);
+          map.on('click', () => {
+            mapboxDirections.interactive(false)
+          })
         } else if (mapboxDirections.interactive(true)) {
           mapboxDirections.interactive(false)
         }
