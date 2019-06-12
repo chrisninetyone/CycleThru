@@ -1,11 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
 
-// const fitMapToMarkers = (map, markers) => {
-//   const bounds = new mapboxgl.LngLatBounds();
-//   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-//   map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
-// };
+
 
 
 const createMarkersForMap = (mapElement, map) => {
@@ -67,8 +63,6 @@ const initMapbox = (currentLocation) => {
 
     window.map = new mapboxgl.Map(mapParams);
 
-    //add current position marker
-
     const geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
@@ -87,7 +81,7 @@ const initMapbox = (currentLocation) => {
       accessToken: mapboxgl.accessToken,
       unit: 'metric',
       profile: 'mapbox/cycling',
-      interactive: false
+      interactive: true
     })
 
     window.condition = true
