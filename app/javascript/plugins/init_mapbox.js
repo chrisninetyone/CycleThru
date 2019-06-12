@@ -181,8 +181,9 @@ const initMapbox = (currentLocation) => {
       }
     })
 
-
-
+$("#set-route-submit").click(function(){
+  alert("Trip saved!");
+});
 
   }
 };
