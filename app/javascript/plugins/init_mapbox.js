@@ -1,6 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
-
+import Swal from 'sweetalert2'
 
 
 
@@ -178,6 +178,14 @@ const initMapbox = (currentLocation) => {
       }
     })
 
+    $("#set-route-submit").click(function(){
+      Swal.fire(
+  'Trip saved!',
+  '',
+  'success'
+);
+    });
+
 
     document.querySelector('body').on('click', '#add-stop', (e) => {
   // alert('add waypoint');
@@ -191,9 +199,8 @@ const initMapbox = (currentLocation) => {
   // mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
     })
 
-$("#set-route-submit").click(function(){
-  alert("Trip saved!");
-});
+
+
 
 
   }
