@@ -115,7 +115,7 @@ const initMapbox = (currentLocation) => {
           `<button type="button" class="point-button" data-toggle="modal" data-target="#pointModal">Create Point</button>
           `);
 
-        const draggable = new mapboxgl.Marker({
+        window.draggable = new mapboxgl.Marker({
           draggable: true
         })
         .setLngLat(currentLocation)
