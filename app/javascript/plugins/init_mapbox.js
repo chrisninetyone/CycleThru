@@ -9,6 +9,7 @@ const fitMapToMarkers = (map, markers) => {
 
 
 const createMarkersForMap = (mapElement, map) => {
+  console.log(mapElement.dataset.markers)
   const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
     const element = document.createElement('div');
@@ -30,6 +31,23 @@ const createMarkersForMap = (mapElement, map) => {
   // fitMapToMarkers(map, markers);
 }
 
+window.addMarker = function(marker) {
+  const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url('${marker.image_url}')`;
+    element.style.backgroundSize = 'contain';
+
+    element.style.width = '25px';
+    element.style.height = '25px';
+    element.style.cursor = "pointer"
+
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+    console.log(marker.lng)
+    new mapboxgl.Marker(element)
+    .setLngLat([ marker.lng, marker.lat ])
+    .addTo(map)
+    .setPopup(popup);
+}
 
 
 const initMapbox = (currentLocation) => {
@@ -48,7 +66,7 @@ const initMapbox = (currentLocation) => {
 
     mapParams.center = currentLocation
 
-    const map = new mapboxgl.Map(mapParams);
+    window.map = new mapboxgl.Map(mapParams);
 
     //add current position marker
 
@@ -82,8 +100,11 @@ const initMapbox = (currentLocation) => {
       interactive: true
     })
 
+    window.condition = true
+
     const pinButton = document.querySelector('#pin-drop');
     let condition = true
+
 
     pinButton.addEventListener('click', (e) => {
 
@@ -94,6 +115,25 @@ const initMapbox = (currentLocation) => {
         document.querySelector('.mapboxgl-marker svg').remove()
       } else {
 
+
+    map.on('click', (e) => {
+      console.log(e)
+      if (condition){
+        console.log('KJDKJD')
+      const popup = new mapboxgl.Popup().setHTML(
+        `<button type="button" class="point-button" data-toggle="modal" data-target="#pointModal">Create Point!</button>
+        `);
+
+      window.draggable = new mapboxgl.Marker({
+        draggable: true
+      })
+      .setLngLat([e.lngLat.lng, e.lngLat.lat ])
+      .setPopup(popup)
+      .addTo(map);
+      const lat = document.querySelector("#point_lat");
+      const long = document.querySelector("#point_long");
+      lat.value = e.lngLat.lat;
+      long.value = e.lngLat.lng;
 
 
         if (condition){
@@ -143,10 +183,9 @@ const initMapbox = (currentLocation) => {
     const directionsHeader = document.querySelector(".mapbox-directions-route-summary");
 
     //insert button after the to and from form on map
+
     document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="toggler" class="btn btn-sm btn-dark m-2"><i class="fas fa-directions"></i> Show/Hide</button>`);
     document.querySelector('.directions-control-inputs').insertAdjacentHTML('afterend', `<button id="choose-on-map" class="btn btn-sm btn-dark m-2"><i class="fas fa-map-pin"></i> Set on Map</button>`);
-
-
 
 
     //Hide directions and add an event listener on the button to toggle "hidden" class in _map.scss
