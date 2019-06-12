@@ -1,7 +1,7 @@
 var nav = document.querySelector('.navbar')
 
 window.addEventListener("scroll", function() {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 25) {
         nav.style.backgroundColor = '#DADFDB';
     }
     else {

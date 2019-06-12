@@ -1,13 +1,6 @@
-.scroll-body {
-  background-color: #8e44ad;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .scroll-card {
-  background-color: #DADFDB;
+  // background-color: rgba(0, 0, 0, 0.0);
+  // background-color: #DADFDB;
   min-width: 100%;
   min-height: 200px;
   display: flex;
@@ -24,3 +17,15 @@
   min-width: 200px;
   margin: 5px;
 }
+
+.sticky-header {
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  background-color: #DADFDB;
+  top: 48px;
+  z-index: 1;
+
+}
+
+
