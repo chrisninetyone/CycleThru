@@ -32,6 +32,9 @@
     <h3><%= @point.category  %></h3>
     <p><%= @point.description %></p>
     <p>Created by: <%= link_to "#{@point.user.first_name} #{@point.user.last_name}", user_path(@point.user_id)%></p>
+        <% date = @point.posts.last %>
+       <p><strong>Created at: </strong><%= date.created_at %></p>
+
   </div>
 
 
@@ -53,7 +56,7 @@
     <% @point.posts.reverse.each do |post| %>
       <div class="border mt-1 mb-1 card-show" id="post-card-<%=post.id%>">
         <h5 class="mt-2"><%= post.title %></h5>
-        <p><%= post.content %></p>
+
 
         <% if post.photos.length < 1 || post.photos.nil? %>
 
