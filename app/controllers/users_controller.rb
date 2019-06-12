@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @total_distance = calculate_distance
     authorize @user
+    # raise
   end
 
   private

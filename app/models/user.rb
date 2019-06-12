@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_many :trips
   has_many :points
-  has_many :posts, through: :points
+  has_many :posts
   mount_uploader :avatar, AvatarUploader
 
   validates :first_name, presence: true

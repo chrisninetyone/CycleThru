@@ -9,7 +9,6 @@
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
         <%= link_to "My Profile", user_path(current_user[:id]), class: "dropdown-item" %>
         <%= link_to "Map", points_path, class: "dropdown-item" %>
-        <%#S= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item" %>
         <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       </div>
     </li>
@@ -24,7 +23,7 @@
         <% @point.posts.each do |post| %>
           <% post.photos.each do |photo| %>
       <div class="scroll-card--content">
-            <%= cl_image_tag photo.image.url(:thumbnail), width: 200, height: 200 %>
+            <%= cl_image_tag photo.image, width: 200, height: 200, crop: :fill %>
       </div>
           <% end %>
         <% end %>
@@ -38,12 +37,14 @@
 
   <div class="border mt-2 mb-2">
     <p>Share your comments and photos</p>
-    <%= simple_form_for([@point, @post], remote: true) do |f| %>
-    <%= f.simple_fields_for :photo, Photo.new do |photo_form| %>
-      <%= photo_form.file_field :photo, multiple: true, name: "photos[]" %>
-      <% end %>
+    <!-- unhide remote:true if you want to enable ajax -->
+    <%#= simple_form_for([@point, @post], remote: true) do |f| %>
+    <%= simple_form_for([@point, @post]) do |f| %>
     <%= f.input :title %>
     <%= f.input :content %>
+    <%= f.simple_fields_for :photo, Photo.new do |photo_form| %>
+      <%= photo_form.file_field :photo, multiple: true, name: "photos[]", class: "mb-2" %>
+    <% end %>
     <%= f.submit %>
     <% end %>
   </div>
@@ -56,12 +57,20 @@
         <p><%= post.content %></p>
 
         <% if post.photos.length < 1 || post.photos.nil? %>
-
+        <% elsif post.photos.length == 1 %>
+        <section class="scroll-card" style="justify-content: center;">
+          <% post.photos.each do |photo| %>
+            <div class="scroll-card--content">
+              <%= cl_image_tag photo.image.url, width: 200, height: 200, crop: :fill %>
+            </div>
+          <% end %>
+        </section>
         <% else %>
           <section class="scroll-card">
             <% post.photos.each do |photo| %>
             <div class="scroll-card--content">
-              <%= cl_image_tag photo.image.url(:thumbnail), width: 200, height: 200 %>
+              <%= cl_image_tag photo.image.url, width: 200, height: 200, crop: :fill %>
+              <%#= cl_image_tag photo.image.url(:thumbnail), width: 200, height: 200 %>
             </div>
           <% end %>
           </section>
