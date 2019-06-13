@@ -93,9 +93,9 @@
                       <!-- </button> -->
                     </h6>
                   </div>
-                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
-                        <% @user.points.each do |point| %>
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <% @user.points.reverse.take(3).each do |point| %>
                       <div class="dropdown-card my-3">
                         <%= link_to point_path(point) do  %>
                          <%= cl_image_tag point.photo, height: 100, width: 130, class: "card-image" %>
@@ -107,6 +107,26 @@
                          </div>
                       </div>
                        <% end %>
+                    <div class="panel-group" id="accordion21">
+                      <div class="panel">
+                        <a data-toggle="collapse" data-parent="#accordion21" href="#collapseTwoOne">See more
+                        </a>
+                        <div id="collapseTwoOne" class="panel-collapse collapse">
+                        <div class="panel-body"></div>
+                         <% @user.points.reverse.drop(3).each do |point| %>
+                      <div class="dropdown-card my-3">
+                        <%= link_to point_path(point) do  %>
+                         <%= cl_image_tag point.photo, height: 100, width: 130, class: "card-image" %>
+                         <% end %>
+                         <div>
+                           <p><strong><%=  point.name %></strong></p>
+                           <p><%= point.category %></p>
+                           <p><%= point.description.truncate(40)%></p>
+                         </div>
+                      </div>
+                       <% end %>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
