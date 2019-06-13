@@ -157,13 +157,13 @@
                   </div>
                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        <% @user.posts.take(3).each do |p| %>
+                        <% @user.posts.take(3).each do |point| %>
                       <div class="dropdown-card my-3">
-                        <p><strong><%= p.title %></strong></p>
+                        <p><strong><%= point.title %></strong></p>
                           </p>
                         <br>
-                        <p><%= p.content %></p>
-                        <p><%= link_to "#{p.point.name}", point_path(p.point_id) %></p>
+                        <p><%= point.content %></p>
+                        <p><%= link_to "#{point.point.name}", point_path(point.point_id) %></p>
                         <p><%#= link_to "See point",  %></p>
                       </div>
                         <% end %>
@@ -175,11 +175,11 @@
                         <div class="panel-body"></div>
                          <% @user.posts.reverse.drop(3).each do |point| %>
                       <div class="dropdown-card my-3">
-                        <p><strong><%= p.title %></strong></p>
+                        <p><strong><%= point.title %></strong></p>
                           </p>
                         <br>
-                        <p><%= p.content %></p>
-                        <p><%= link_to "#{p.point.name}", point_path(p.point_id) %></p>
+                        <p><%= point.content %></p>
+                        <p><%= link_to "#{point.point.name}", point_path(point.point_id) %></p>
                         <p><%#= link_to "See point",  %></p>
                       </div>
                         <% end %>
