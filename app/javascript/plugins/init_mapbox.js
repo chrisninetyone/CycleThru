@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 
 
 const createMarkersForMap = (mapElement, map) => {
-
+  console.log(mapElement.dataset.markers)
   const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
     const element = document.createElement('div');
@@ -24,6 +24,7 @@ const createMarkersForMap = (mapElement, map) => {
     .addTo(map)
     .setPopup(popup);
   });
+  // fitMapToMarkers(map, markers);
 }
 
 window.addMarker = function(marker) {
@@ -90,7 +91,12 @@ const initMapbox = (currentLocation) => {
 
 
     pinButton.addEventListener('click', (e) => {
-      // interactiveStatus = !interactiveStatus
+      interactiveStatus = !interactiveStatus
+
+      let allWaypoints = mapboxDirections.getWaypoints()
+      console.log(allWaypoints);
+      mapboxDirections.interactive(interactiveStatus)
+      mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
 
       if (document.querySelector('.mapboxgl-marker svg')) {
         document.querySelector('.mapboxgl-marker svg').remove()
@@ -185,23 +191,6 @@ const initMapbox = (currentLocation) => {
   'success'
 );
     });
-
-
-    document.querySelector('body').on('click', '#add-stop', (e) => {
-  // alert('add waypoint');
-  // let allWaypoints = mapboxDirections.getWaypoints()
-  //     console.log(allWaypoints);
-      const wayPoint = e.target
-      const coordinate = JSON.parse(wayPoint.dataset.coordinate)
-
-      mapboxDirections.addWaypoint(0, coordinate)
-      console.log(e.target, coordinate)
-  // mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
-    })
-
-
-
-
 
   }
 };
