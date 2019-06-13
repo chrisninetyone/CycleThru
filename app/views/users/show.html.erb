@@ -81,7 +81,24 @@
                   </div>
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
-                      <%= @user.trips %>
+                      <% @user.trips.each do |trip| %>
+
+                        <%#= trip.created_at.strftime("%F") %>
+                        <h3><%= trip.created_at.strftime("%d %b %Y") %>:</h3>
+                        <p><i class="fas fa-biking"></i>
+                        <% origin = Geocoder.search([trip.start_lat, trip.start_long]) %>
+                        <%= origin[0].town %>
+                        <%= origin[0].county %>
+                        <%= origin[0].state %>
+                        <%= origin[0].country %> to
+
+                        <% destination = Geocoder.search([trip.end_lat, trip.end_long]) %>
+                        <%= destination[0].town %>
+                        <%= destination[0].county %>
+                        <%= destination[0].state %>
+                        <%= destination[0].country %>
+                        </p>
+                      <% end %>
                     </div>
                   </div>
                 </div>
