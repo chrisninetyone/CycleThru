@@ -19,8 +19,19 @@
 <div class="container">
   <div class="card-show mt-5">
     <section class="scroll-card">
-      <div class="scroll-card--content">
-      <%= cl_image_tag @point.photo, width: 200, height: 200, crop: :fill %>
+      <div class="scroll-card--content" >
+      <% if @point.photo.blank? %>
+        <% @point.posts.each do |post| %>
+          <% post.photos.each do |photo| %>
+            <div class="scroll-card--content">
+              <%= cl_image_tag photo.image, width: 200, height: 200, crop: :fill %>
+            </div>
+          <% end %>
+        <% end %>
+
+      <% else %>
+        <%= cl_image_tag @point.photo, width: 200, height: 200, crop: :fill %>
+      <% end %>
       </div>
       <% @point.posts.each do |post| %>
         <% post.photos.each do |photo| %>
