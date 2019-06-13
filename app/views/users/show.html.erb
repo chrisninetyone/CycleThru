@@ -60,8 +60,11 @@
               </div>
             </div>
             <div class="rider-bio">
-              <h6>User bio</h6>
+              <% if @user.bio.nil? || @user.bio.length < 1 %>
+              <% else %>
+               <h6>User bio</h6>
               <p><%= @user.bio %></p>
+              <% end %>
             </div>
             <div class="journey-section">
               <% if current_user == @user %>
