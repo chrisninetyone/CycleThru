@@ -1,20 +1,19 @@
-<div class="popup-window">
+<div id="popup-window">
     <div>
-    <h4><%= point.name %></h4>
-
+      <h4><%= link_to "#{point.name}", point_path(point) %></h4>
     </div>
-      <div class="point-image">
-    <%= link_to point_path(point) do  %>
-      <%= cl_image_tag point.photo %>
-    <% end %>
+    <br>
+    <div class="point-image">
+      <%= link_to point_path(point) do  %>
+        <%= cl_image_tag point.photo, width: 184, height: 160, crop: :fill %>
+      <% end %>
+    </div>
 
-      </div>
     <div>
-    <p><%= point.category %></p>
-    <p><%= point.description %></p>
-    <p><i class="far fa-user"></i> <%= link_to "#{point.user.first_name} #{point.user.last_name}", user_path(point.user_id), class: "popup-links "%></p>
-    <button id="add-stop" data-coordinate="<%= [point.long, point.lat] %>">Add Stop to Route</button>
-
+      <p><%= point.category %></p>
+      <p><%= point.description %></p>
+      <p><i class="far fa-user"></i> <%= link_to "#{point.user.first_name} #{point.user.last_name}", user_path(point.user_id), class: "popup-links "%></p>
+      <button id="add-stop" data-coordinate="<%= [point.long, point.lat] %>">Add Stop to Route</button>
     </div>
 </div>
 

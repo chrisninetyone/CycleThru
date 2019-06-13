@@ -17,17 +17,20 @@
 
 <h2 class="sticky-header"><%= @point.name %></h2>
 <div class="container">
-  <%#= cl_image_tag @point.photo %>
   <div class="card-show mt-5">
     <section class="scroll-card">
-        <% @point.posts.each do |post| %>
-          <% post.photos.each do |photo| %>
       <div class="scroll-card--content">
-            <%= cl_image_tag photo.image, width: 200, height: 200, crop: :fill %>
+      <%= cl_image_tag @point.photo, width: 200, height: 200, crop: :fill %>
       </div>
-          <% end %>
+      <% @point.posts.each do |post| %>
+        <% post.photos.each do |photo| %>
+          <div class="scroll-card--content">
+            <%= cl_image_tag photo.image, width: 200, height: 200, crop: :fill %>
+          </div>
         <% end %>
+      <% end %>
     </section>
+
 
   <div class="point-info">
      <% if @point.category == "Camp" %>
@@ -44,6 +47,7 @@
       <%= location[0].state %>,
       <%= location[0].country %>
     </h6>
+
     <p><%= @point.description %></p>
     <p>Created by: <%= link_to "#{@point.user.first_name} #{@point.user.last_name}", user_path(@point.user_id)%></p>
   </div>
@@ -52,7 +56,7 @@
 
   <div class="border mt-2 mb-2">
     <p>Share your comments and photos</p>
-    <!-- unhide remote:true if you want to enable ajax -->
+    <!-- unhide below code if you want to enable ajax -->
     <%#= simple_form_for([@point, @post], remote: true) do |f| %>
     <%= simple_form_for([@point, @post]) do |f| %>
     <%= f.input :title %>
@@ -64,7 +68,6 @@
     <% end %>
   </div>
 
-  <!-- previous code was @posts.each -->
   <div id="post-container">
     <% @point.posts.reverse.each do |post| %>
       <div class="border mt-1 mb-1 card-show" id="post-card-<%=post.id%>">
