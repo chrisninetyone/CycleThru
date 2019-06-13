@@ -11,16 +11,22 @@
   }
 }
 .btn-dark{
-color: #D9DFDB;
-    border-color: #D9DFDB;
-    &:hover {
-    color: white;
-    background-color: #03CDAE;
-  }
+// color: #D9DFDB;
+//     border-color: #D9DFDB;
+//     &:hover {
+//     color: white;
+//     background-color: #03CDAE;
+// }
+}
+.logout .btn-primary {
+    color: #fff;
+    background-color: #325A77;
+    border-color: #325A77;
 }
 
 .save-trip {
   border-radius: 5px;
+  color:#03CDAE;
 }
 
 .point-button {
@@ -42,7 +48,7 @@ color: #D9DFDB;
   border: none;
     background-color: white;
     opacity: 0.8;
-    color: black;
+    color: #03bcee;;
 }
 
 #map-footer {
@@ -52,9 +58,11 @@ color: #D9DFDB;
     opacity: 0.8;
   }
 }
-
+#fa-user{
+  color: #03CDAE;
+}
 #add-stop {
   border-radius: 5px;
   background-color: #325A77;
   color: #FFFFFF;
-}
+  }
