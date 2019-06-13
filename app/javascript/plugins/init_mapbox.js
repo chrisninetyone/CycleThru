@@ -135,12 +135,6 @@ const initMapbox = (currentLocation) => {
         }
       }
 
-      const addTripButton = document.querySelector('#add-stop');
-      addTripButton.addEventListener('click', () => {
-        console.log('ya clicked me')
-        mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
-      })
-
 
     });
 
@@ -182,6 +176,18 @@ const initMapbox = (currentLocation) => {
       } else {
         directions.hidden = false
       }
+    })
+
+        document.querySelector('body').on('click', '#add-stop', (e) => {
+  // alert('add waypoint');
+  // let allWaypoints = mapboxDirections.getWaypoints()
+  //     console.log(allWaypoints);
+      const wayPoint = e.target
+      const coordinate = JSON.parse(wayPoint.dataset.coordinate)
+
+      mapboxDirections.addWaypoint(0, coordinate)
+      console.log(e.target, coordinate)
+  // mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
     })
 
     $("#set-route-submit").click(function(){
