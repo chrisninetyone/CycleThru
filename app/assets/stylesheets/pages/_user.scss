@@ -10,6 +10,20 @@
   bottom: 65px;
 }
 
+#profile-background {
+  background-image: url('https://images.unsplash.com/photo-1442606440995-d0be22c5f90f?ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=60');
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 767px) {
+  #profile-background {
+    background-image: url('https://images.unsplash.com/photo-1442606440995-d0be22c5f90f?ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=60');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
 .profile-card {
   position: absolute;
   bottom: 20px;
