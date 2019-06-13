@@ -80,24 +80,56 @@
                     </h6>
                   </div>
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body">
-                      <% @user.trips.reverse.each do |trip| %>
+                    <div class="card-body trip-head">
+                      <% @user.trips.reverse.take(3).each do |trip| %>
                       <%#= trip.created_at.strftime("%F") %>
                       <h3><%= trip.created_at.strftime("%d %b %Y") %>:</h3>
                       <p><i class="fas fa-biking"></i>
-                      <% origin = Geocoder.search([trip.start_lat, trip.start_long]) %>
-                      <%= origin[0].town %>
-                      <%= origin[0].county %>
-                      <%= origin[0].state %>
-                      <%= origin[0].country %> to
+                        <% origin = Geocoder.search([trip.start_lat, trip.start_long]) %>
+                        <% if origin[0] %>
+                        <%= origin[0].town %>
+                        <%= origin[0].county %>
+                        <%= origin[0].state %>
+                        <%= origin[0].country %> to
+                        <% end %>
 
-                      <% destination = Geocoder.search([trip.end_lat, trip.end_long]) %>
-                      <%= destination[0].town %>
-                      <%= destination[0].county %>
-                      <%= destination[0].state %>
-                      <%= destination[0].country %>
+                        <% destination = Geocoder.search([trip.end_lat, trip.end_long]) %>
+                        <% if destination[0] %>
+                          <%= destination[0].town  %>
+                          <%= destination[0].county %>
+                          <%= destination[0].state %>
+                          <%= destination[0].country %>
+                        <% end %>
+                        </p>
+                      <% end %>
+                      <div class="panel-group" id="accordion22">
+                        <div class="panel">
+                          <a data-toggle="collapse" data-parent="#accordion22" href="#collapseTwoOne">See more...
+                        </a>
+                        <div id="collapseTwoOne" class="panel-collapse collapse">
+                        <div class="panel-body"></div>
+                         <% @user.trips.reverse.drop(3).each do |trip| %>
+                           <h3><%= trip.created_at.strftime("%d %b %Y") %>:</h3>
+                      <p><i class="fas fa-biking"></i>
+                        <% origin = Geocoder.search([trip.start_lat, trip.start_long]) %>
+                        <% if origin[0]  %>
+                        <%= origin[0].town %>
+                        <%= origin[0].county %>
+                        <%= origin[0].state %>
+                        <%= origin[0].country %> to
+                        <% end %>
+                        <% destination = Geocoder.search([trip.end_lat, trip.end_long]) %>
+                        <% if destination[0] %>
+                        <%= destination[0].town %>
+                        <%= destination[0].county %>
+                        <%= destination[0].state %>
+                        <%= destination[0].country %>
+                        <% end %>
                       </p>
                       <% end %>
+                        </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -157,7 +189,7 @@
                   </div>
                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        <% @user.posts.take(3).each do |p| %>
+                        <% @user.posts.reverse.take(3).each do |p| %>
                       <div class="dropdown-card my-3">
                         <p><strong><%= p.title %></strong></p>
                           </p>
