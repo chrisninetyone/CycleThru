@@ -12,6 +12,9 @@
           <h3><%= @user.first_name %></h3>
           <p><%= @user.country %></p>
         </div>
+        <div class="logout">
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary justify" %>
+        </div>
       </div>
       <div class="about-section">
         <div class="about-title">
@@ -60,11 +63,11 @@
               </div>
             </div>
             <div class="rider-bio">
-              <% if @user.bio.nil? || @user.bio.length < 1 %>
-              <% else %>
+              <%# if @user.bio.nil? || @user.bio.length < 1 %>
+              <%# else %>
                <h6>User bio</h6>
               <p><%= @user.bio %></p>
-              <% end %>
+              <%# end %>
             </div>
             <div class="journey-section">
               <% if current_user == @user %>

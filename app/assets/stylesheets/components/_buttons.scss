@@ -11,12 +11,17 @@
   }
 }
 .btn-dark{
-color: #D9DFDB;
-    border-color: #D9DFDB;
-    &:hover {
-    color: white;
-    background-color: #03CDAE;
-  }
+// color: #D9DFDB;
+//     border-color: #D9DFDB;
+//     &:hover {
+//     color: white;
+//     background-color: #03CDAE;
+// }
+}
+.logout .btn-primary {
+    color: #fff;
+    background-color: #325A77;
+    border-color: #325A77;
 }
 
 .save-trip {

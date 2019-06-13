@@ -10,7 +10,7 @@
         <%= link_to "My Profile", user_path(current_user[:id]), class: "dropdown-item" %>
         <%= link_to "Map", points_path, class: "dropdown-item" %>
         <%#= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item" %>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-large btn-outline-secondary" %>
       </div>
     </li>
   </div>
