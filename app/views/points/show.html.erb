@@ -37,6 +37,8 @@
       <%= image_tag(('tent.png'), :class => "point-icon") %>
      <% elsif @point.category == "Food" %>
      <%= image_tag(('cutlery.png'), :class => "point-icon") %>
+     <% elsif @point.category == "Bike Spot" %>
+     <%= image_tag(('tools.png'), :class => "point-icon") %>
      <% elsif @point.category == "Photo" %>
      <%= image_tag(('camera.png'), :class => "point-icon") %>
      <% elsif @point.category == "Wellness" %>
@@ -52,10 +54,10 @@
     <p>Created by: <%= link_to "#{@point.user.first_name} #{@point.user.last_name}", user_path(@point.user_id)%></p>
   </div>
 
+  <div class="divider div-transparent"></div>
 
-
-  <div class="border mt-2 mb-2">
-    <p>Share your comments and photos</p>
+  <div class="border mt-2 mb-2 post-section">
+    <p class="mb-2">Share your comments and photos</p>
     <!-- unhide below code if you want to enable ajax -->
     <%#= simple_form_for([@point, @post], remote: true) do |f| %>
     <%= simple_form_for([@point, @post]) do |f| %>
