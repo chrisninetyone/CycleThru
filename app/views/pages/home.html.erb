@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
   <% end %>
@@ -30,42 +31,63 @@
       <li>
         <button type="button" class="btn btn-large btn-dark mr-2" data-toggle="modal" data-target="#signupModal">
             Sign up
-            </button>
+        </button>
       </li>
-      <% end %>
-    </ul>
+    </div>
+    <% else %>
+
+  <div class="signedout-buttons">
+    <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-facebook btn btn-lg btn-block mr-2" do %>
+    <i class="fab fa-facebook-f"></i>
+    <% end %>
+  </div>
+  <div class="signedout-buttons">
+    <button type="button" class="btn btn-large btn-dark mr-2" data-toggle="modal" data-target="#loginModal">
+      Log in
+    </button>
+  </div>
+  <div class="signedout-buttons">
+    <button type="button" class="btn btn-large btn-dark mr-2" data-toggle="modal" data-target="#signupModal">
+      Sign up
+    </button>
+  </div>
+  <% end %>
   </div>
 
-</nav>
-<header class="bg-img header">
-  <div class="container">
-    <div class="row">
-      <div class="intro-box">
-        <div class="intro">
-          <%= image_tag "logogreen.png", class: "logo"%>
-          <h1 class="mt-2">Cycle Thru</h1>
-          <div class="search-form">
+
+  <header class="bg-img header">
+    <div class="container">
+      <div class="row">
+        <div class="intro-box">
+          <div class="intro">
+            <%= image_tag "logogreen.png", class: "logo"%>
+            <h1 class="mt-2">Cycle Thru</h1>
+            <div class="search-form">
               <div class="p-3 rounded">
+                <% if current_user %>
                 <%= link_to "Let's ride...", points_path, class: "btn btn-large btn-outline-secondary"  %>
+                <% else %>
+                <button class="btn btn-large btn-outline-secondary" data-toggle="modal" data-target="#loginModal">Let's ride...</button>
+                <% end %>
               </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</header>
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render 'points/loginform' %>
-      </div>
+  </header>
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render 'points/loginform' %>
+        </div>
       </div>
     </div>
   </div>
@@ -82,9 +104,9 @@
       <div class="modal-body">
         <%= render partial: 'points/signupform', locals: { user: User.new } %>
       </div>
-      </div>
     </div>
   </div>
+</div>
 </div>
 <%= render 'shared/footer' %>
 

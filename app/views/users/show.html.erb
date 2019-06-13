@@ -87,7 +87,24 @@
                   </div>
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
-                      <%= @user.trips %>
+                      <% @user.trips.each do |trip| %>
+
+                        <%#= trip.created_at.strftime("%F") %>
+                        <h3><%= trip.created_at.strftime("%d %b %Y") %>:</h3>
+                        <p><i class="fas fa-biking"></i>
+                        <% origin = Geocoder.search([trip.start_lat, trip.start_long]) %>
+                        <%= origin[0].town %>
+                        <%= origin[0].county %>
+                        <%= origin[0].state %>
+                        <%= origin[0].country %> to
+
+                        <% destination = Geocoder.search([trip.end_lat, trip.end_long]) %>
+                        <%= destination[0].town %>
+                        <%= destination[0].county %>
+                        <%= destination[0].state %>
+                        <%= destination[0].country %>
+                        </p>
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -99,9 +116,9 @@
                       <!-- </button> -->
                     </h6>
                   </div>
-                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
-                        <% @user.points.each do |point| %>
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <% @user.points.reverse.take(3).each do |point| %>
                       <div class="dropdown-card my-3">
                         <%= link_to point_path(point) do  %>
                          <%= cl_image_tag point.photo, height: 100, width: 130, class: "card-image" %>
@@ -113,6 +130,26 @@
                          </div>
                       </div>
                        <% end %>
+                    <div class="panel-group" id="accordion21">
+                      <div class="panel">
+                        <a data-toggle="collapse" data-parent="#accordion21" href="#collapseTwoOne">See more...
+                        </a>
+                        <div id="collapseTwoOne" class="panel-collapse collapse">
+                        <div class="panel-body"></div>
+                         <% @user.points.reverse.drop(3).each do |point| %>
+                      <div class="dropdown-card my-3">
+                        <%= link_to point_path(point) do  %>
+                         <%= cl_image_tag point.photo, height: 100, width: 130, class: "card-image" %>
+                         <% end %>
+                         <div>
+                           <p><strong><%=  point.name %></strong></p>
+                           <p><%= point.category %></p>
+                           <p><%= point.description.truncate(40)%></p>
+                         </div>
+                      </div>
+                       <% end %>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -126,7 +163,7 @@
                   </div>
                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        <% @user.posts.each do |p| %>
+                        <% @user.posts.take(3).each do |p| %>
                       <div class="dropdown-card my-3">
                         <p><strong><%= p.title %></strong></p>
                           </p>
@@ -136,6 +173,25 @@
                         <p><%#= link_to "See point",  %></p>
                       </div>
                         <% end %>
+                         <div class="panel-group" id="accordion22">
+                      <div class="panel">
+                        <a data-toggle="collapse" data-parent="#accordion22" href="#collapseTwoOne">See more...
+                        </a>
+                        <div id="collapseTwoOne" class="panel-collapse collapse">
+                        <div class="panel-body"></div>
+                         <% @user.posts.reverse.drop(3).each do |point| %>
+                      <div class="dropdown-card my-3">
+                        <p><strong><%= p.title %></strong></p>
+                          </p>
+                        <br>
+                        <p><%= p.content %></p>
+                        <p><%= link_to "#{p.point.name}", point_path(p.point_id) %></p>
+                        <p><%#= link_to "See point",  %></p>
+                      </div>
+                        <% end %>
+                        </div>
+                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>

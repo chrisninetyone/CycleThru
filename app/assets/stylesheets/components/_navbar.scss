@@ -30,9 +30,9 @@
   flex-grow: 0;
 }
 
-.navbar-toggler.collapse {
-  display: block!important;
-}
+// .navbar-toggler.collapse {
+//   display: block!important;
+// }
 
 li {
     list-style-type: none;
@@ -42,4 +42,22 @@ li {
   width: 40px;
   height: 40px;
   margin-top: 8px;
+}
+
+@media (min-width: 10px) and (max-width: 1000px) {
+   .collapse {
+       display: none !important;
+   }
+}
+
+.home-nav {
+    position: fixed;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+}
+
+.signedout-buttons {
+    margin-right: 0px;
+    margin-top: 10px;
 }
