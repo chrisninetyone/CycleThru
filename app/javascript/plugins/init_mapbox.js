@@ -5,7 +5,6 @@ import Swal from 'sweetalert2'
 
 
 const createMarkersForMap = (mapElement, map) => {
-  console.log(mapElement.dataset.markers)
   const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
     const element = document.createElement('div');
@@ -178,16 +177,15 @@ const initMapbox = (currentLocation) => {
       }
     })
 
-        document.querySelector('body').on('click', '#add-stop', (e) => {
-  // alert('add waypoint');
-  // let allWaypoints = mapboxDirections.getWaypoints()
-  //     console.log(allWaypoints);
+    document.querySelector('body').on('click', '#add-stop', (e) => {
+    // alert('add waypoint');
+    let allWaypoints = mapboxDirections.getWaypoints()
+    //     console.log(allWaypoints);
       const wayPoint = e.target
       const coordinate = JSON.parse(wayPoint.dataset.coordinate)
-
-      mapboxDirections.addWaypoint(0, coordinate)
-      console.log(e.target, coordinate)
-  // mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
+      mapboxDirections.addWaypoint(allWaypoints.length - 1, coordinate)
+      console.log(allWaypoints.length)
+    // mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
     })
 
     $("#set-route-submit").click(function(){

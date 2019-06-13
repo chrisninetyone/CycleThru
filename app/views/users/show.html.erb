@@ -73,7 +73,7 @@
               <div class="accordion mb-5" id="accordionExample">
                 <div class="card">
                   <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseOne" id="headingOne">
-                    <h5 class="mb-0">
+                    <h6 class="mb-0">
                       <u>
                         Routes
                       </u>
@@ -81,11 +81,11 @@
                   </div>
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
-                      <% @user.trips.each do |trip| %>
+                      <% @user.trips.reverse.each do |trip| %>
 
                         <%#= trip.created_at.strftime("%F") %>
                         <h3><%= trip.created_at.strftime("%d %b %Y") %>:</h3>
-                        <p><i class="fas fa-biking"></i>
+                        <p>
                         <% origin = Geocoder.search([trip.start_lat, trip.start_long]) %>
                         <%= origin[0].town %>
                         <%= origin[0].county %>
@@ -104,7 +104,7 @@
                 </div>
                 <div class="card">
                   <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseThree" id="headingThree">
-                    <h5 class="mb-0">
+                    <h6 class="mb-0">
                       <!-- <button class="btn btn-link collapsed" type="button"  aria-expanded="false" aria-controls="collapseThree"> -->
                         <u>Points</u>
                       <!-- </button> -->
@@ -149,7 +149,7 @@
                 </div>
                  <div class="card">
                   <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseTwo" id="headingTwo">
-                    <h5 class="mb-0">
+                    <h6 class="mb-0">
                       <!-- <button class="btn btn-link collapsed" type="button"  aria-expanded="false" aria-controls="collapseTwo"> -->
                         <u>Posts</u>
                       <!-- </button> -->
