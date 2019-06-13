@@ -1,4 +1,4 @@
-<body id="profile-background">
+<body style="background-image: url('https://images.unsplash.com/photo-1442606440995-d0be22c5f90f?ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=60'); background-size: auto; background-repeat: no-repeat;">
   <div class="banner" >
     <div class="container page-body">
       <div class="profile-card">
@@ -11,9 +11,6 @@
         <div>
           <h3><%= @user.first_name %></h3>
           <p><%= @user.country %></p>
-        </div>
-        <div class="logout">
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary justify" %>
         </div>
       </div>
       <div class="about-section">
@@ -63,11 +60,8 @@
               </div>
             </div>
             <div class="rider-bio">
-              <%# if @user.bio.nil? || @user.bio.length < 1 %>
-              <%# else %>
-               <h6>User bio</h6>
+              <h6>User bio</h6>
               <p><%= @user.bio %></p>
-              <%# end %>
             </div>
             <div class="journey-section">
               <% if current_user == @user %>
@@ -79,7 +73,7 @@
               <div class="accordion mb-5" id="accordionExample">
                 <div class="card">
                   <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseOne" id="headingOne">
-                    <h5 class="mb-0">
+                    <h6 class="mb-0">
                       <u>
                         Routes
                       </u>
@@ -87,37 +81,36 @@
                   </div>
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
-                      <% @user.trips.each do |trip| %>
+                      <% @user.trips.reverse.each do |trip| %>
+                      <%#= trip.created_at.strftime("%F") %>
+                      <h3><%= trip.created_at.strftime("%d %b %Y") %>:</h3>
+                      <p><i class="fas fa-biking"></i>
+                      <% origin = Geocoder.search([trip.start_lat, trip.start_long]) %>
+                      <%= origin[0].town %>
+                      <%= origin[0].county %>
+                      <%= origin[0].state %>
+                      <%= origin[0].country %> to
 
-                        <%#= trip.created_at.strftime("%F") %>
-                        <h3><%= trip.created_at.strftime("%d %b %Y") %>:</h3>
-                        <p><i class="fas fa-biking"></i>
-                        <% origin = Geocoder.search([trip.start_lat, trip.start_long]) %>
-                        <%= origin[0].town %>
-                        <%= origin[0].county %>
-                        <%= origin[0].state %>
-                        <%= origin[0].country %> to
-
-                        <% destination = Geocoder.search([trip.end_lat, trip.end_long]) %>
-                        <%= destination[0].town %>
-                        <%= destination[0].county %>
-                        <%= destination[0].state %>
-                        <%= destination[0].country %>
-                        </p>
+                      <% destination = Geocoder.search([trip.end_lat, trip.end_long]) %>
+                      <%= destination[0].town %>
+                      <%= destination[0].county %>
+                      <%= destination[0].state %>
+                      <%= destination[0].country %>
+                      </p>
                       <% end %>
                     </div>
                   </div>
                 </div>
                 <div class="card">
                   <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseThree" id="headingThree">
-                    <h5 class="mb-0">
+                    <h6 class="mb-0">
                       <!-- <button class="btn btn-link collapsed" type="button"  aria-expanded="false" aria-controls="collapseThree"> -->
                         <u>Points</u>
                       <!-- </button> -->
                     </h6>
                   </div>
-                    <div class="card-body">
                   <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
                         <% @user.points.reverse.take(3).each do |point| %>
                       <div class="dropdown-card my-3">
                         <%= link_to point_path(point) do  %>
@@ -153,9 +146,10 @@
                     </div>
                   </div>
                 </div>
+              </div>
                  <div class="card">
                   <div class="card-header panel-heading" data-toggle="collapse" data-target="#collapseTwo" id="headingTwo">
-                    <h5 class="mb-0">
+                    <h6 class="mb-0">
                       <!-- <button class="btn btn-link collapsed" type="button"  aria-expanded="false" aria-controls="collapseTwo"> -->
                         <u>Posts</u>
                       <!-- </button> -->
@@ -163,13 +157,13 @@
                   </div>
                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        <% @user.posts.take(3).each do |point| %>
+                        <% @user.posts.take(3).each do |p| %>
                       <div class="dropdown-card my-3">
-                        <p><strong><%= point.title %></strong></p>
+                        <p><strong><%= p.title %></strong></p>
                           </p>
                         <br>
-                        <p><%= point.content %></p>
-                        <p><%= link_to "#{point.point.name}", point_path(point.point_id) %></p>
+                        <p><%= p.content %></p>
+                        <p><%= link_to "#{p.point.name}", point_path(p.point_id) %></p>
                         <p><%#= link_to "See point",  %></p>
                       </div>
                         <% end %>
@@ -179,13 +173,13 @@
                         </a>
                         <div id="collapseTwoOne" class="panel-collapse collapse">
                         <div class="panel-body"></div>
-                         <% @user.posts.reverse.drop(3).each do |point| %>
+                         <% @user.posts.reverse.drop(3).each do |p| %>
                       <div class="dropdown-card my-3">
-                        <p><strong><%= point.title %></strong></p>
+                        <p><strong><%= p.title %></strong></p>
                           </p>
                         <br>
-                        <p><%= point.content %></p>
-                        <p><%= link_to "#{point.point.name}", point_path(point.point_id) %></p>
+                        <p><%= p.content %></p>
+                        <p><%= link_to "#{p.point.name}", point_path(p.point_id) %></p>
                         <p><%#= link_to "See point",  %></p>
                       </div>
                         <% end %>
