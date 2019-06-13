@@ -42,7 +42,11 @@
             <h1 class="mt-2">Cycle Thru</h1>
             <div class="search-form">
               <div class="p-3 rounded">
+                <% if current_user %>
                 <%= link_to "Let's ride...", points_path, class: "btn btn-large btn-outline-secondary"  %>
+                <% else %>
+                <button class="btn btn-large btn-outline-secondary" data-toggle="modal" data-target="#loginModal">Let's ride...</button>
+                <% end %>
               </div>
             </div>
           </div>
