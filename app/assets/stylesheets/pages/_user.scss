@@ -131,13 +131,22 @@
   }
 }
 
-.popup-window {
+#popup-window {
+  text-align: center;
   width: 100%;
   p {
-    margin-bottom: 5px;
+    margin-top: 4px;
+    margin-bottom: 4px;
   }
   h4 {
     padding-bottom: 8px;
+    a {
+      padding-bottom: 8px;
+      width: 100%;
+      margin-top: 10px;
+      margin-right: 0px;
+      margin-bottom: 8px
+    }
   }
 }
 
