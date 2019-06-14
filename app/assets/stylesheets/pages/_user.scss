@@ -25,18 +25,20 @@
 }
 
 .profile-card {
+  padding-bottom: 5px;
+  justify-content: center;
   color: white;
   display: flex;
-  justify-content: space-between;
-  padding-bottom: 30px;
     h3, p {
     margin: 10px;
     color: white;
-    text-align: left;
+    text-align: center;
   }
 }
 
 .profile-avatar {
+  margin-top: 45px;
+  justify-content: center;
   display: flex;
   align-items: center;
   margin-right: 10px;
@@ -92,7 +94,14 @@
     margin-bottom: 18px;
     text-align: center;
   }
+  p{
+    font-size: 16px;
+    color: #ffff;
+    text-align: center;
+
+  }
 }
+
 
 .drop-menu {
   text-align: center;
@@ -109,8 +118,8 @@
 }
 
 .user-profile-avatar {
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
 }
 
 .top-row {
