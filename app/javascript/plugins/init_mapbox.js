@@ -91,12 +91,8 @@ const initMapbox = (currentLocation) => {
 
 
     pinButton.addEventListener('click', (e) => {
-      interactiveStatus = !interactiveStatus
+      // interactiveStatus = !interactiveStatus
 
-      let allWaypoints = mapboxDirections.getWaypoints()
-      console.log(allWaypoints);
-      mapboxDirections.interactive(interactiveStatus)
-      mapboxDirections.addWaypoint(allWaypoints.length - 1, currentLocation)
 
       if (document.querySelector('.mapboxgl-marker svg')) {
         document.querySelector('.mapboxgl-marker svg').remove()
