@@ -1,13 +1,13 @@
 <body style="background-image: url('https://images.unsplash.com/photo-1442606440995-d0be22c5f90f?ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=60'); background-size: auto; background-repeat: no-repeat;">
   <div class="banner" >
     <div class="container page-body">
-      <div class="profile-card">
-        <div class="profile-avatar">
+      <div class="profile-avatar">
           <div>
             <% avatar_url = @user.facebook_picture_url || "#{@user.avatar}" %>
             <%= image_tag avatar_url, class: "rounded-circle user-profile-avatar" %>
           </div>
         </div>
+      <div class="profile-card">
         <div>
           <h3><%= @user.first_name %></h3>
           <p><%= @user.country %></p>
