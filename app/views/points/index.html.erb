@@ -1,8 +1,7 @@
-<div>
   <div
     id="map"
     style="width: 100%;
-    height: 100vh;"
+    height: calc(100vh - 56px);"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     >
@@ -31,7 +30,6 @@
     <i class="far fa-user"></i>
     <% end %>
   </footer>
-</div>
 
 
 

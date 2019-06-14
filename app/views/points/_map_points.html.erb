@@ -3,16 +3,16 @@
       <h4><%= link_to "#{point.name}", point_path(point) %></h4>
     </div>
     <br>
-    <div class="point-image">
-      <%= link_to point_path(point) do  %>
-        <%= cl_image_tag point.photo, width: 184, height: 160, crop: :fill %>
+      <% if !point.photo.blank? %>
+        <div class="point-image">
+          <%= link_to point_path(point) do  %>
+            <%= cl_image_tag point.photo, width: 184, height: 160, crop: :fill %>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-
     <div>
       <p><%= point.description %></p>
       <p><i class="far fa-user"></i> <%= link_to "#{point.user.first_name} #{point.user.last_name}", user_path(point.user_id), class: "popup-links "%></p>
       <button id="add-stop" data-coordinate="<%= [point.long, point.lat] %>">Add Stop to Route</button>
     </div>
 </div>
-
