@@ -34,7 +34,7 @@
                     <% @user.trips.each do |trip| %>
                       <% total_distance += trip.distance %>
                     <% end %>
-                     <p><%= (total_distance).round %> km</p>
+                     <p class="odometer" id="odometer"><%= (total_distance).round %> km</p>
                   <div class="stats-card ml-2">
                   <i class="fas fa-calculator"></i>
                </div>
