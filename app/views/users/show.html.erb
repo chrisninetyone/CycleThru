@@ -44,7 +44,6 @@
                   <% total_duration = 0.0 %>
                     <% @user.trips.each do |trip| %>
                       <% total_duration += trip.duration %>
-
                     <% end %>
                     <p><%= (total_duration).round %> hr</p>
                 <div class="stats-card">
