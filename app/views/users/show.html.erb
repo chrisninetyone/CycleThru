@@ -53,7 +53,11 @@
               </div>
               <div class="stats-block">
                   <p class="mb-3"><strong>Longest ride</strong></p>
-                  <p><%= @user.trips.max.distance.round %> km</p>
+                  <% if @user.trips.exists? %>
+                    <p><%= @user.trips.max.distance.round %> km</p>
+                  <% else %>
+                    <p>0 km</p>
+                  <% end %>
                 <div class="stats-card">
                   <i class="fas fa-road"></i>
                 </div>
