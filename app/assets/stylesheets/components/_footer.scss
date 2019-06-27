@@ -10,7 +10,7 @@
     color: #51c2b9;
   }
   p {
-    font-size: 10px;
+    font-size: 19px;
     color: #fff;
     margin-bottom: 0;
   }
@@ -30,10 +30,10 @@
 }
 
 .footer-icon {
-  font-size: 12px;
+  font-size: 20px;
   color: #03CDAE;
   &:hover {
-    color: #03CDAE;
+    color: white;
      transform: scale(1.2);
      transition: 0.3s;
   }
@@ -60,3 +60,24 @@
 .mapboxgl-ctrl-attrib.mapboxgl-compact::after {
     display: none;
 }
+
+    .avatar-huge {
+    width: 200px;
+    border-radius: 50%;
+    height: 200px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.the-team{
+  padding: 40px;
+  color: #03CDAE;
+  font-size: 40px;
+
+}
+

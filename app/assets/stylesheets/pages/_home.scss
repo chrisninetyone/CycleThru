@@ -62,7 +62,6 @@
 .rent-bike {
   width: 120px;
   height: 120px;
-  display:block;
   i {
     font-size: 100px;
     color: #03CDAE;
@@ -72,7 +71,6 @@
 .loan-bike{
   width: 120px;
   height: 120px;
-  display:block;
   i {
     font-size: 100px;
      color: #03CDAE;
@@ -82,7 +80,6 @@
 .community{
   width: 120px;
   height: 120px;
-  display:block;
   i {
     font-size: 100px;
      color: #03CDAE;
@@ -113,6 +110,7 @@
 .intro{
   display: table-cell;
   vertical-align: middle;
+  padding-top: 115px;
 }
 
 .header h1{
@@ -164,8 +162,13 @@
   // padding: 20px;
 }
 
+
+
 @media (max-width: 767px){
    .footer {
+    display: none;
+  }
+  section {
     display: none;
   }
 }
@@ -173,7 +176,7 @@
 @media (min-width: 601px) {
   .header {
     background: url('https://images.unsplash.com/photo-1536405322446-f4ce910fab30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80') no-repeat center center fixed;
-  height: 100vh;
+  height: 110vh;
   position: relative;
   min-height: 659px;
   background-size: cover;
