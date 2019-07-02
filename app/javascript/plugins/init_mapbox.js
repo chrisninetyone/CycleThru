@@ -13,8 +13,8 @@ const createMarkersForMap = (mapElement, map) => {
     element.style.backgroundImage = `url('${marker.image_url}')`;
     element.style.backgroundSize = 'contain';
 
-    element.style.width = '25px';
-    element.style.height = '25px';
+    element.style.width = '35px';
+    element.style.height = '35px';
     element.style.cursor = "pointer"
 
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
@@ -33,8 +33,8 @@ window.addMarker = function(marker) {
     element.style.backgroundImage = `url('${marker.image_url}')`;
     element.style.backgroundSize = 'contain';
 
-    element.style.width = '25px';
-    element.style.height = '25px';
+    element.style.width = '35px';
+    element.style.height = '35px';
     element.style.cursor = "pointer"
 
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
