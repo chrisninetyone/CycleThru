@@ -81,7 +81,6 @@
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body trip-head">
                       <% @user.trips.reverse.take(3).each do |trip| %>
-                      <%#= trip.created_at.strftime("%F") %>
                       <h3><%= trip.created_at.strftime("%d %b %Y") %>:</h3>
                       <p><i class="fas fa-biking"></i>
                         <% origin = Geocoder.search([trip.start_lat, trip.start_long]) %>
