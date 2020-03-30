@@ -16,7 +16,7 @@
       <div class="about-section card-show">
         <div class="about-title">
           <div class="d-flex top-panel">
-            <%= link_to "", points_path, class: "fas fa-globe-europe"  %>
+            <%= link_to "", points_path, class: "fas fa-map-marked-alt"  %>
             <% if current_user == @user %>
             <h6><%= "My Profile" %></h6>
             <% else %>
@@ -85,7 +85,6 @@
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body trip-head">
                       <% @user.trips.reverse.take(3).each do |trip| %>
-                      <%#= trip.created_at.strftime("%F") %>
                       <h3><%= trip.created_at.strftime("%d %b %Y") %>:</h3>
                       <p><i class="fas fa-biking"></i>
                         <% origin = Geocoder.search([trip.start_lat, trip.start_long]) %>
